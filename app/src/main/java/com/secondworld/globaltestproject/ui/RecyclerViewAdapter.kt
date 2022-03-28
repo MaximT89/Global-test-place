@@ -2,6 +2,7 @@ package com.secondworld.globaltestproject.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.secondworld.globaltestproject.R
@@ -18,6 +19,8 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewHolder>() {
             field = value
             notifyDataSetChanged()
         }
+
+    var callBackTest : ((view : View, item : RecyclerViewItem, position : Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return when (viewType) {
@@ -40,6 +43,7 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+        holder.callBackTest = callBackTest
         when (holder) {
             is RecyclerViewHolder.PersonHolder -> holder.bind(items[position] as Person)
             is RecyclerViewHolder.StudentHolder -> holder.bind(items[position] as Student)
