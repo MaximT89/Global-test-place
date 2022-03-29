@@ -2,12 +2,9 @@ package com.secondworld.globaltestproject.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
-import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.snackbar
 import com.secondworld.globaltestproject.data.api.RetrofitClient
-import com.secondworld.globaltestproject.data.models.ResponseMemes
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
