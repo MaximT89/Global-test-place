@@ -1,12 +1,13 @@
 package com.secondworld.globaltestproject.core
 
+import android.app.Activity
 import android.content.res.Resources
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.material.snackbar.Snackbar
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
@@ -38,6 +39,10 @@ fun hideViews(vararg views: View) {
     for (view in views) view.visibility = View.GONE
 }
 
+fun Activity.snackbar(message: String) {
+    Snackbar.make(this, findViewById(android.R.id.content) , message, Snackbar.LENGTH_LONG ).show()
+}
+
 fun log(message : String){
     Log.d("TAG", "log: $message")
 }
@@ -46,7 +51,6 @@ fun createGradient(textView: TextView, colors: IntArray) {
     val paint = textView.paint
     val width = paint.measureText(textView.text.toString())
     val textShader: Shader = LinearGradient(0f, 0f, width, textView.textSize, colors, null, Shader.TileMode.REPEAT)
-
     textView.paint.shader = textShader
 }
 

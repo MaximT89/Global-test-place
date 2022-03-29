@@ -22,6 +22,8 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewHolder>() {
 
     var callBackTest : ((view : View, item : RecyclerViewItem, position : Int) -> Unit)? = null
 
+    // TODO: при клике на элемент закрашивать весь холдер
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return when (viewType) {
             R.layout.person_holder -> RecyclerViewHolder.PersonHolder(
