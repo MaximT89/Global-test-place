@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.core
 
+import android.app.Activity
 import android.content.res.Resources
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.material.snackbar.Snackbar
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
@@ -48,6 +50,10 @@ fun createGradient(textView: TextView, colors: IntArray) {
     val textShader: Shader = LinearGradient(0f, 0f, width, textView.textSize, colors, null, Shader.TileMode.REPEAT)
 
     textView.paint.shader = textShader
+}
+
+fun Activity.snackbar(message: String) {
+    Snackbar.make(this, findViewById(android.R.id.content) , message, Snackbar.LENGTH_LONG ).show()
 }
 
 fun Int.toDp() : Int = (this / Resources.getSystem().displayMetrics.density).toInt()
