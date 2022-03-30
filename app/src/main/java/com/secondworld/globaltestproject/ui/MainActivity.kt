@@ -24,14 +24,14 @@ class MainActivity : AppCompatActivity() {
         initData()
     }
 
-    private fun initData() {
-        myAdapter.items = repository.fetchPersons()
-    }
-
     private fun initView() {
         binding.recyclerView.apply {
             setHasFixedSize(true)
             adapter = myAdapter
         }
+    }
+
+    private fun initData() {
+        myAdapter.items = repository.fetchPersons()
     }
 }
