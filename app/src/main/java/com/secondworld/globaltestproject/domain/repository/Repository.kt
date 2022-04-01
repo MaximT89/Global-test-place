@@ -7,6 +7,4 @@ interface Repository {
     fun randomAge() : Int
     fun randomName() : String
     fun generateAnimals() : MutableList<Animals>
-    fun randomAnimalType() : Int
-
 }

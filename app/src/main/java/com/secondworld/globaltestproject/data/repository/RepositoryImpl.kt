@@ -13,7 +13,7 @@ class RepositoryImpl(private val storageName : StorageName) : Repository {
     override fun generateAnimals(): MutableList<Animals> {
         val mutableList = mutableListOf<Animals>()
         repeat((0..100).count()) {
-            when(randomAnimalType()){
+            when((1..3).random()){
                 1 -> mutableList.add(Animals.Cat(randomAge(), randomName()))
                 2 -> mutableList.add(Animals.Dog(randomAge(), randomName()))
                 3 -> mutableList.add(Animals.Bird(randomAge(), randomName()))
@@ -21,6 +21,4 @@ class RepositoryImpl(private val storageName : StorageName) : Repository {
         }
         return mutableList
     }
-
-    override fun randomAnimalType() = (1..3).random()
 }
