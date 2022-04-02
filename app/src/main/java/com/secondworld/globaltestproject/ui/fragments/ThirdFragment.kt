@@ -18,18 +18,18 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         bindingFragment = binding
 
         binding.btnNext.setOnClickListener {
+
             findNavController().navigate(
                 R.id.action_thirdFragment_to_firstFragment,
                 null,
                 navOptions {
                     anim {
-                        enter = android.R.animator.fade_in
-                        exit = android.R.animator.fade_out
-                        popEnter = android.R.animator.fade_in
-                        popExit = android.R.animator.fade_out
+                        enter = R.anim.slide_in_left
+                        exit  = R.anim.slide_in_right
+                        popEnter = R.anim.slide_in_left_pop
+                        popExit  = R.anim.slide_in_right_pop
                     }
-                }
-            )
+                })
         }
 
     }
