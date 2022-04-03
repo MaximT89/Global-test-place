@@ -11,6 +11,8 @@ import com.secondworld.globaltestproject.databinding.HolderPersonBinding
 class PersonAdapter : RecyclerView.Adapter<PersonAdapter.RecyclerViewHolder>(){
 
     var callBackPerson: ((position: Int, name : String) -> Unit)? = null
+    var callBackPersonSecond: ((age: Int) -> Unit)? = null
+
 
     var items = mutableListOf<Person>()
         set(value) {
@@ -45,7 +47,11 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.RecyclerViewHolder>(){
             binding.textPersonAge.text = person.age.toString()
 
             binding.imageDelete.setOnClickListener {
+
                 callBackPerson?.invoke(absoluteAdapterPosition, person.name)
+
+                callBackPersonSecond?.invoke(person.age)
+
             }
         }
     }

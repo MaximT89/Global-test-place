@@ -3,10 +3,12 @@ package com.secondworld.globaltestproject.ui
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.secondworld.globaltestproject.data.repository.RepositoryImpl
 import com.secondworld.globaltestproject.data.storages.StorageName
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import com.secondworld.globaltestproject.domain.repository.Repository
+import com.secondworld.globaltestproject.domain.useCases.PersonUseCase
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +16,9 @@ class MainActivity : AppCompatActivity() {
     private val storageName = StorageName()
     private val repository: Repository = RepositoryImpl(storageName)
     private val personAdapter = PersonAdapter()
+    private val viewModel: MainViewModel by viewModels {
+        ViewModelFactory(PersonUseCase(repository))
+    }
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,17 +28,25 @@ class MainActivity : AppCompatActivity() {
 
         initView()
         initData()
+        initObservers()
+    }
+
+    private fun initObservers() {
+        viewModel.listPerson.observe(this) {
+            if (it != null) {
+                personAdapter.items = it
+            }
+        }
     }
 
     private fun initData() {
 
-        personAdapter.items = repository.getListPersons()
+        viewModel.getPerson()
 
-        personAdapter.callBackPerson = { position, name ->
-            binding.textPersonName.text = name
-
-            personAdapter.removePerson(position)
+        personAdapter.callBackPerson = { position, _ ->
+            viewModel.removePerson(position)
         }
+
     }
 
     private fun initView() {
@@ -43,5 +56,7 @@ class MainActivity : AppCompatActivity() {
             adapter = personAdapter
         }
     }
+
+
 }
 
