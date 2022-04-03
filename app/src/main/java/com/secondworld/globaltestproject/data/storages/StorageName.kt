@@ -1,11 +1,21 @@
 package com.secondworld.globaltestproject.data.storages
 
 class StorageName {
-    fun getName() = mutableListOf<String>().apply {
-        add("Charly")
-        add("Mike")
-        add("Percy")
-        add("Shone")
-        add("Sara")
-    }.random()
+
+    fun listNames() : MutableList<String> = mutableListOf(
+        "Max",
+        "Sara",
+        "Tom",
+        "Peter",
+        "Tony",
+        "Shone",
+        "John",
+        "Mike",
+        "Nick",
+        "Nikita",
+        "Luci",
+        "Paola",
+        "Maria",
+        "Ann"
+    )
 }
