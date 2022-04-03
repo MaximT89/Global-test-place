@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val storageName = StorageName()
     private val repository: Repository = RepositoryImpl(storageName)
+    private val personAdapter = PersonAdapter()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +22,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initView()
+        initData()
+    }
+
+    private fun initData() {
+
+        personAdapter.items = repository.getListPersons()
+
+        personAdapter.callBackPerson = { position, name ->
+            binding.textPersonName.text = name
+
+            personAdapter.removePerson(position)
+        }
     }
 
     private fun initView() {
 
-
+        binding.recyclerView.apply {
+            setHasFixedSize(true)
+            adapter = personAdapter
+        }
     }
 }
 

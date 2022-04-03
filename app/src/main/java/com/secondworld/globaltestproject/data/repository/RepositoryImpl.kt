@@ -11,7 +11,7 @@ class RepositoryImpl(private val storageName : StorageName) : Repository {
     override fun getRandomAge() = (1..70).random()
 
     override fun getListPersons() = mutableListOf<Person>().apply {
-        repeat(100) {
+        repeat(10) {
             add(Person(getRandomName(), getRandomAge()))
         }
     }
