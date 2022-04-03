@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private fun initData() {
         myAdapter.items = repository.fetchPersons()
 
-        myAdapter.callBackTest = { view, item, position ->
+        myAdapter.callBackTest = { _, item, position ->
             when(item){
                is Student -> {
                    snackbar("${item.name} from course ${item.course} + $position")
