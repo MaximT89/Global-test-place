@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.secondworld.globaltestproject.core.log
 import com.secondworld.globaltestproject.data.repository.RepositoryImpl
 import com.secondworld.globaltestproject.data.storages.StorageName
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
@@ -34,7 +35,8 @@ class MainActivity : AppCompatActivity() {
     private fun initObservers() {
         viewModel.listPerson.observe(this) {
             if (it != null) {
-                personAdapter.items = it
+                log("Сработало")
+                personAdapter.items = it.map{ it.copy()}.toMutableList()
             }
         }
     }
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         personAdapter.callBackPerson = { position, _ ->
             viewModel.removePerson(position)
+//            personAdapter.removePerson(position)
         }
 
     }
@@ -56,7 +59,5 @@ class MainActivity : AppCompatActivity() {
             adapter = personAdapter
         }
     }
-
-
 }
 
