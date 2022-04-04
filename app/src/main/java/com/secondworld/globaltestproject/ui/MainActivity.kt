@@ -35,8 +35,6 @@ class MainActivity : AppCompatActivity() {
     private fun initObservers() {
         viewModel.listPerson.observe(this) {
             if (it != null) {
-                log("Сработало")
-//                personAdapter.items = it.map{ it.copy()}.toMutableList()
                 personAdapter.submitList(it.toMutableList())
             }
         }
@@ -48,9 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         personAdapter.callBackPerson = { position, _ ->
             viewModel.removePerson(position)
-//            personAdapter.removePerson(position)
         }
-
     }
 
     private fun initView() {
