@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.databinding.HolderPersonBinding
+import kotlin.math.abs
 
 class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(ItemComparator()) {
 
     var callBackPerson: ((position: Int, name: String) -> Unit)? = null
     var callBackPersonSecond: ((age: Int) -> Unit)? = null
+    var callBackArrowUp : ((position : Int) -> Unit)? = null
+    var callBackArrowDown : ((position : Int) -> Unit)? = null
 
     class ItemComparator : DiffUtil.ItemCallback<Person>(){
         override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
@@ -48,6 +51,14 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(Item
 
                 callBackPerson?.invoke(absoluteAdapterPosition, person.name)
                 callBackPersonSecond?.invoke(person.age)
+            }
+
+            binding.imageArrowUp.setOnClickListener {
+                callBackArrowUp?.invoke(absoluteAdapterPosition)
+            }
+
+            binding.imageArrowDown.setOnClickListener {
+                callBackArrowDown?.invoke(absoluteAdapterPosition)
             }
         }
     }

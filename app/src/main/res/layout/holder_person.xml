@@ -42,6 +42,25 @@
                 android:layout_weight="1"/>
 
             <ImageView
+                android:id="@+id/image_arrow_down"
+                android:src="@drawable/ic_arrow_up"
+                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_height="match_parent"
+                android:rotation="180"
+                android:layout_gravity="center"
+                />
+
+            <ImageView
+                android:id="@+id/image_arrow_up"
+                android:src="@drawable/ic_arrow_up"
+                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                />
+
+            <ImageView
                 android:id="@+id/image_delete"
                 android:src="@drawable/ic_delete"
                 android:layout_width="wrap_content"

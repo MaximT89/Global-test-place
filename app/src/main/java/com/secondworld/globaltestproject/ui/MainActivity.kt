@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.secondworld.globaltestproject.core.log
+import com.secondworld.globaltestproject.core.upItem
+import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.data.repository.RepositoryImpl
 import com.secondworld.globaltestproject.data.storages.StorageName
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         initView()
         initData()
         initObservers()
+
+
+
+
     }
 
     private fun initObservers() {
@@ -46,6 +52,14 @@ class MainActivity : AppCompatActivity() {
 
         personAdapter.callBackPerson = { position, _ ->
             viewModel.removePerson(position)
+        }
+
+        personAdapter.callBackArrowUp = {
+            viewModel.upElement(it)
+        }
+
+        personAdapter.callBackArrowDown = {
+            viewModel.downElement(it)
         }
     }
 

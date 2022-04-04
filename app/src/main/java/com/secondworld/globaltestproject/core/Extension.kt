@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.MutableLiveData
+import com.secondworld.globaltestproject.data.models.Person
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
@@ -28,6 +30,28 @@ fun View.enabled() {
 fun View.notEnabled() {
     isEnabled = false
     isClickable = false
+}
+
+fun <T> upItem(position: Int, list: MutableLiveData<MutableList<T>?>): MutableList<T>? {
+    if (position != 0){
+        val persons = list.value
+        val personTemp = persons?.get(position)
+        persons?.removeAt(position)
+        persons?.add(position.dec(), personTemp!!)
+        list.value = persons
+    }
+    return list.value
+}
+
+fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>): MutableList<T>? {
+    if (position != list.value?.size?.minus(1)){
+        val persons = list.value
+        val personTemp = persons?.get(position)
+        persons?.removeAt(position)
+        persons?.add(position.inc(), personTemp!!)
+        list.value = persons
+    }
+    return list.value
 }
 
 fun showViews(vararg views: View) {
