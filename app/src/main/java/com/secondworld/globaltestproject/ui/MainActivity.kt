@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.listPerson.observe(this) {
             if (it != null) {
                 log("Сработало")
-                personAdapter.items = it.map{ it.copy()}.toMutableList()
+//                personAdapter.items = it.map{ it.copy()}.toMutableList()
+                personAdapter.submitList(it.toMutableList())
             }
         }
     }
