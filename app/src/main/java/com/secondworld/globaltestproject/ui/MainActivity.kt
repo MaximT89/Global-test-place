@@ -32,10 +32,6 @@ class MainActivity : AppCompatActivity() {
         initView()
         initData()
         initObservers()
-
-
-
-
     }
 
     private fun initObservers() {

@@ -32,26 +32,40 @@ fun View.notEnabled() {
     isClickable = false
 }
 
-fun <T> upItem(position: Int, list: MutableLiveData<MutableList<T>?>): MutableList<T>? {
-    if (position != 0){
-        val persons = list.value
-        val personTemp = persons?.get(position)
-        persons?.removeAt(position)
-        persons?.add(position.dec(), personTemp!!)
-        list.value = persons
+// Удаление элемента по позиции из liveData
+fun <T> removeItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
+    list.value.apply {
+        this?.removeAt(position)
+        list.value = this
     }
-    return list.value
 }
 
-fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>): MutableList<T>? {
-    if (position != list.value?.size?.minus(1)){
-        val persons = list.value
-        val personTemp = persons?.get(position)
-        persons?.removeAt(position)
-        persons?.add(position.inc(), personTemp!!)
-        list.value = persons
-    }
-    return list.value
+// Переместить элемент вверх в recyclerView (listView)
+fun <T> upItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
+    if (position != 0) {
+        list.value.also {
+            val personTemp = it?.get(position)
+            it?.apply {
+                removeAt(position)
+                add(position.dec(), personTemp!!)
+                list.value = this
+            }
+        }
+    } else list.value
+}
+
+// Переместить элемент вниз в recyclerView (listView)
+fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
+    if (position != list.value?.size?.minus(1)) {
+        list.value.also {
+            val personTemp = it?.get(position)
+            it?.apply {
+                removeAt(position)
+                add(position.inc(), personTemp!!)
+                list.value = this
+            }
+        }
+    } else list.value
 }
 
 fun showViews(vararg views: View) {
@@ -62,17 +76,17 @@ fun hideViews(vararg views: View) {
     for (view in views) view.visibility = View.GONE
 }
 
-fun log(message : String){
+fun log(message: String) {
     Log.d("TAG", "log: $message")
 }
 
 fun createGradient(textView: TextView, colors: IntArray) {
     val paint = textView.paint
     val width = paint.measureText(textView.text.toString())
-    val textShader: Shader = LinearGradient(0f, 0f, width, textView.textSize, colors, null, Shader.TileMode.REPEAT)
-
+    val textShader: Shader =
+        LinearGradient(0f, 0f, width, textView.textSize, colors, null, Shader.TileMode.REPEAT)
     textView.paint.shader = textShader
 }
 
-fun Int.toDp() : Int = (this / Resources.getSystem().displayMetrics.density).toInt()
-fun Int.toPx() : Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toInt()
+fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
