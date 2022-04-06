@@ -9,5 +9,4 @@ interface ApiService {
 
     @GET("/get_memes")
     suspend fun getMemes() : ResponseMemes
-
 }
