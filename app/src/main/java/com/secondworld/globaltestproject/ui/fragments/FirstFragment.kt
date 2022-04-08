@@ -33,7 +33,6 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         }
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         bindingFragment = null
