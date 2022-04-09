@@ -31,7 +31,6 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
                     }
                 })
         }
-
     }
 
     override fun onDestroy() {
