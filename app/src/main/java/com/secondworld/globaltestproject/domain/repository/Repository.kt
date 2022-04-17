@@ -1,6 +1,8 @@
 package com.secondworld.globaltestproject.domain.repository
 
 import com.secondworld.globaltestproject.domain.models.Animals
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 interface Repository {
 

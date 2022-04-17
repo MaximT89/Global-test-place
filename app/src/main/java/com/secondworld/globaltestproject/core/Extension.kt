@@ -43,7 +43,7 @@ fun hideViews(vararg views: View) {
     for (view in views) view.visibility = View.GONE
 }
 
-fun log(message : String){
+fun log(message : Any){
     Log.d("TAG", "log: $message")
 }
 

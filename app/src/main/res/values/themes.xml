@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="TextNewStyle">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/wheat</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

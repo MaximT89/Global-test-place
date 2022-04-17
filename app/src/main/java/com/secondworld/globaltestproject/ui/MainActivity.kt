@@ -1,26 +1,29 @@
 package com.secondworld.globaltestproject.ui
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.secondworld.globaltestproject.R
-import com.secondworld.globaltestproject.core.updateText
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import com.secondworld.globaltestproject.data.repository.RepositoryImpl
 import com.secondworld.globaltestproject.data.storages.StorageName
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
-import com.secondworld.globaltestproject.domain.models.Animals
-import com.secondworld.globaltestproject.domain.repository.Repository
+import com.secondworld.globaltestproject.ui.adapters.ViewPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val storageName = StorageName()
-    private val repository: Repository = RepositoryImpl(storageName)
+
+    @Inject
+    lateinit var storageName: StorageName
+
+    @Inject
+    lateinit var repository: RepositoryImpl
+    private var viewPagerAdapter: ViewPagerAdapter? = null
+    private val maxState = 3
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,56 +32,63 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initView()
+        initLogic()
     }
 
     private fun initView() {
-        binding.btnGenerateRandomAnimal.setOnClickListener {
-            when (val animal = repository.generateAnimals().random()) {
-                is Animals.Bird -> updateUi(animal)
-                is Animals.Cat -> updateUi(animal)
-                is Animals.Dog -> updateUi(animal)
+        viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
+        binding.viewPager.adapter = viewPagerAdapter
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = "First"
+                }
+                1 -> {
+                    tab.text = "Second"
+                }
+                2 -> {
+                    tab.text = "Third"
+                }
             }
-        }
+        }.attach()
+
+        onInfinitePageChangeCallback(maxState)
+
     }
 
-    private fun updateUi(animal: Animals) {
-        when (animal) {
-            is Animals.Bird -> {
-                updateText(binding.textName, "Name: ${animal.name}")
-                updateText(binding.textAge, "Age: ${animal.age}")
-                updateImage(R.drawable.bird)
+    private fun onInfinitePageChangeCallback(listSize: Int) {
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+
+            private var myState = 0
+            private var currentPosition = 0
+
+            override fun onPageScrollStateChanged(state: Int) {
+                myState = state
+                super.onPageScrollStateChanged(state)
             }
-            is Animals.Cat -> {
-                updateText(binding.textName, "Name: ${animal.name}")
-                updateText(binding.textAge, "Age: ${animal.age}")
-                updateImage(R.drawable.cat)
+
+            override fun onPageSelected(position: Int) {
+                currentPosition = position
+                super.onPageSelected(position)
             }
-            is Animals.Dog -> {
-                updateText(binding.textName, "Name: ${animal.name}")
-                updateText(binding.textAge, "Age: ${animal.age}")
-                updateImage(R.drawable.dog)
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                if (myState == ViewPager2.SCROLL_STATE_DRAGGING && currentPosition == position && currentPosition == 0)
+                    binding.viewPager.setCurrentItem(2, true)
+                else if (myState == ViewPager2.SCROLL_STATE_DRAGGING && currentPosition == position && currentPosition == 2)
+                    binding.viewPager.setCurrentItem(0, true)
+
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
             }
-        }
+        })
     }
 
-    private fun updateImage(image: Int) {
-        binding.imageAnimal.apply {
-            setImageResource(image)
-        }.also {
-            animateImage(it)
-        }
-    }
+    private fun initLogic() {
 
-    @SuppressLint("Recycle")
-    private fun animateImage(image: ImageView) {
-        AnimatorSet().apply {
-            playTogether(
-                ObjectAnimator.ofFloat(image, View.SCALE_X, 1f, 1.2f, 1f),
-                ObjectAnimator.ofFloat(image, View.SCALE_Y, 1f, 1.2f, 1f),
-            )
-            duration = 200
-            start()
-        }
     }
 }
 
