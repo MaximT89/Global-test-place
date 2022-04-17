@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import com.secondworld.globaltestproject.data.models.Person
+import com.secondworld.globaltestproject.ui.ProviderTestConst
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
@@ -26,6 +27,7 @@ fun View.enabled() {
     isEnabled = true
     isClickable = true
 }
+
 
 fun View.notEnabled() {
     isEnabled = false

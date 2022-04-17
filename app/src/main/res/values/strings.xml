@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Global test project</string>
+    <string name="test_string">TestTestTest</string>
 </resources>
