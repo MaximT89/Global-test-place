@@ -14,22 +14,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         android:text="Maxim"
         android:textSize="30dp"
         android:translationZ="100dp"
         android:textColor="@color/Black" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_person_name"
-        tools:listitem="@layout/holder_person" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

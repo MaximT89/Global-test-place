@@ -42,9 +42,6 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
-    // Logging interceptor
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.loggingVersion"
-
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
@@ -73,10 +70,6 @@ dependencies {
 
     // Recycler view
     implementation "androidx.recyclerview:recyclerview:$rootProject.rvVersion"
-
-    // Dagger
-    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
