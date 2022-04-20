@@ -20,10 +20,12 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
         bindingFragment = binding
 
         setFragmentResultListener("key1") { _, bundle ->
-            val result = bundle.getString("data1")
-            val person = bundle.getParcelable<Person>("data2")
-//            result?.let { updateText(binding.textTest, it) }
-            person?.let { updateText(binding.textTest, it.name) }
+
+            val person : Person? = bundle.getParcelable("data2")
+
+            person?.let {
+                updateText(binding.textTest, it.name)
+            }
         }
 
         binding.btnNext.setOnClickListener {

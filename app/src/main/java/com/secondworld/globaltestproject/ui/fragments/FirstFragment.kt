@@ -23,11 +23,15 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         bindingFragment = binding
 
         binding.btnNext.setOnClickListener {
+
             setFragmentResult("key1", bundleOf(
                 "data1" to "Max",
-                "data2" to Person("Tom")
+                "data2" to Person("Tom"),
+                "data3" to 15
             ))
+
             findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
+
         }
 
         binding.textShadow.animateLikeButton()
