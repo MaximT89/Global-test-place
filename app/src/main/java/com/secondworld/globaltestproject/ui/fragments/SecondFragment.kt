@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.BaseFragment
 import com.secondworld.globaltestproject.databinding.FragmentSecondBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SecondFragment : BaseFragment<FragmentSecondBinding>(FragmentSecondBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

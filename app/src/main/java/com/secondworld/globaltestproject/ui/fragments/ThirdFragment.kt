@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.BaseFragment
 import com.secondworld.globaltestproject.databinding.FragmentThirdBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ThirdFragment : BaseFragment<FragmentThirdBinding>(FragmentThirdBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

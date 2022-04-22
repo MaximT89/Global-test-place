@@ -9,8 +9,9 @@ import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.BaseFragment
 import com.secondworld.globaltestproject.core.Inflate
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FirstFragment : BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
