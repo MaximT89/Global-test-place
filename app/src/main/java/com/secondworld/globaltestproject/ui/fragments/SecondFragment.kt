@@ -16,5 +16,4 @@ class SecondFragment : BaseFragment<FragmentSecondBinding>(FragmentSecondBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
-
 }

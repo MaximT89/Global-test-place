@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var storageName: StorageName
 
-
     @Inject
     lateinit var repository: RepositoryImpl
     private var viewPagerAdapter: ViewPagerAdapter? = null
@@ -40,8 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         initView()
         timer()
-
-
     }
 
     fun timer() {
@@ -111,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                 positionOffsetPixels: Int,
             ) {
                 if (myState == ViewPager2.SCROLL_STATE_DRAGGING && currentPosition == position && currentPosition == 0)
-                    binding.viewPager.setCurrentItem(2, true)
+                    binding.viewPager.setCurrentItem(listSize - 1, true)
                 else if (myState == ViewPager2.SCROLL_STATE_DRAGGING && currentPosition == position && currentPosition == 2)
                     binding.viewPager.setCurrentItem(0, true)
 
