@@ -32,53 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        binding.btnGenerateRandomAnimal.setOnClickListener {
-            when (val animal = repository.generateAnimals().random()) {
-                is Animals.Bird -> updateUi(animal)
-                is Animals.Cat -> updateUi(animal)
-                is Animals.Dog -> updateUi(animal)
-            }
-        }
-    }
 
-    private fun updateUi(animal: Animals) {
-        when (animal) {
-            is Animals.Bird -> {
-                updateText(binding.textName, "Name: ${animal.name}")
-                updateText(binding.textAge, "Age: ${animal.age}")
-                updateImage(R.drawable.bird)
-            }
-            is Animals.Cat -> {
-                updateText(binding.textName, "Name: ${animal.name}")
-                updateText(binding.textAge, "Age: ${animal.age}")
-                updateImage(R.drawable.cat)
-            }
-            is Animals.Dog -> {
-                updateText(binding.textName, "Name: ${animal.name}")
-                updateText(binding.textAge, "Age: ${animal.age}")
-                updateImage(R.drawable.dog)
-            }
-        }
-    }
-
-    private fun updateImage(image: Int) {
-        binding.imageAnimal.apply {
-            setImageResource(image)
-        }.also {
-            animateImage(it)
-        }
-    }
-
-    @SuppressLint("Recycle")
-    private fun animateImage(image: ImageView) {
-        AnimatorSet().apply {
-            playTogether(
-                ObjectAnimator.ofFloat(image, View.SCALE_X, 1f, 1.2f, 1f),
-                ObjectAnimator.ofFloat(image, View.SCALE_Y, 1f, 1.2f, 1f),
-            )
-            duration = 200
-            start()
-        }
     }
 }
 
