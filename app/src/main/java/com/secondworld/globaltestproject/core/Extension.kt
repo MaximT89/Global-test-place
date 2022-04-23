@@ -12,6 +12,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
@@ -45,8 +49,8 @@ fun hideViews(vararg views: View) {
     for (view in views) view.visibility = View.GONE
 }
 
-fun log(message : String){
-    Log.d("TAG", "log: $message")
+fun log(message : Any){
+    Log.d("TAG", "log: ${message.toString()}")
 }
 
 fun createGradient(textView: TextView, colors: IntArray) {
@@ -69,6 +73,10 @@ fun <T> removeItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
         list.value = this
     }
 }
+
+
+
+
 
 // Переместить элемент вверх в recyclerView (listView)
 fun <T> upItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
@@ -113,4 +121,14 @@ fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
             }
         }
     } else list.value
+}
+
+fun List<AnimatorSet>.playAllSets(coroutineScope: CoroutineScope, end : () -> Unit){
+    coroutineScope.launch(Dispatchers.Main){
+        for(animSet in this@playAllSets){
+            animSet.start()
+            delay(animSet.duration)
+        }
+        end.invoke()
+    }
 }
