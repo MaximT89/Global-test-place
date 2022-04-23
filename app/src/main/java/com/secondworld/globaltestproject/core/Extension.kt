@@ -40,7 +40,6 @@ fun View.notEnabled() {
 }
 
 
-
 fun showViews(vararg views: View) {
     for (view in views) view.visibility = View.VISIBLE
 }
@@ -49,51 +48,45 @@ fun hideViews(vararg views: View) {
     for (view in views) view.visibility = View.GONE
 }
 
-fun log(message : Any){
+fun log(message: Any) {
     Log.d("TAG", "log: ${message.toString()}")
 }
 
 fun createGradient(textView: TextView, colors: IntArray) {
     val paint = textView.paint
     val width = paint.measureText(textView.text.toString())
-    val textShader: Shader = LinearGradient(0f, 0f, width, textView.textSize, colors, null, Shader.TileMode.REPEAT)
+    val textShader: Shader =
+        LinearGradient(0f, 0f, width, textView.textSize, colors, null, Shader.TileMode.REPEAT)
 
     textView.paint.shader = textShader
 }
 
-fun Int.toDp() : Int = (this / Resources.getSystem().displayMetrics.density).toInt()
-fun Int.toPx() : Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toInt()
+fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 fun String.upperFirst() = this.substring(0, 1).uppercase() + this.drop(1)
 
 // Удаление элемента по позиции из liveData
-fun <T> removeItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
-    list.value.apply {
-        this?.removeAt(position)
+fun <T> removeItem(position: Int, list: MutableLiveData<MutableList<T>>) {
+    list.value?.apply {
+        removeAt(position)
         list.value = this
     }
 }
 
-
-
-
-
-// Переместить элемент вверх в recyclerView (listView)
-fun <T> upItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
-    if (position != 0){
-        list.value.also {
-            val personTemp = it?.get(position)
-            it?.apply {
-                removeAt(position)
-                add(position.dec(), personTemp!!)
-                list.value = this
-            }
+// Переместить элемент вверх в recyclerView (list adapter)
+fun <T> upItem(position: Int, list: MutableLiveData<MutableList<T>>) {
+    if (position != 0) {
+        list.value?.apply {
+            removeAt(position)
+            add(position.dec(), this[position])
+            list.value = this
         }
-    } else list.value
+    }
 }
 
 fun Activity.snackbar(message: String) {
-    Snackbar.make(this, findViewById(android.R.id.content) , message, Snackbar.LENGTH_LONG ).show()
+    Snackbar.make(this, findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
 }
 
 fun View.animateLikeButton() {
@@ -111,7 +104,7 @@ fun View.animateLikeButton() {
 
 // Переместить элемент вниз в recyclerView (listView)
 fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
-    if (position != list.value?.size?.minus(1)){
+    if (position != list.value?.size?.minus(1)) {
         list.value.also {
             val personTemp = it?.get(position)
             it?.apply {
@@ -123,9 +116,9 @@ fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
     } else list.value
 }
 
-fun List<AnimatorSet>.playAllSets(coroutineScope: CoroutineScope, end : () -> Unit){
-    coroutineScope.launch(Dispatchers.Main){
-        for(animSet in this@playAllSets){
+fun List<AnimatorSet>.playAllSets(coroutineScope: CoroutineScope, end: () -> Unit) {
+    coroutineScope.launch(Dispatchers.Main) {
+        for (animSet in this@playAllSets) {
             animSet.start()
             delay(animSet.duration)
         }
