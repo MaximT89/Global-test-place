@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.ui.activities
 
-import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
@@ -8,12 +7,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.Animation.INFINITE
 import androidx.lifecycle.lifecycleScope
-import com.secondworld.globaltestproject.R
+import com.bumptech.glide.request.transition.ViewPropertyTransition
 import com.secondworld.globaltestproject.databinding.ActivitySecondBinding
-import com.secondworld.globaltestproject.ui.AnimatorGenerator
+import com.secondworld.globaltestproject.ui.AnimationGenerator
 import com.secondworld.globaltestproject.ui.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -31,32 +28,13 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initAnimators()
-        initGodClass()
+        initAnimations()
     }
 
-    private fun initGodClass() {
-        AnimatorGenerator().apply {
-            nextAnimationSet(listAnimatorSet[0]) {
-                nextAnimationSet(listAnimatorSet[1]) {
-                    nextAnimationSet(listAnimatorSet[2]){
-                        nextAnimationSet(listAnimatorSet[3]){
-                            nextAnimationSet(listAnimatorSet[4]){
-                                delayAndDo {
-                                    startActivity(Intent(this@SecondActivity, MainActivity::class.java))
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun delayAndDo(doSome : () -> Unit?){
-        lifecycleScope.launch(Dispatchers.IO){
-            delay(1000)
-            withContext(Dispatchers.Main){
-                doSome.invoke()
+    private fun initAnimations() {
+        AnimationGenerator(lifecycleScope).apply {
+            nextAnimationSetNew(listAnimatorSet){
+                startActivity(Intent(this@SecondActivity, MainActivity::class.java))
             }
         }
     }
