@@ -12,6 +12,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
@@ -33,6 +37,17 @@ fun View.enabled() {
 fun View.notEnabled() {
     isEnabled = false
     isClickable = false
+}
+
+fun List<AnimatorSet>.playAllSets(coroutineScope: CoroutineScope ,end : () -> Unit){
+    coroutineScope.launch(Dispatchers.Main){
+        for(animSet in this@playAllSets){
+            animSet.start()
+            delay(animSet.duration)
+        }
+        delay(1500)
+        end.invoke()
+    }
 }
 
 fun showViews(vararg views: View) {

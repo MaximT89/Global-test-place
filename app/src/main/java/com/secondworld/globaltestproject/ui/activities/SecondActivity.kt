@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.request.transition.ViewPropertyTransition
+import com.secondworld.globaltestproject.core.playAllSets
 import com.secondworld.globaltestproject.databinding.ActivitySecondBinding
 import com.secondworld.globaltestproject.ui.AnimationGenerator
 import com.secondworld.globaltestproject.ui.MainActivity
@@ -32,10 +33,8 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun initAnimations() {
-        AnimationGenerator(lifecycleScope).apply {
-            nextAnimationSetNew(listAnimatorSet){
-                startActivity(Intent(this@SecondActivity, MainActivity::class.java))
-            }
+        listAnimatorSet.playAllSets(lifecycleScope){
+            startActivity(Intent(this@SecondActivity, MainActivity::class.java))
         }
     }
 
