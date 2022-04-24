@@ -34,24 +34,22 @@ fun View.notEnabled() {
 
 // Удаление элемента по позиции из liveData
 fun <T> removeItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
-    list.value.apply {
-        this?.removeAt(position)
+    list.value?.apply {
+        removeAt(position)
         list.value = this
     }
 }
 
-// Переместить элемент вверх в recyclerView (listView)
+// Переместить элемент вверх в recyclerView (list adapter)
 fun <T> upItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
     if (position != 0) {
-        list.value.also {
-            val personTemp = it?.get(position)
-            it?.apply {
-                removeAt(position)
-                add(position.dec(), personTemp!!)
-                list.value = this
-            }
+        list.value?.apply {
+            removeAt(position)
+            add(position.dec(), this[position])
+            list.value = this
         }
-    } else list.value
+    }
+
 }
 
 // Переместить элемент вниз в recyclerView (listView)
