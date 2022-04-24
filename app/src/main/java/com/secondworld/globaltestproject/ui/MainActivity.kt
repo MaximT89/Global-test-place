@@ -28,10 +28,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initView()
-    }
+        val list = listOf<Int>(2, 4, 5, 6)
 
-    private fun initView() {
+        list.forEach{
+            it * 5
+        }
 
     }
 }

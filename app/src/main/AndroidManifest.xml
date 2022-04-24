@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GlobalTestProject">
         <activity
+            android:name=".ui.SecondActivity"
+            android:exported="false"
+            android:label="@string/title_activity_second"
+            android:theme="@style/Theme.GlobalTestProject.NoActionBar" />
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
