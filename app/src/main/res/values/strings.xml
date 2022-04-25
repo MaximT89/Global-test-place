@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Global test project</string>
+    <string name="user_info_title">Данные пользователя</string>
+    <string name="user_actions_title">Акции пользователя</string>
+    <string name="user_offers_title">Заказы пользователя</string>
+
+    <string name="user_name">Имя :</string>
+    <string name="user_age">Возраст :</string>
+    <string name="user_bonuses">Bonus :</string>
 </resources>
