@@ -18,6 +18,19 @@ interface Communication<T> : Mutable<T> {
             mutableLiveData.value = data
         }
     }
+
+    abstract class PostUpdate<T : Any> : Communication<T>{
+
+        private val mutableLiveData : MutableLiveData<T> = MutableLiveData()
+
+        override fun observe(owner: LifecycleOwner, observer: Observer<T>) {
+            mutableLiveData.observe(owner, observer)
+        }
+
+        override fun map(data: T) {
+            mutableLiveData.postValue(data)
+        }
+    }
 }
 
 interface Observe<T>{
