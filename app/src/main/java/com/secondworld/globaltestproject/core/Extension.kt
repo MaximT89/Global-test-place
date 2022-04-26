@@ -5,11 +5,9 @@ import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
-import com.secondworld.globaltestproject.data.models.Person
-import com.secondworld.globaltestproject.ui.ProviderTestConst
+
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
