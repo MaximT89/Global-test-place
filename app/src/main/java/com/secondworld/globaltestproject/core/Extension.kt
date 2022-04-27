@@ -7,17 +7,19 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
 }
 
 fun View.show() {
-    visibility = View.VISIBLE
+    isVisible = true
 }
 
 fun View.hide() {
-    visibility = View.GONE
+    isGone = true
 }
 
 fun View.enabled() {
@@ -31,11 +33,11 @@ fun View.notEnabled() {
 }
 
 fun showViews(vararg views: View) {
-    for (view in views) view.visibility = View.VISIBLE
+    views.forEach { it.isVisible = true }
 }
 
 fun hideViews(vararg views: View) {
-    for (view in views) view.visibility = View.GONE
+    views.forEach { it.isGone = true }
 }
 
 fun log(message : String){
