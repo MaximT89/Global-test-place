@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#02AAB0"
+    android:orientation="vertical"
+    tools:context=".ui.BlankFragment">
+
+    <TextView
+        android:id="@+id/create_notification"
+        android:layout_width="166dp"
+        android:layout_height="166dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="119dp"
+        android:background="@drawable/circle"
+        android:elevation="15dp"
+        android:gravity="center"
+        android:text="@string/create_new_notification"
+        android:textColor="@color/White"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/current_position"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="29dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/bottom_panel"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        tools:text="3" />
+
+    <ImageView
+        android:id="@+id/image_add"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="14dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/white_circle"
+        android:elevation="6dp"
+        android:src="@drawable/ic_add"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/image_remove"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="14dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/white_circle"
+        android:elevation="6dp"
+        android:src="@drawable/ic_remove"
+        android:gravity="center"
+        />
+
+</RelativeLayout>
