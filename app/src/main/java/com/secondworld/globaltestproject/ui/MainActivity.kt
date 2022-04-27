@@ -1,20 +1,24 @@
 package com.secondworld.globaltestproject.ui
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import com.secondworld.globaltestproject.core.BaseActivity
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private lateinit var binding: ActivityMainBinding
-
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    }
 
+    override val bindingInflater: (LayoutInflater) -> ActivityMainBinding =
+        ActivityMainBinding::inflate
+
+    override fun initView() {
+        binding.textTest.text = "Foo"
+    }
+
+    override fun initObservers() {
 
     }
 }

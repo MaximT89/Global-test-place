@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_main.xml" value="0.5213541666666667" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/drawable/ring.xml" value="0.435" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_second.xml" value="0.5213541666666667" />
         <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/holder_person.xml" value="0.5213541666666667" />
       </map>
     </option>
