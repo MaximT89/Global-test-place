@@ -25,14 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         initObservers()
         initView()
-
-        lifecycleScope.launchWhenCreated {
-            delay(2000)
-            withContext(Dispatchers.Main){
-                AnimatorClass(binding.userAge).doSome()
-            }
-        }
-
     }
 
     private fun initView() {
@@ -58,7 +50,6 @@ class MainActivity : AppCompatActivity() {
                 updateText(binding.userOffers, convertSbToString(it.offers))
             }
         }
-
     }
 
     private fun convertSbToString(offers: MutableList<String>) =
