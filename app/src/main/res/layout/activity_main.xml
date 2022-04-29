@@ -10,8 +10,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:layout_height="wrap_content" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -19,12 +18,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="50dp"
         android:translationZ="1000dp"
         android:progressTint="@color/Gray" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
