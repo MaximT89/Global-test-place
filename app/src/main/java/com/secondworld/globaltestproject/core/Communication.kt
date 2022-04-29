@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 
 interface Communication<T> : Mutable<T> {
 
-    abstract class UiUpdate<T : Any> : Communication<T>{
+    abstract class UiUpdate<T : Any> : Communication<T> {
 
         private val mutableLiveData : MutableLiveData<T> = MutableLiveData()
 

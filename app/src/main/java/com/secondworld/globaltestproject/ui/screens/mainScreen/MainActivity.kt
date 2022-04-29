@@ -2,6 +2,8 @@ package com.secondworld.globaltestproject.ui.screens.mainScreen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.activity.viewModels
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
