@@ -26,6 +26,8 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(Item
         }
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return RecyclerViewHolder(
             HolderPersonBinding.inflate(
