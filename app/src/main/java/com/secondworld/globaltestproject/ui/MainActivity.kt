@@ -1,31 +1,26 @@
 package com.secondworld.globaltestproject.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.activity.viewModels
-import com.secondworld.globaltestproject.core.updateText
-import com.secondworld.globaltestproject.data.repository.Repository
-import com.secondworld.globaltestproject.data.storage.StoragePerson
+import com.secondworld.globaltestproject.core.BaseActivity
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val viewModel by viewModels<MainViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override val bindingInflater: (LayoutInflater) -> ActivityMainBinding
+        get() = ActivityMainBinding::inflate
 
-        viewModel.persons.observe(this){
-            updateText(binding.textPersonName, it[45].name)
-        }
-
+    override fun initObservers() {
+        TODO("Not yet implemented")
     }
+
+    override fun initView() {
+        TODO("Not yet implemented")
+    }
+
 }
 
