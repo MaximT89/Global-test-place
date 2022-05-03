@@ -1,9 +1,11 @@
 package com.secondworld.globaltestproject.di
 
+import android.content.Context
 import com.secondworld.globaltestproject.data.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,6 +18,10 @@ class AppModule {
     @Provides
     @Singleton
     fun provideBaseUrl() = "https://randomfox.ca/"
+
+    @Provides
+    @Singleton
+    fun provideContext(@ApplicationContext context : Context) : Context = context
 
     @Provides
     @Singleton

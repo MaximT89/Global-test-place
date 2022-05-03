@@ -1,5 +1,7 @@
 package com.secondworld.globaltestproject.di
 
+import com.secondworld.globaltestproject.data.NetworkHelper
+import com.secondworld.globaltestproject.data.ResponseHandler
 import com.secondworld.globaltestproject.data.ApiResult
 import com.secondworld.globaltestproject.data.RepositoryImpl
 import com.secondworld.globaltestproject.domain.BaseInteractor
@@ -18,4 +20,10 @@ abstract class BindsModule {
 
     @Binds
     abstract fun bindRepository(repositoryImpl: RepositoryImpl) : Repository
+
+    @Binds
+    abstract fun bindNetworkHelper(networkHelper: NetworkHelper.Base) : NetworkHelper
+
+    @Binds
+    abstract fun bindResponseHandler(responseHandler: ResponseHandler.Base) : ResponseHandler
 }

@@ -9,12 +9,7 @@ interface BaseInteractor<T> {
 
     class Base @Inject constructor(private val repository: Repository) : BaseInteractor<ApiResult> {
         override suspend fun get(): ApiResult {
-            val response = repository.fetchData()
-            return if (response.isSuccessful){
-                ApiResult.Success(response)
-            } else {
-                ApiResult.Error("some troubles")
-            }
+            return repository.fetchData()
         }
     }
 }
