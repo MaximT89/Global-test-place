@@ -6,19 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/text_person_name"
+    <ImageView
+        android:id="@+id/img_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.349" />
+
+    <Button
+        android:id="@+id/btn_get_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get data"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="15dp"
-        android:text="Maxim"
-        android:textSize="30dp"
-        android:translationZ="100dp"
-        android:textColor="@color/Black" />
-
+        app:layout_constraintVertical_bias="0.78" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

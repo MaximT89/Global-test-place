@@ -38,6 +38,8 @@ android {
 
 dependencies {
 
+    implementation "io.coil-kt:coil:$rootProject.coilVersion"
+
     // Glide
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
