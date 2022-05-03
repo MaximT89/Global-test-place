@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 
+
 interface Communication<T> : Mutable<T> {
 
     abstract class UiUpdate<T : Any> : Communication<T> {

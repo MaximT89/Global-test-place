@@ -9,6 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.lifecycle.LifecycleCoroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
@@ -54,3 +57,9 @@ fun createGradient(textView: TextView, colors: IntArray) {
 
 fun Int.toDp() : Int = (this / Resources.getSystem().displayMetrics.density).toInt()
 fun Int.toPx() : Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+fun <T> Flow<T>.launchWhenStarted(lifecycleScope: LifecycleCoroutineScope){
+    lifecycleScope.launchWhenStarted {
+        this@launchWhenStarted.collect()
+    }
+}
