@@ -21,10 +21,6 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideContext(@ApplicationContext context : Context) : Context = context
-
-    @Provides
-    @Singleton
     fun provideRetrofit(baseUrl : String) : Retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
@@ -33,6 +29,4 @@ class AppModule {
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit) : ApiService =  retrofit.create(ApiService::class.java)
-
-
 }
