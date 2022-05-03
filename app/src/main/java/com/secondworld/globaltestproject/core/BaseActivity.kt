@@ -27,12 +27,12 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
         _binding = bindingInflater.invoke(layoutInflater)
         setContentView(requireNotNull(_binding).root)
 
-        initView()
+        initViews()
         initObservers()
     }
 
     abstract fun initObservers()
-    abstract fun initView()
+    abstract fun initViews()
 
     override fun onDestroy() {
         super.onDestroy()

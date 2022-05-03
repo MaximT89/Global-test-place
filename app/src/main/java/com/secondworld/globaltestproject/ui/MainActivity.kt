@@ -39,7 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         }.launchWhenStarted(lifecycleScope)
     }
 
-    override fun initView() {
+    override fun initViews() {
         binding.btnGetData.setOnClickListener { viewModel.fetchData() }
     }
 
