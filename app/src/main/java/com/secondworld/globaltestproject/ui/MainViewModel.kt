@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.secondworld.globaltestproject.data.ApiResult
 import com.secondworld.globaltestproject.domain.BaseInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -19,7 +20,7 @@ class MainViewModel @Inject constructor(
     val data : StateFlow<ApiResult> = _data
 
     fun fetchData() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Main) {
             _data.value = baseInteractor.get()
         }
     }

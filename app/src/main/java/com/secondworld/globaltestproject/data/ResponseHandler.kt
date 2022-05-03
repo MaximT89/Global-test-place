@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.data
 
+import android.util.Log
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -17,7 +18,7 @@ interface ResponseHandler {
                     val response = apiCall()
                     val body = response.body()
                     if (response.isSuccessful && body != null) {
-                        return ApiResult.Success(response)
+                        return ApiResult.Success(response) 
                     }
                     return ApiResult.Error(response.errorBody().toString())
                 } catch (e: Exception) {

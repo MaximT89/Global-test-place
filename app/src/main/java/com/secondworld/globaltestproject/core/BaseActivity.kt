@@ -2,15 +2,23 @@ package com.secondworld.globaltestproject.core
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
+@Suppress("UNCHECKED_CAST")
+abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivity() {
 
     private var _binding: ViewBinding? = null
-
-    @Suppress("UNCHECKED_CAST")
     protected val binding get() = _binding as VB
+
+    protected abstract fun viewModelClass(): Class<VM>
+    protected val viewModel: VM by lazy {
+        ViewModelProvider(this)[viewModelClass()]
+    }
 
     protected abstract val bindingInflater : (LayoutInflater) -> VB
 
@@ -18,6 +26,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = bindingInflater.invoke(layoutInflater)
         setContentView(requireNotNull(_binding).root)
+
         initView()
         initObservers()
     }
