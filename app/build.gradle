@@ -38,6 +38,7 @@ android {
 
 dependencies {
 
+    // Coil
     implementation "io.coil-kt:coil:$rootProject.coilVersion"
 
     // Glide
