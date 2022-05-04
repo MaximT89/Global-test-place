@@ -1,5 +1,7 @@
 package com.secondworld.globaltestproject.core
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.res.Resources
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -52,3 +54,16 @@ fun createGradient(textView: TextView, colors: IntArray) {
 
 fun Int.toDp() : Int = (this / Resources.getSystem().displayMetrics.density).toInt()
 fun Int.toPx() : Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+fun View.animateLikeButton() {
+    setOnClickListener {
+        AnimatorSet().apply {
+            playTogether(
+                ObjectAnimator.ofFloat(it, View.SCALE_X, 1f, 0.95f, 1f),
+                ObjectAnimator.ofFloat(it, View.SCALE_Y, 1f, 0.95f, 1f)
+            )
+            duration = 100
+            start()
+        }
+    }
+}

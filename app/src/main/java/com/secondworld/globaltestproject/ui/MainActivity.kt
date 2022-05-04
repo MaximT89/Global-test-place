@@ -15,11 +15,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         get() = ActivityMainBinding::inflate
 
     override fun initObservers() {
-        TODO("Not yet implemented")
+
     }
 
     override fun initView() {
-        TODO("Not yet implemented")
+
     }
 
 }

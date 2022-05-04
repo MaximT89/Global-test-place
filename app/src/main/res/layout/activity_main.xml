@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_wrapBehaviorInParent="vertical_only"
+        app:layout_constraintStart_toStartOf="parent"
+        app:labelVisibilityMode="labeled"
+        app:itemPaddingBottom="25dp"
+        app:itemBackground="@color/Fuchsia"
+        app:itemActiveIndicatorStyle="@color/Black"
+        app:menu="@menu/bottom_navigation_menu" />
 
 
 

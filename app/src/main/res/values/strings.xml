@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Global test project</string>
+    <string name="menu_search">search</string>
+    <string name="menu_settings">setting</string>
+    <string name="menu_navigation">navigation</string>
 </resources>
