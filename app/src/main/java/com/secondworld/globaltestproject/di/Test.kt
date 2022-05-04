@@ -1,4 +1,3 @@
 package com.secondworld.globaltestproject.di
 
-class Test {
-}
+class Test(private val name : String)
