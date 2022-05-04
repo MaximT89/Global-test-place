@@ -16,6 +16,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // default build config
+        buildConfigField 'String', 'API_BASE_URL', '"https://zoo-animal-api.herokuapp.com"'
     }
 
     buildTypes {
@@ -37,6 +40,12 @@ android {
 }
 
 dependencies {
+
+    // Coil
+    implementation "io.coil-kt:coil:$rootProject.coilVersion"
+
+    // Shimmer effect
+    implementation "com.facebook.shimmer:shimmer:$rootProject.shimmerVersion"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"

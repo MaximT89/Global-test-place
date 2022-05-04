@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Основные цвета -->
+
+    <color name="background">#dddddd</color>
     <color name="Black">#000000</color>
     <color name="Gray">#808080</color>
     <color name="Silver">#C0C0C0</color>

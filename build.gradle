@@ -23,4 +23,6 @@ ext {
     rvVersion = '1.2.1'
     daggerVersion = '2.37'
     hiltVersion = '2.37'
+    shimmerVersion = '0.1.0@aar'
+    coilVersion = '2.0.0-rc03'
 }
