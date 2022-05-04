@@ -16,4 +16,3 @@ data class AnimalModel(
 	val animalType: String? = null,
 	val lengthMax: String? = null
 )
-

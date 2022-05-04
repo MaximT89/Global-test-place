@@ -24,9 +24,7 @@ class AnimalRepositoryImpl @Inject constructor(
                     val bodyAnimal = response.body()!!
                     val animals = mutableListOf<AnimalModel>()
 
-                    bodyAnimal.forEach {
-                        animals.add(animalDataToDomainMapper.map(it))
-                    }
+                    bodyAnimal.forEach { animals.add(animalDataToDomainMapper.map(it)) }
 
                     emit(BaseResult.Success(animals))
                 } else {

@@ -1,18 +1,14 @@
 package com.secondworld.globaltestproject.ui.animals
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.secondworld.globaltestproject.data.animals.remote.dto.ResponseAnimal
 import com.secondworld.globaltestproject.domain.animal.interactor.AnimalInteractor
 import com.secondworld.globaltestproject.domain.animal.model.AnimalModel
-import com.secondworld.globaltestproject.domain.common.BaseInteractor
 import com.secondworld.globaltestproject.domain.common.BaseResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
@@ -22,13 +18,13 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _state = MutableStateFlow<MainActivityState>(MainActivityState.Init)
-    val state : StateFlow<MainActivityState> = _state
+    val state: StateFlow<MainActivityState> = _state
 
-    private fun setLoading(){
+    private fun setLoading() {
         _state.value = MainActivityState.IsLoading(true)
     }
 
-    private fun hideLoading(){
+    private fun hideLoading() {
         _state.value = MainActivityState.IsLoading(false)
     }
 
@@ -36,7 +32,7 @@ class MainViewModel @Inject constructor(
         animalInit()
     }
 
-    private fun animalInit(){
+    private fun animalInit() {
         viewModelScope.launch {
             animalInteractor.get()
                 .onStart { setLoading() }
@@ -44,10 +40,12 @@ class MainViewModel @Inject constructor(
                 .collect { baseResult ->
                     delay(3000)
                     hideLoading()
-                    when(baseResult){
-                        is BaseResult.Error -> _state.value = MainActivityState.Error(baseResult.errorMessage)
+                    when (baseResult) {
+                        is BaseResult.Error -> _state.value =
+                            MainActivityState.Error(baseResult.errorMessage)
                         is BaseResult.Success<*> -> {
-                            _state.value = MainActivityState.Success(baseResult.data as List<AnimalModel>)
+                            _state.value =
+                                MainActivityState.Success(baseResult.data as List<AnimalModel>)
                         }
                     }
                 }
@@ -55,7 +53,7 @@ class MainViewModel @Inject constructor(
     }
 }
 
-sealed class MainActivityState{
+sealed class MainActivityState {
     object Init : MainActivityState()
     data class IsLoading(val isLoading: Boolean) : MainActivityState()
     data class Success(val data: List<AnimalModel>) : MainActivityState()
