@@ -1,26 +1,33 @@
 package com.secondworld.globaltestproject.ui
 
-import android.view.LayoutInflater
+import android.os.Bundle
 import androidx.activity.viewModels
-import com.secondworld.globaltestproject.core.BaseActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<MainViewModel>()
+    lateinit var binding: ActivityMainBinding
 
-    override val bindingInflater: (LayoutInflater) -> ActivityMainBinding
-        get() = ActivityMainBinding::inflate
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    override fun initObservers() {
-        TODO("Not yet implemented")
+        initObservers()
     }
 
-    override fun initView() {
-        TODO("Not yet implemented")
-    }
+    private fun initObservers() {
+        viewModel.data.observe(this){
+            binding.textName.text = it.name
+        }
 
+        viewModel.dataBonuses.observe(this){
+            binding.textUserBonuses.text = it.bonuses.toString()
+        }
+    }
 }
 
