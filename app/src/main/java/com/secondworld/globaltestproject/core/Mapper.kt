@@ -1,6 +1,6 @@
 package com.secondworld.globaltestproject.core
 
-interface Mapper<S : Any,T : Any> {
+interface Mapper<S, T> {
 
     fun map(data : S) : T
 }
