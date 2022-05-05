@@ -20,7 +20,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         binding.btnNext.setOnClickListener {
 
             findNavController().navigate(
-                R.id.action_thirdFragment_to_firstFragment,
+                R.id.fourthFragment,
                 null,
                 navOptions {
                     anim {
