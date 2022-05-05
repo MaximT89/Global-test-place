@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.ui.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -12,7 +11,6 @@ class FifthFragment : Fragment(R.layout.fragment_fifth) {
 
     private var bindingFragment: FragmentFifthBinding? = null
 
-    @SuppressLint("Recycle")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentFifthBinding.bind(view)
