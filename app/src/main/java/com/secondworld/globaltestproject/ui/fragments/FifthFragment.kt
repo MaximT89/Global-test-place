@@ -1,6 +1,8 @@
 package com.secondworld.globaltestproject.ui.fragments
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.findNavController
@@ -19,6 +21,10 @@ class FifthFragment : Fragment(R.layout.fragment_fifth) {
         binding.btnNext.setOnClickListener {
             requireActivity().findNavController(R.id.nav_host_fragment2).navigate(R.id.action_fifthFragment_to_sixthFragment)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onDestroy() {
