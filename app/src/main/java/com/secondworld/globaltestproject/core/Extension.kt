@@ -49,21 +49,17 @@ fun <T> upItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
             list.value = this
         }
     }
-
 }
 
 // Переместить элемент вниз в recyclerView (listView)
 fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
     if (position != list.value?.size?.minus(1)) {
-        list.value.also {
-            val personTemp = it?.get(position)
-            it?.apply {
-                removeAt(position)
-                add(position.inc(), personTemp!!)
-                list.value = this
-            }
+        list.value?.apply {
+            removeAt(position)
+            add(position.inc(), this[position])
+            list.value = this
         }
-    } else list.value
+    }
 }
 
 fun showViews(vararg views: View) {
