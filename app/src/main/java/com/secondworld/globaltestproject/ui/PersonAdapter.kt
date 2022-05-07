@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.databinding.HolderPersonBinding
-import kotlin.math.abs
 
 class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(ItemComparator()) {
 
@@ -25,8 +24,6 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(Item
             return  oldItem == newItem
         }
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return RecyclerViewHolder(
