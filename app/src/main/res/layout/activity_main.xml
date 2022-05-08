@@ -29,6 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_person_name"
+        tools:itemCount=""
         tools:listitem="@layout/holder_person" />
 
 
