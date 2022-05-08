@@ -41,6 +41,11 @@ android {
 
 dependencies {
 
+    // Room
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+
     // Swipe Refresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.swipeRefresh"
 

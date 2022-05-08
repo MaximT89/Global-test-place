@@ -1,27 +1,72 @@
 package com.secondworld.globaltestproject.ui
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.secondworld.globaltestproject.data.user.cache.room.AppDataBase
+import com.secondworld.globaltestproject.data.user.cache.room.UserEntity
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.secondworld.globaltestproject.domain.user.UserInteractor
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.internal.ThreadSafeHeapNode
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private val viewModel : MainViewModel by viewModels()
+    private val binding by lazy(LazyThreadSafetyMode.NONE){
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    private val userInteractor = UserInteractor()
+    private val viewModel: MainViewModel by viewModels{
+        ViewModelFactory(userInteractor)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.observe(this){
-            binding.textName.text = it.name
+        initObservers()
+        initViews()
+    }
+
+    private fun initViews() {
+        binding.btnAddUser.setOnClickListener {
+            viewModel.insertUser(UserEntity(0, getName(), getAge()))
         }
+
+        binding.btnGetAllUsers.setOnClickListener {
+            viewModel.getUsers()
+        }
+
+        binding.btnDropTable.setOnClickListener {
+            viewModel.cleanUsers()
+        }
+    }
+
+    private fun getName(): String {
+        return listOf("Max",
+            "Nick",
+            "Ann",
+            "Peter").random()
+    }
+
+    private fun getAge() = (0..60).random()
+
+    private fun initObservers() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.users.collect { list ->
+                updateUi(list)
+            }
+        }
+    }
+
+    private fun updateUi(list: List<UserEntity>) {
+        val names = StringBuilder().apply {
+            list.forEach { append(it.name).append("\n") }
+        }.toString()
+
+        binding.textName.text = names
     }
 }
 

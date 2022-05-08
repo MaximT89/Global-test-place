@@ -35,8 +35,6 @@ fun View.notEnabled() {
     isClickable = false
 }
 
-
-
 fun showViews(vararg views: View) {
     for (view in views) view.visibility = View.VISIBLE
 }
