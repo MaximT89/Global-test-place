@@ -38,21 +38,8 @@ android {
 
 dependencies {
 
-    // Glide
-    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
-
-    // Logging interceptor
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.loggingVersion"
-
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
-
-    // Room
-    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    // Data store
+    implementation "androidx.datastore:datastore-preferences:$rootProject.dataStoreVersion"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
@@ -70,13 +57,6 @@ dependencies {
 
     // Fragment
     implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentKtxVersion"
-
-    // Recycler view
-    implementation "androidx.recyclerview:recyclerview:$rootProject.rvVersion"
-
-    // Dagger
-    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
