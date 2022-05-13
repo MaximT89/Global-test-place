@@ -23,4 +23,5 @@ ext {
     rvVersion = '1.2.1'
     daggerVersion = '2.37'
     hiltVersion = '2.37'
+    workManagerVersion = '1.0.1'
 }

@@ -19,21 +19,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.textTest1.text = "HELLO MY FRIEND"
-
-        createGradient(binding.textTest1, intArrayOf(
-            resources.getColor(R.color.orange_red),
-            resources.getColor(R.color.coral),
-            resources.getColor(R.color.blue_violet)
-        ))
-
-        binding.textTest2.text = "HELLO MY FRIEND"
-
-        createGradient(binding.textTest2, intArrayOf(
-            R.color.orange_red,
-            R.color.coral,
-            R.color.blue_violet
-        ))
 
 
     }
