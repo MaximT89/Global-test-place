@@ -17,48 +17,36 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(Item
 
     class ItemComparator : DiffUtil.ItemCallback<Person>(){
         override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return  oldItem.name == newItem.name
-        }
+            return  oldItem.name == newItem.name }
 
         override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return  oldItem == newItem
-        }
+            return  oldItem == newItem }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return RecyclerViewHolder(
-            HolderPersonBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+            HolderPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
+        holder.bind(getItem(position)) }
 
     inner class RecyclerViewHolder(private val binding: HolderPersonBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(person: Person) {
-
             binding.textPersonName.text = person.name
             binding.textPersonAge.text = person.age.toString()
             binding.imageDelete.setOnClickListener {
 
                 callBackPerson?.invoke(absoluteAdapterPosition, person.name)
-                callBackPersonSecond?.invoke(person.age)
-            }
+                callBackPersonSecond?.invoke(person.age) }
 
             binding.imageArrowUp.setOnClickListener {
-                callBackArrowUp?.invoke(absoluteAdapterPosition)
-            }
+                callBackArrowUp?.invoke(absoluteAdapterPosition) }
 
             binding.imageArrowDown.setOnClickListener {
-                callBackArrowDown?.invoke(absoluteAdapterPosition)
-            }
+                callBackArrowDown?.invoke(absoluteAdapterPosition) }
         }
     }
 }
