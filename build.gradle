@@ -13,7 +13,7 @@ ext {
     lifecycleVersion = '2.4.1'
     fragmentKtxVersion = '1.4.1'
     glideVersion = '4.13.0'
-    loggingVersion = '3.8.0'
+    loggingVersion = '4.9.0'
     retrofitVersion = '2.9.0'
     roomVersion = '2.4.2'
     navigationVersion = '2.4.1'
