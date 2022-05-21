@@ -7,13 +7,14 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
 }
 
 fun View.show() {
-    visibility = View.VISIBLE
+    isVisible = true
 }
 
 fun View.hide() {
