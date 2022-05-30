@@ -3,19 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/drawable/gradient.xml" value="0.3475" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.289" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/drawable/ic_settings.xml" value="0.4935" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_main.xml" value="0.4466666666666667" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/animal_holder.xml" value="0.5213541666666667" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/data_placeholder_layout.xml" value="0.25" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_fifth.xml" value="0.5213541666666667" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_first.xml" value="0.5111111111111111" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_second.xml" value="0.5213541666666667" />
         <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_fourth.xml" value="0.5213541666666667" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_second.xml" value="0.5213541666666667" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_sixth.xml" value="0.5213541666666667" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_third.xml" value="0.5213541666666667" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/menu/menu_app_bar.xml" value="0.5213541666666667" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/holder_person.xml" value="0.5213541666666667" />
       </map>
     </option>
   </component>
