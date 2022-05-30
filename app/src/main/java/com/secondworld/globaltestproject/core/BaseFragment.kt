@@ -32,7 +32,7 @@ open class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) : Frag
     }
 
     fun navigate(destination: Navigator) {
-        findNavController().navigate(destination.destination,
+        findNavController().navigate(destination.id,
             null,
             navOptions {
                 anim {
