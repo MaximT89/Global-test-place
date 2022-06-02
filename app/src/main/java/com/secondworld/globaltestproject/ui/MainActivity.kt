@@ -23,10 +23,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 val responseMemes = RetrofitClient.getApiService().getMemes()
-
-                withContext(Dispatchers.Main) {
-                    binding.textTest.text = responseMemes.data?.memes?.get(1)?.id
-                }
+                binding.textTest.text = responseMemes.data?.memes?.get(1)?.id
             } catch (e: Exception) {
                 snackbar("неудачный запрос")
             }
