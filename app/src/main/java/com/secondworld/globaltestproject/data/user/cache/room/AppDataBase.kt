@@ -7,14 +7,12 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [UserEntity::class], version = 1)
 abstract class AppDataBase : RoomDatabase() {
-
     abstract fun userDao(): UserDao
 
     companion object {
         @Volatile
         var INSTANCE: AppDataBase? = null
 
-        @Synchronized
         fun getDatabase(context: Context) : AppDataBase? {
             if (INSTANCE == null) {
                 synchronized(this) {
@@ -27,4 +25,5 @@ abstract class AppDataBase : RoomDatabase() {
             return INSTANCE
         }
     }
+
 }
