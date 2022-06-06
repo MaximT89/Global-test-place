@@ -6,27 +6,16 @@
     android:background="@color/White"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.SecondFragment">
+    tools:context=".ui.screens.detailNote.DetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/text_test"
+        android:id="@+id/text_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
-        android:text="Fragment Second"
+        tools:text="Fragment Second"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_next"
-        android:text="next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

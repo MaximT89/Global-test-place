@@ -7,7 +7,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.databinding.FragmentThirdBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ThirdFragment : Fragment(R.layout.fragment_third) {
 
     private var bindingFragment: FragmentThirdBinding? = null
