@@ -20,19 +20,21 @@ class ListNoteViewModel @Inject constructor(
     private var _listNote: MutableLiveData<List<NoteDomain>?> = MutableLiveData()
     val listNote: LiveData<List<NoteDomain>?> = _listNote
 
+    init {
+        fetchNotes()
+    }
+
     fun createNote() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.createNote()
+            fetchNotes()
+        }
+    }
+
+    private fun fetchNotes(){
+        viewModelScope.launch(Dispatchers.IO){
             val notes = repository.getNotes()
             _listNote.postValue(notes)
         }
     }
-
-    fun getNotes() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val notes = repository.getNotes()
-            _listNote.postValue(notes)
-        }
-    }
-
 }
