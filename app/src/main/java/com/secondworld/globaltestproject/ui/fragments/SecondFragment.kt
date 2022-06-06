@@ -22,7 +22,6 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
         setFragmentResultListener("key1") { _, bundle ->
             val result = bundle.getString("data1")
             val person = bundle.getParcelable<Person>("data2")
-//            result?.let { updateText(binding.textTest, it) }
             person?.let { updateText(binding.textTest, it.name) }
         }
 
