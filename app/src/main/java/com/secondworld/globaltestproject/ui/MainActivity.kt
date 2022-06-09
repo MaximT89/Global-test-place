@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.secondworld.globaltestproject.data.repository.RepositoryImpl
 import com.secondworld.globaltestproject.data.storages.StorageName
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
@@ -43,20 +44,24 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getPerson()
 
-        personAdapter.callBackPerson = { position, _ ->
+        personAdapter.callBackPerson = { position ->
             viewModel.removePerson(position)
         }
-
     }
 
     private fun initView() {
 
-        binding.recyclerView.apply {
-            setHasFixedSize(true)
-            adapter = personAdapter
+        binding.recyclerView.adapter = personAdapter
+
+        val callbackDragAndDrop = DragManageAdapter(
+            adapter = personAdapter,
+            dragDirs = ItemTouchHelper.UP.or(ItemTouchHelper.DOWN),
+            swipeDirs = ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT)
+        )
+
+        ItemTouchHelper(callbackDragAndDrop).apply {
+            attachToRecyclerView(binding.recyclerView)
         }
     }
-
-
 }
 
