@@ -16,6 +16,7 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
     protected val binding get() = _binding as VB
 
     protected abstract fun viewModelClass(): Class<VM>
+
     protected val viewModel: VM by lazy {
         ViewModelProvider(this)[viewModelClass()]
     }
