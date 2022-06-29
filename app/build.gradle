@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -77,10 +76,6 @@ dependencies {
     // Dagger
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-
-    // Hilt
-    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
-    kapt "com.google.dagger:hilt-compiler:$rootProject.hiltVersion"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

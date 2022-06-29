@@ -21,6 +21,6 @@ class DragManageAdapter(
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        nameAdapter.deleteItem(viewHolder.absoluteAdapterPosition)
+
     }
 }

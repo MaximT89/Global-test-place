@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.secondworld.globaltestproject.data.models.Person
+import com.secondworld.globaltestproject.data.models.PersonsList
 import com.secondworld.globaltestproject.data.repository.RepositoryImpl
 import com.secondworld.globaltestproject.data.storages.StorageName
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
@@ -16,7 +18,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val storageName = StorageName()
     private val repository: Repository = RepositoryImpl(storageName)
-    private val personAdapter = PersonAdapter()
+    private val personAdapter by lazy {
+        PersonAdapter(this)
+    }
     private val viewModel: MainViewModel by viewModels {
         ViewModelFactory(PersonUseCase(repository))
     }
@@ -33,9 +37,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initObservers() {
-        viewModel.listPerson.observe(this) {
+        viewModel.listData.observe(this) {
             if (it != null) {
-                personAdapter.items = it
+                val listString = listOf(
+                    "Man",
+                    "Son",
+                    "bob"
+                )
+                val listes : MutableList<RecyclerViewItem> = mutableListOf()
+                listes.add(PersonsList("Title", listString))
+                listes.addAll(it)
+                personAdapter.items = listes
             }
         }
     }
@@ -44,9 +56,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getPerson()
 
-        personAdapter.callBackPerson = { position ->
-            viewModel.removePerson(position)
-        }
     }
 
     private fun initView() {
