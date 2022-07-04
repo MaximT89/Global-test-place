@@ -1,41 +1,37 @@
 package com.secondworld.globaltestproject.ui
 
-import android.annotation.SuppressLint
-import android.content.res.Resources
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.SearchView
 import com.secondworld.globaltestproject.R
-import com.secondworld.globaltestproject.core.createGradient
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
-
-    @SuppressLint("SetTextI18n")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.textTest1.text = "HELLO MY FRIEND"
-
-        createGradient(binding.textTest1, intArrayOf(
-            resources.getColor(R.color.orange_red),
-            resources.getColor(R.color.coral),
-            resources.getColor(R.color.blue_violet)
-        ))
-
-        binding.textTest2.text = "HELLO MY FRIEND"
-
-        createGradient(binding.textTest2, intArrayOf(
-            R.color.orange_red,
-            R.color.coral,
-            R.color.blue_violet
-        ))
-
-
+    private val binding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+
+        binding.myToolbar.title = "Начальный экран"
+        binding.myToolbar.inflateMenu(R.menu.menu)
+        val menuItem = binding.myToolbar.menu.findItem(R.id.action_search)
+        val searchView = menuItem?.actionView as SearchView
+        searchView.queryHint = "Type here to search..."
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                binding.textMain.text = newText.toString()
+                return true
+            }
+
+        })
+    }
 }
