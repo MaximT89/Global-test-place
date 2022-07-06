@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+    var i = 6
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,17 +22,16 @@ class MainActivity : AppCompatActivity() {
         val menuItem = binding.myToolbar.menu.findItem(R.id.action_search)
         val searchView = menuItem?.actionView as SearchView
         searchView.queryHint = "Type here to search..."
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+
+        binding.myToolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        binding.myToolbar.setNavigationOnClickListener {
+            if (i == 6) {
+                binding.textMain.text = "заполните все поля"
+            } else {
+                finish()
             }
+        }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
 
-                binding.textMain.text = newText.toString()
-                return true
-            }
-
-        })
     }
 }
