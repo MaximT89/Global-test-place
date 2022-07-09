@@ -32,6 +32,5 @@ class AnimationGenerator(private val coroutine: CoroutineScope) {
             delay(1500)
             end.invoke()
         }
-
     }
 }

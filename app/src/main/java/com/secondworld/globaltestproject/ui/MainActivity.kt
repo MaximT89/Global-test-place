@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             page
         }
-
     }
 
     private fun initView() {
@@ -74,15 +73,9 @@ class MainActivity : AppCompatActivity() {
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
-                0 -> {
-                    tab.text = "First"
-                }
-                1 -> {
-                    tab.text = "Second"
-                }
-                2 -> {
-                    tab.text = "Third"
-                }
+                0 -> tab.text = "First"
+                1 -> tab.text = "Second"
+                2 -> tab.text = "Third"
             }
         }.attach()
 
