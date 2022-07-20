@@ -1,40 +1,40 @@
 package com.secondworld.globaltestproject.ui.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
-import androidx.navigation.fragment.findNavController
+import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.viewModels
 import com.secondworld.globaltestproject.R
-import com.secondworld.globaltestproject.core.animateLikeButton
-import com.secondworld.globaltestproject.data.Person
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FirstFragment : Fragment(R.layout.fragment_first) {
 
     private var bindingFragment: FragmentFirstBinding? = null
+    private val viewModel by viewModels<FirstViewModel>()
 
-    @SuppressLint("Recycle")
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentFirstBinding.bind(view)
         bindingFragment = binding
 
-        binding.btnNext.setOnClickListener {
-
-            setFragmentResult("key1", bundleOf(
-                "data1" to "Max",
-                "data2" to Person("Tom"),
-                "data3" to 15
-            ))
-
-            findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
+        binding.editFirst.doAfterTextChanged {
+            if (!TextUtils.isEmpty(it)) {
+                viewModel.saveScore(it.toString().toInt())
+            } else {
+                viewModel.saveScore(0)
+            }
         }
 
-        binding.textShadow.animateLikeButton()
+        viewModel.score.observe(viewLifecycleOwner) {
+            binding.textFirst.text = it.toString()
+        }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

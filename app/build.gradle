@@ -76,10 +76,6 @@ dependencies {
     // Recycler view
     implementation "androidx.recyclerview:recyclerview:$rootProject.rvVersion"
 
-    // Dagger
-    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-
     // Hilt
     implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$rootProject.hiltVersion"

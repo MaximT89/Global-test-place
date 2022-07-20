@@ -3,7 +3,9 @@ package com.secondworld.globaltestproject.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
