@@ -1,5 +1,4 @@
 package com.secondworld.globaltestproject.ui.fragments
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +15,7 @@ class FirstViewModel @Inject constructor(
     val score : LiveData<Int> = _score
 
     fun saveScore(value : Int) {
-        _score.value = value
+        repository.saveScore(value)
+        _score.value = repository.getScore()
     }
 }
