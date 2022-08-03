@@ -14,13 +14,12 @@ class SharedPreferences @Inject constructor(@ApplicationContext private val cont
         private const val PROFILE_SCORE = "profile_score"
     }
 
-    private fun defaultPref(): SharedPreferences = context.getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
+    private fun defaultPref(): SharedPreferences =
+        context.getSharedPreferences(APP_PREF, Context.MODE_PRIVATE)
+
 
     fun getScore() = defaultPref().getInt(PROFILE_SCORE, 0)
     fun saveScore(value: Int) {
-        defaultPref().editMe { it.put(PROFILE_SCORE to value) } }
+        defaultPref().editMe { it.put(PROFILE_SCORE to value) }
+    }
 }
-
-
-
-
