@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/nav_graph.xml"
     app:startDestination="@id/firstFragment">
 
     <fragment
@@ -28,8 +28,6 @@
         android:name="com.secondworld.globaltestproject.ui.fragments.ThirdFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_third" >
-        <action
-            android:id="@+id/action_thirdFragment_to_firstFragment"
-            app:destination="@id/firstFragment" />
+
     </fragment>
 </navigation>

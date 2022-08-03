@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.core
 import android.content.SharedPreferences
+import android.util.Log
 
 fun SharedPreferences.editMe(operation: (SharedPreferences.Editor) -> Unit) =
     edit().also(operation).apply()
@@ -15,3 +16,8 @@ fun SharedPreferences.Editor.put(pair: Pair<String, Any>) {
         else -> error("Only primitive types can be stored in SharedPreferences")
     }
 }
+
+fun log(message: String) {
+    Log.d("TAG", "log: $message")
+}
+

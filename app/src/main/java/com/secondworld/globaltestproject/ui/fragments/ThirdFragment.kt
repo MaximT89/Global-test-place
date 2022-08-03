@@ -1,43 +1,26 @@
 package com.secondworld.globaltestproject.ui.fragments
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.View
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.secondworld.globaltestproject.R
+import com.secondworld.globaltestproject.core.BaseFragment
 import com.secondworld.globaltestproject.databinding.FragmentThirdBinding
+import com.secondworld.globaltestproject.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ThirdFragment : Fragment(R.layout.fragment_third) {
+class ThirdFragment : BaseFragment<FragmentThirdBinding>(FragmentThirdBinding::inflate) {
 
-    private var bindingFragment: FragmentThirdBinding? = null
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentThirdBinding.bind(view)
-        bindingFragment = binding
-
+    override fun initView() {
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_thirdFragment_to_firstFragment,
-                null,
-                navOptions {
-                    anim {
-                        enter = android.R.animator.fade_in
-                        exit = android.R.animator.fade_out
-                        popEnter = android.R.animator.fade_in
-                        popExit = android.R.animator.fade_out
-                    }
-                }
-            )
+            navigateTo(R.id.firstFragment)
         }
 
+        binding.btnPrev.setOnClickListener {
+            navigateTo(R.id.secondFragment)
+        }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        bindingFragment = null
+    override fun saveLastFragment() {
+        (activity as MainActivity).saveLastFragment(findNavController().currentDestination?.label!!)
     }
 }
