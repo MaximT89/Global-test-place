@@ -5,26 +5,20 @@ import androidx.navigation.fragment.findNavController
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.BaseFragment
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
+import com.secondworld.globaltestproject.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FirstFragment : BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::inflate) {
 
-    /**
-     * Splash screen
-     */
-
     override fun initView() {
-
-        object : CountDownTimer(3000, 1000){
-            override fun onTick(p0: Long) {}
-
-            override fun onFinish() {
-                navigateTo(getLastFragment())
-            }
-        }.start()
+        binding.btnNext.setOnClickListener {
+            navigateTo(R.id.secondFragment)
+        }
     }
 
-    override fun saveLastFragment() = Unit
+    override fun saveLastFragment() {
+        (activity as MainActivity).saveLastFragment(findNavController().currentDestination?.label!!)
+    }
 
 }
