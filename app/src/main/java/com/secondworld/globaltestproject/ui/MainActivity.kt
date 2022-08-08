@@ -27,17 +27,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        if(!viewModel.statusLoadStartFragment.value!!){
-            viewModel.statusLoadStartFragment.value = true
-
-//            val navController = findNavController(R.id.nav_host_fragment)
-
-//            Navigation.setViewNavController(binding.root, navController)
-//                binding.root.setOnClickListener{
-//                    it.findNavController().navigate(getLastFragment())
-//                }
-        }
     }
 
     fun saveLastFragment(value : CharSequence){
