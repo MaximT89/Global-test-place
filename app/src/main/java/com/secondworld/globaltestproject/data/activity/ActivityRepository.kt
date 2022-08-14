@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.data.activity
 
-import androidx.annotation.IdRes
 import com.secondworld.globaltestproject.core.FragmentLabelAdapter
 import javax.inject.Inject
 

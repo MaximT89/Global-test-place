@@ -11,22 +11,24 @@ class SecondFragment : BaseFragment<FragmentSecondBinding>(FragmentSecondBinding
 
     override fun initView() = with(binding) {
 
-        if (arguments?.getString("str") != null) {
+        if (arguments?.get("str") != null) {
             textTest.text = arguments?.getString("str")
             arguments?.clear()
-//            arguments?.remove("str")
         } else textTest.text = "Ничего не пришло"
 
-        btnNext.setOnClickListener {
-            showDialog(
-                titleText = "Hello",
-                bodyText = "Код ошибки: 400\nЧто то пошло не так",
-                callYes = {
-                    textTest.text = "Что то случилось"
-                },
-                callNo = {}
-            )
-        }
+        val name = arguments?.getString("userName") ?: "Max Tes test"
+        textTest.text = name
+
+//        btnNext.setOnClickListener {
+//            showDialog(
+//                titleText = "Hello",
+//                bodyText = "Код ошибки: 400\nЧто то пошло не так",
+//                callYes = {
+//                    textTest.text = "Что то случилось"
+//                },
+//                callNo = {}
+//            )
+//        }
     }
 
     override fun saveLastFragment() {

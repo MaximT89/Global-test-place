@@ -19,6 +19,9 @@
         android:name="com.secondworld.globaltestproject.ui.fragments.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" >
+        <argument android:name="userName"
+            app:argType="string" />
+        <deepLink app:uri="www.testproject.com/user/{userName}" />
         <action
             android:id="@+id/action_secondFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
