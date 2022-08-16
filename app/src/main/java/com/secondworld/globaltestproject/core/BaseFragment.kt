@@ -51,7 +51,6 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
     override fun navigateTo(resId: Int, args: Bundle?, navOptions: NavOptions?) =
         findNavController().navigate(resId, args, navOptions)
 
-
     /**
      * Очищаем биндинг во всех фрагментах
      */
