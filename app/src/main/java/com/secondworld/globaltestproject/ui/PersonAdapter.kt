@@ -1,52 +1,57 @@
 package com.secondworld.globaltestproject.ui
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.databinding.HolderPersonBinding
 
 class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(ItemComparator()) {
 
-    var callBackPerson: ((position: Int, name: String) -> Unit)? = null
-    var callBackPersonSecond: ((age: Int) -> Unit)? = null
-    var callBackArrowUp : ((position : Int) -> Unit)? = null
-    var callBackArrowDown : ((position : Int) -> Unit)? = null
+    var callBackLongClick : ((id: Int) -> Unit)? = null
+    var callBackShortClick : (() -> Unit)? = null
 
-    class ItemComparator : DiffUtil.ItemCallback<Person>(){
+    class ItemComparator : DiffUtil.ItemCallback<Person>() {
         override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return  oldItem.name == newItem.name }
+            return oldItem.id == newItem.id
+        }
 
         override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return  oldItem == newItem }
+            return oldItem == newItem
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return RecyclerViewHolder(
-            HolderPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            HolderPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        holder.bind(getItem(position)) }
+        holder.bind(getItem(position))
+    }
 
     inner class RecyclerViewHolder(private val binding: HolderPersonBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(person: Person) {
-            binding.textPersonName.text = person.name
-            binding.textPersonAge.text = person.age.toString()
-            binding.imageDelete.setOnClickListener {
+        fun bind(person: Person) = with(binding) {
+            textPersonName.text = person.name
+            textPersonAge.text = person.age.toString()
 
-                callBackPerson?.invoke(absoluteAdapterPosition, person.name)
-                callBackPersonSecond?.invoke(person.age) }
+            if(person.isActive) rootPerson.setCardBackgroundColor(Color.GRAY)
+            else rootPerson.setCardBackgroundColor(Color.WHITE)
 
-            binding.imageArrowUp.setOnClickListener {
-                callBackArrowUp?.invoke(absoluteAdapterPosition) }
+            rootPerson.setOnClickListener { callBackShortClick?.invoke() }
 
-            binding.imageArrowDown.setOnClickListener {
-                callBackArrowDown?.invoke(absoluteAdapterPosition) }
+            rootPerson.setOnLongClickListener {
+                callBackLongClick?.invoke(person.id)
+                true
+            }
         }
     }
 }
