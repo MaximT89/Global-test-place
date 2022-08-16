@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Global test project</string>
+    <string name="delete_all">Delete %s</string>
 </resources>

@@ -14,22 +14,21 @@ import com.secondworld.globaltestproject.databinding.HolderPersonBinding
 class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(ItemComparator()) {
 
     var callBackLongClick : ((id: Int) -> Unit)? = null
-    var callBackShortClick : (() -> Unit)? = null
+    var callBackShortClick : ((id: Int) -> Unit)? = null
 
     class ItemComparator : DiffUtil.ItemCallback<Person>() {
-        override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return oldItem == newItem
-        }
+        override fun areItemsTheSame(oldItem: Person, newItem: Person) = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Person, newItem: Person) = oldItem == newItem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return RecyclerViewHolder(
             HolderPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
+    }
+
+    override fun submitList(list: List<Person>?) {
+        super.submitList(list?.let { ArrayList(it) })
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
@@ -42,11 +41,12 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(Item
         fun bind(person: Person) = with(binding) {
             textPersonName.text = person.name
             textPersonAge.text = person.age.toString()
+            textPersonIsActive.text = person.isActive.toString()
 
             if(person.isActive) rootPerson.setCardBackgroundColor(Color.GRAY)
             else rootPerson.setCardBackgroundColor(Color.WHITE)
 
-            rootPerson.setOnClickListener { callBackShortClick?.invoke() }
+            rootPerson.setOnClickListener { callBackShortClick?.invoke(person.id) }
 
             rootPerson.setOnLongClickListener {
                 callBackLongClick?.invoke(person.id)

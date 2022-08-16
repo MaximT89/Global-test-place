@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import com.secondworld.globaltestproject.core.log
+import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initObservers() {
         viewModel.listPerson.observe(this) {
-            personAdapter.submitList(it!!.toMutableList())
+            personAdapter.submitList(it)
         }
     }
 
@@ -37,14 +39,14 @@ class MainActivity : AppCompatActivity() {
             adapter = personAdapter
         }
 
-        personAdapter.callBackShortClick= {
-            startActivity(Intent(this@MainActivity, SecondActivity::class.java))
+        personAdapter.callBackShortClick = { id ->
+//            viewModel.changeActivePerson(id)
+//            Log.d("TAG", "callBackLongClick work")
+//            startActivity(Intent(this, SecondActivity::class.java))
         }
 
-        personAdapter.callBackLongClick = {
-            id ->
+        personAdapter.callBackLongClick = { id ->
             viewModel.changeActivePerson(id)
-            Log.d("TAG", "callBackLongClick work")
         }
     }
 }
