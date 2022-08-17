@@ -11,8 +11,14 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val personUseCase: PersonUseCase) : ViewModel() {
 
-    private var _listPerson = MutableLiveData<List<Person>>()
-    val listPerson: LiveData<List<Person>> = _listPerson
+    private var _usersState = MutableLiveData<UserState>()
+    val usersState: LiveData<UserState> = _usersState
+
+    private var _listPerson = MutableLiveData<List<Person>?>()
+    val listPerson: LiveData<List<Person>?> = _listPerson
+
+    private var _checkActive = MutableLiveData(false)
+    val checkActive: LiveData<Boolean> = _checkActive
 
     init {
         getPerson()
@@ -30,4 +36,38 @@ class MainViewModel @Inject constructor(private val personUseCase: PersonUseCase
             }
         }
     }
+
+    fun cancelActiveUser() {
+        _listPerson.value.let { persons ->
+            _listPerson.value = persons?.map {
+                if (it.isActive) it.copy(isActive = false)
+                else it.copy()
+            }
+        }
+    }
+
+    private fun startState(state: UserState) {
+        _usersState.value = state
+    }
+
+    fun checkUser(active: Boolean) {
+        if (active) {
+            _checkActive.value = true
+            startState(UserState.CheckUsers)
+        } else {
+            _checkActive.value = false
+            startState(UserState.NormalState)
+        }
+    }
+
+    fun deleteCheckedUsers() {
+        val list : MutableList<Person>? = _listPerson.value?.toMutableList()
+        list?.removeAll { it.isActive }
+        _listPerson.value = list
+    }
+}
+
+sealed class UserState {
+    object CheckUsers : UserState()
+    object NormalState : UserState()
 }

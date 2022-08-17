@@ -41,7 +41,6 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(Item
         fun bind(person: Person) = with(binding) {
             textPersonName.text = person.name
             textPersonAge.text = person.age.toString()
-            textPersonIsActive.text = person.isActive.toString()
 
             if(person.isActive) rootPerson.setCardBackgroundColor(Color.GRAY)
             else rootPerson.setCardBackgroundColor(Color.WHITE)
