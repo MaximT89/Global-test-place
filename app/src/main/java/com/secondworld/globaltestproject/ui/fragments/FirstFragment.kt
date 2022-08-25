@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FirstFragment : BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::inflate) {
 
     override fun initView() = with(binding) {
+
         btnNext.setOnClickListener {
             val bundle = bundleOf("str" to "hello")
             navigateTo(R.id.secondFragment, bundle, null)
@@ -21,5 +22,4 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::i
     override fun saveLastFragment() {
         (activity as MainActivity).saveLastFragment(findNavController().currentDestination?.label!!)
     }
-
 }
