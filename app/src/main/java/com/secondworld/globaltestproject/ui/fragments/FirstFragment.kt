@@ -17,13 +17,6 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fun out1(){
-            fun out2(){
-                fun out3(){
-
-                }
-            }
-        }
 
     }
 }
