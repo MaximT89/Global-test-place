@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             delay(1000)
             autoScrollList()
         }
-
     }
 
     private tailrec suspend fun autoScrollList() {
