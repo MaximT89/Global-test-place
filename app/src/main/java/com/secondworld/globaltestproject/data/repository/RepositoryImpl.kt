@@ -1,20 +1,20 @@
 package com.secondworld.globaltestproject.data.repository
 
+import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.data.storages.StorageName
 import com.secondworld.globaltestproject.domain.repository.Repository
 
-class RepositoryImpl(private val storageName : StorageName) : Repository {
+class RepositoryImpl() : Repository {
 
-    override fun getRandomName() = storageName.listNames().random()
+    override fun getRandomId() = (1..999999).random()
 
-    override fun getRandomAge() = (1..70).random()
 
     override fun getListPersons() = mutableListOf<Person>().apply {
-        repeat(10) {
-            add(Person(getRandomName(), getRandomAge()))
-        }
+        add(Person(getRandomId(), R.drawable.banner_1))
+        add(Person(getRandomId(), R.drawable.banner_2))
+        add(Person(getRandomId(), R.drawable.banner_3))
+        add(Person(getRandomId(), R.drawable.banner_4))
+        add(Person(getRandomId(), R.drawable.banner_5))
     }
-
-
 }

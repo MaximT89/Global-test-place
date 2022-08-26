@@ -1,3 +1,5 @@
 package com.secondworld.globaltestproject.data.models
 
-data class Person(val name : String, val age : Int)
+import androidx.annotation.DrawableRes
+
+data class Person(val id : Int, @DrawableRes val image : Int)

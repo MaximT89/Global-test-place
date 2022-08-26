@@ -4,7 +4,6 @@ import com.secondworld.globaltestproject.data.models.Person
 
 interface Repository {
 
-    fun getRandomName() : String
-    fun getRandomAge() : Int
+    fun getRandomId() : Int
     fun getListPersons() : MutableList<Person>
 }

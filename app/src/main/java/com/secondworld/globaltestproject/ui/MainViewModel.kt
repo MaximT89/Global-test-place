@@ -17,8 +17,4 @@ class MainViewModel(private val personUseCase: PersonUseCase) : ViewModel() {
     fun getPerson() {
         _listPerson.value = personUseCase.getListPerson()
     }
-
-    fun removePerson(position: Int) = removeItem(position, _listPerson)
-    fun upElement(position: Int) = upItem(position, _listPerson)
-    fun downElement(position: Int) = downItem(position, _listPerson)
 }
