@@ -32,6 +32,7 @@ open class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) : Frag
     }
 
     fun navigate(destination: Navigator) {
+
         findNavController().navigate(destination.id,
             null,
             navOptions {
@@ -42,6 +43,18 @@ open class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) : Frag
                     popExit = R.anim.slide_in_right_pop
                 }
             })
+
+
+//        findNavController().navigate(destination.id,
+//            null,
+//            navOptions {
+//                anim {
+//                    enter = R.anim.slide_in_left
+//                    exit = R.anim.slide_in_right
+//                    popEnter = R.anim.slide_in_left_pop
+//                    popExit = R.anim.slide_in_right_pop
+//                }
+//            })
     }
 
     fun navigateBack(){

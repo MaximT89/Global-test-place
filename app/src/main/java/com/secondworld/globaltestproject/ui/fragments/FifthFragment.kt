@@ -23,10 +23,6 @@ class FifthFragment : Fragment(R.layout.fragment_fifth) {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         bindingFragment = null

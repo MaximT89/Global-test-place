@@ -14,10 +14,10 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // new example
-        binding.btnNext.setOnClickListener {
-            navigate(Navigator.TO_SECOND)
-        }
+//        // new example
+//        binding.btnNext.setOnClickListener {
+//            navigate(Navigator.TO_SECOND)
+//        }
 
         // old example
         binding.btnNext.setOnClickListener {
@@ -25,10 +25,8 @@ class FirstFragment : BaseFragment<FragmentFirstBinding>(FragmentFirstBinding::i
                 null,
                 navOptions {
                     anim {
-                        enter = R.anim.slide_in_left
-                        exit = R.anim.slide_in_right
-                        popEnter = R.anim.slide_in_left_pop
-                        popExit = R.anim.slide_in_right_pop
+                        enter = R.anim.slide_enter_mts
+
                     }
                 })
         }
