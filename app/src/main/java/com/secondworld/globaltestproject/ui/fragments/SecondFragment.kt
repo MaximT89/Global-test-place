@@ -11,11 +11,20 @@ class SecondFragment : BaseFragment<FragmentSecondBinding>(FragmentSecondBinding
 
     override fun initView() = with(binding) {
 
-        if (arguments?.getString("str") != null) {
-            textTest.text = arguments?.getString("str")
-            arguments?.clear()
-//            arguments?.remove("str")
-        } else textTest.text = "Ничего не пришло"
+        readArguments<Boolean>("str",
+            ifExist = {
+                textTest.text = "${textTest.text} \n $it"
+            }, notExist = {
+                textTest.text = "Ничего не пришло"
+            })
+
+        readArguments<Animal>("animal",
+            ifExist = {
+                textTest.text = "${textTest.text} \n ${it.name}"
+            },
+            notExist = {
+                textTest.text = "Ничего не пришло"
+            })
 
         btnNext.setOnClickListener {
             showDialog(
