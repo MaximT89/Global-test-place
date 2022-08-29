@@ -7,17 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.databinding.CustomLayoutBinding
 import com.secondworld.globaltestproject.ui.MainActivity
-import com.secondworld.globaltestproject.ui.fragments.Animal
-import kotlinx.parcelize.Parcelize
 import java.lang.IllegalArgumentException
 import kotlin.reflect.full.isSubclassOf
 
@@ -27,7 +22,7 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
     Fragment(), Navigator {
 
     private var _viewBinding: B? = null
-    protected val binding get() = checkNotNull(_viewBinding)
+    protected val binding = checkNotNull(_viewBinding)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -94,8 +89,8 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
     fun showDialog(
         titleText: String?,
         bodyText: String?,
-        callYes: (() -> Unit)?,
-        callNo: (() -> Unit)?,
+        callYes: (() -> Unit)? = {},
+        callNo: (() -> Unit)? = {},
     ) {
         val dialog = Dialog(requireActivity())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
