@@ -33,6 +33,8 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
         return binding.root
     }
 
+    // sdfhjasdkf
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
