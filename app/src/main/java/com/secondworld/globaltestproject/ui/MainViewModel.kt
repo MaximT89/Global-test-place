@@ -3,6 +3,8 @@ package com.secondworld.globaltestproject.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
+import com.secondworld.globaltestproject.core.newList
 import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.domain.useCases.PersonUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,20 +31,16 @@ class MainViewModel @Inject constructor(private val personUseCase: PersonUseCase
     }
 
     fun changeActivePerson(id: Int) {
-        _listPerson.value.let { persons ->
-            _listPerson.value = persons?.map {
-                if (it.id == id) it.copy(isActive = !it.isActive)
-                else it.copy()
-            }
+        _listPerson.newList {
+            if (it.id == id) it.copy(isActive = !it.isActive)
+            else it.copy()
         }
     }
 
     fun cancelActiveUser() {
-        _listPerson.value.let { persons ->
-            _listPerson.value = persons?.map {
-                if (it.isActive) it.copy(isActive = false)
-                else it.copy()
-            }
+        _listPerson.newList {
+            if (it.isActive) it.copy(isActive = false)
+            else it.copy()
         }
     }
 
@@ -61,7 +59,7 @@ class MainViewModel @Inject constructor(private val personUseCase: PersonUseCase
     }
 
     fun deleteCheckedUsers() {
-        val list : MutableList<Person>? = _listPerson.value?.toMutableList()
+        val list: MutableList<Person>? = _listPerson.value?.toMutableList()
         list?.removeAll { it.isActive }
         _listPerson.value = list
     }

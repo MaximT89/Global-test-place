@@ -32,6 +32,14 @@ fun View.notEnabled() {
     isClickable = false
 }
 
+fun <T>MutableLiveData<List<T>?>.newList(someLogic : (data : T) -> T) {
+    value.let { items ->
+        value = items?.map {
+            someLogic.invoke(it)
+        }
+    }
+}
+
 // Удаление элемента по позиции из liveData
 fun <T> removeItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
     list.value?.apply {
