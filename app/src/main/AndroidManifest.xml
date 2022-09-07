@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.secondworld.globaltestproject">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
     <application
         android:name=".ui.App"
         android:allowBackup="true"
@@ -10,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GlobalTestProject">
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
