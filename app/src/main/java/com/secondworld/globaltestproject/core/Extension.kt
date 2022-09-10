@@ -70,6 +70,18 @@ fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
     }
 }
 
+
+
+inline fun <reified T>MutableLiveData<List<T>?>.newList() {
+    value.let { items ->
+        value = items?.map {
+            val method = T::class.javaClass.getDeclaredMethod("copy")
+            method.isAccessible = true
+            method.invoke(it) as T
+        }
+    }
+}
+
 fun showViews(vararg views: View) {
     for (view in views) view.visibility = View.VISIBLE
 }
