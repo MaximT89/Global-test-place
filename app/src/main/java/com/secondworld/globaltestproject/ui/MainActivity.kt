@@ -9,7 +9,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private val binding by lazy(LazyThreadSafetyMode.NONE){
+        ActivityMainBinding.inflate(layoutInflater).also {
+            setContentView(it.root)
+        }
+    }
 
     private val timer = Timer(
         fullTime = 7,
@@ -19,8 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         binding.btnStop.setOnClickListener {
             timer.stopTimer(
@@ -41,8 +43,7 @@ class MainActivity : AppCompatActivity() {
                         binding.root,
                         "Таймер отработал",
                         Snackbar.LENGTH_LONG
-                    )
-                        .show()
+                    ).show()
                 },
                 onAllRepeatStop = {
                     binding.textName.text = "Все иттерации завершены"
@@ -56,8 +57,7 @@ class MainActivity : AppCompatActivity() {
                     binding.root,
                     "Таймер приостановлен",
                     Snackbar.LENGTH_LONG
-                )
-                    .show()
+                ).show()
             })
         }
     }

@@ -9,9 +9,9 @@ class Timer(
     private val interval: Long,
     private val repeatCount: Int = 1
 ) {
-    var timer: CountDownTimer? = null
-    var currentSecond = MutableLiveData(fullTime)
-    var repeat = MutableLiveData(abs(repeatCount))
+    private var timer: CountDownTimer? = null
+    private var currentSecond = MutableLiveData(fullTime)
+    private var repeat = MutableLiveData(abs(repeatCount))
 
     fun startTimer(
         onTick: (Long) -> Unit = {},
