@@ -8,18 +8,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val communicationFoo: CommunicationFoo
-) : ViewModel(), Observe<Foo> {
 
-    override fun observe(owner: LifecycleOwner, observer: Observer<Foo>) {
-        communicationFoo.observe(owner, observer)
-    }
+) : ViewModel() {
 
-    init {
-        fetchDataFromInteractor()
-    }
 
-    private fun fetchDataFromInteractor(){
-        communicationFoo.map(Foo("Foo"))
-    }
+
+
 }
