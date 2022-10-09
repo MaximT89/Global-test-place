@@ -9,10 +9,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val binding by lazy(LazyThreadSafetyMode.NONE){
-        ActivityMainBinding.inflate(layoutInflater).also {
-            setContentView(it.root)
-        }
+    private val binding by lazy(LazyThreadSafetyMode.NONE) {
+        ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
     }
 
     private val timer = Timer(
@@ -23,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val v = getTypes("image/*")
 
         binding.btnStop.setOnClickListener {
             timer.stopTimer(
