@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -18,59 +19,44 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val customer = Customer(CarBookingStrategy())
+        var fare = customer.calculateFare(5)
+        println(fare)
 
-        val car = Car.Builder()
-            .model("Fera")
-            .year(2022)
-            .build()
-
-        val animal = Animal.Builder()
-            .name("Cat")
-            .build()
-
-        Log.d("TAG", "onCreate: $animal")
+        customer.bookingStrategy = TrainBookingStrategy()
+        fare = customer.calculateFare(5)
+        println(fare)
 
     }
 }
 
-data class Animal(
-    val name: String? = "",
-    val age: Int? = 0
-) {
-    private constructor(builder: Builder) : this(builder.name, builder.age)
+interface BookingStrategy {
+    val fare: Double
+}
 
-    class Builder {
-        var name: String? = null
-            private set
+class CarBookingStrategy : BookingStrategy {
+    override val fare: Double = 12.5
 
-        var age: Int? = 0
-            private set
-
-        fun name(name : String) = apply { this.name = name }
-
-        fun age(age : Int) = apply { this.age = age }
-
-        fun build() = Animal(this)
+    override fun toString(): String {
+        return "CarBookingStrategy"
     }
 }
 
-class Car(
-    val model: String? = null,
-    val year: Int = 0
-) {
-    private constructor(builder: Builder) : this(builder.model, builder.year)
+class TrainBookingStrategy : BookingStrategy {
+    override val fare = 8.5
 
-    class Builder {
-        var model: String? = null
-            private set
-
-        var year: Int = 0
-            private set
-
-        fun model(model: String) = apply { this.model = model }
-
-        fun year(year: Int) = apply { this.year = year }
-
-        fun build() = Car(this)
+    override fun toString(): String {
+        return "TrainBookingStrategy"
     }
 }
+
+class Customer(var bookingStrategy: BookingStrategy) {
+
+    fun calculateFare(numOfPassangeres: Int): Double {
+        val fare = numOfPassangeres * bookingStrategy.fare
+        println("Calculating $bookingStrategy")
+        return fare
+    }
+}
+
+
