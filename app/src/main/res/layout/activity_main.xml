@@ -6,20 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_wrapBehaviorInParent="vertical_only"
-        app:layout_constraintStart_toStartOf="parent"
-        app:labelVisibilityMode="labeled"
-        app:itemPaddingBottom="25dp"
-        app:itemBackground="@color/Fuchsia"
-        app:itemActiveIndicatorStyle="@color/Black"
-        app:menu="@menu/bottom_navigation_menu" />
+        android:background="@color/white"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemPaddingBottom="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 
