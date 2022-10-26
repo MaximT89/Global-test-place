@@ -19,8 +19,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.observe(this){
-            binding.textName.text = it.name
+        initView()
+        initObservers()
+    }
+
+    private fun initObservers() {
+        viewModel.savedName.observe(this){ formatName ->
+            binding.formatText.text = formatName
+        }
+    }
+
+    private fun initView() {
+        binding.btnSaveName.setOnClickListener {
+            viewModel.formatName(binding.editName.text.toString())
         }
     }
 }

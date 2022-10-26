@@ -1,25 +1,20 @@
 package com.secondworld.globaltestproject.ui
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.secondworld.globaltestproject.domain.MainUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val communicationFoo: CommunicationFoo
-) : ViewModel(), Observe<Foo> {
+    private val mainUseCase: MainUseCase
+) : ViewModel() {
 
-    override fun observe(owner: LifecycleOwner, observer: Observer<Foo>) {
-        communicationFoo.observe(owner, observer)
+    private var _savedName = MutableLiveData<String>()
+    val savedName : LiveData<String> = _savedName
+
+    fun formatName(name : String) {
+        _savedName.value = mainUseCase.formatName(name)
     }
 
-    init {
-        fetchDataFromInteractor()
-    }
-
-    private fun fetchDataFromInteractor(){
-        communicationFoo.map(Foo("Foo"))
-    }
 }
