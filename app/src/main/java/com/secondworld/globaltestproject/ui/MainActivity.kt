@@ -3,6 +3,7 @@ package com.secondworld.globaltestproject.ui
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
@@ -24,15 +25,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initObservers() {
-        viewModel.savedName.observe(this){ formatName ->
-            binding.formatText.text = formatName
+        viewModel.newData.observe(this){
+            Log.d("TAG", "initObservers: ${it.toString()}")
         }
     }
 
     private fun initView() {
-        binding.btnSaveName.setOnClickListener {
-            viewModel.formatName(binding.editName.text.toString())
-        }
+        val list = listOf(1, 2, 3, 4, 5)
+        viewModel.updateData(list)
     }
 }
 
