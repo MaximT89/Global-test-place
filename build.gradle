@@ -2,26 +2,28 @@
 plugins {
     id 'com.android.application' version '7.1.2' apply false
     id 'com.android.library' version '7.1.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.6.21' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
+    id 'com.google.dagger.hilt.android' version '2.42' apply false
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
 ext {
-    lifecycleVersion = '2.4.1'
-    fragmentKtxVersion = '1.4.1'
+    kotlinVersion = '1.7.10'
+    pagingThree = '3.2.0-alpha02'
+    lifecycleVersion = '2.5.1'
+    fragmentKtxVersion = '1.5.2'
     glideVersion = '4.13.0'
-    loggingVersion = '3.8.0'
+    loggingVersion = '4.9.1'
     retrofitVersion = '2.9.0'
-    roomVersion = '2.4.2'
-    navigationVersion = '2.4.2'
-    coroutinesVersion = '1.5.2'
-    lifecycleVersion = '2.4.1'
-    fragmentKtxVersion = '1.4.1'
+    roomVersion = '2.4.3'
+    navigationVersion = '2.5.3'
+    coroutinesVersion = '1.6.4'
     rvVersion = '1.2.1'
-    daggerVersion = '2.37'
-    hiltVersion = '2.37'
+    hiltVersion = '2.42'
     swipeRefresh = '1.1.0'
+    coilVersion = '2.0.0-rc03'
+    dataStoreVersion = '1.0.0'
+    leakcanary = '2.9.1'
 }
