@@ -14,11 +14,8 @@
         <!-- Customize your theme here. -->
 
     </style>
-    <style name="Theme.GlobalTestProject.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
+    <style name="AlertDialog.Custom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
-    <style name="Theme.GlobalTestProject.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.GlobalTestProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

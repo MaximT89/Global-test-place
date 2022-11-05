@@ -9,4 +9,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="no">нет</string>
+    <string name="yes">да</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_new_10_items">create new 10 items</string>
+    <string name="delete">delete</string>
+    <string name="clear">clear</string>
 </resources>
