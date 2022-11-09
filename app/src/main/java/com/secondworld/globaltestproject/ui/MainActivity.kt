@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         blur.applyBlur(
             from = binding.imgTest,
             into = binding.viewTest,
-            scaleFactor = 5f
+            scaleFactor = 2f
         )
     }
 }

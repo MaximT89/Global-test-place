@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.view.ViewTreeObserver
+import androidx.core.view.drawToBitmap
 import kotlin.math.abs
 
 class Blur(private val context : Context) {
@@ -242,7 +243,7 @@ class Blur(private val context : Context) {
             override fun onPreDraw(): Boolean {
                 from.viewTreeObserver.removeOnPreDrawListener(this)
                 from.buildDrawingCache()
-                val bmp: Bitmap = from.drawingCache
+                val bmp: Bitmap = from.drawToBitmap()
                 createBlur(bmp, into, scaleFactor, radius)
                 return true
             }
