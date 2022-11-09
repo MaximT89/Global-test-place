@@ -221,7 +221,7 @@ class Blur(private val context : Context) {
         return bitmap
     }
 
-    fun createBlur(bkg: Bitmap, view: View, scaleFactor : Float = 1f, radius: Float = 20f) {
+    fun createBlur(bkg: Bitmap, view: View, scaleFactor : Float, radius: Float) {
         var overlay = Bitmap.createBitmap(
             (view.measuredWidth / scaleFactor).toInt(),
             (view.measuredHeight / scaleFactor).toInt(),
