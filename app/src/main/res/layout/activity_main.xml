@@ -6,26 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/root_image"
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:background="@drawable/border_bg"
+    <ImageView
+        android:id="@+id/imgTest"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_ver_4" />
+
+    <View
+        android:id="@+id/viewTest"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/textTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Text Id"
+        android:textSize="70dp"
+        android:textColor="@color/Black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img_view_photo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <ImageView
-            android:id="@+id/placeholder_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_baseline_add_24"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
