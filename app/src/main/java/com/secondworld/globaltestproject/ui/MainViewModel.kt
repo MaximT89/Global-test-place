@@ -11,19 +11,5 @@ class MainViewModel @Inject constructor(
     private val mainUseCase: MainUseCase
 ) : ViewModel() {
 
-    private var _newData = MutableLiveData<List<String>?>()
-    val newData : LiveData<List<String>?> = _newData
 
-
-    private fun getList(list: List<Int>) {
-        val newList = mutableListOf<String>()
-
-        list.forEach {
-            viewModelScope.launch {
-                newList.add(it.toString())
-            }
-        }
-
-        _newData.value = newList
-    }
 }
