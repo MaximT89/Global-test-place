@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ArenaFragment :
     BaseFragment<FragmentArenaBinding, ArenaViewModel>(FragmentArenaBinding::inflate) {
+
     override val viewModel: ArenaViewModel by viewModels()
 
     override val musicBg: Int = MusicStore.MUSIC_FIGHT_BG.track

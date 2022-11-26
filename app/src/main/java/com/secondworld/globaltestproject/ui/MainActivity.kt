@@ -22,12 +22,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-
-        CoroutineScope(Dispatchers.IO).launch { }
-
-
         setContentView(binding.root)
-
     }
 
     fun changeSong(song : Int) {
