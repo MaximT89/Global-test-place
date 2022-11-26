@@ -1,6 +1,8 @@
 package com.secondworld.globaltestproject.ui.screens.shop_screen
 
+import android.graphics.Typeface
 import androidx.fragment.app.viewModels
+import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.BaseFragment
 import com.secondworld.globaltestproject.core.Destinations
 import com.secondworld.globaltestproject.core.click

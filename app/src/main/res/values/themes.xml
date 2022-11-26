@@ -19,6 +19,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="TextFamily">
+        <item name="fontFamily">@font/rubik_medium</item>
+    </style>
+
 
     <style name="AlertDialog.Custom" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@android:color/transparent</item>
