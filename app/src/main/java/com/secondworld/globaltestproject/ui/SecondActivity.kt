@@ -15,6 +15,8 @@ class SecondActivity : AppCompatActivity() {
         ActivitySecondBinding.inflate(layoutInflater)
     }
 
+    // test
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
