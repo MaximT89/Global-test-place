@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.di
 
-import com.secondworld.globaltestproject.ui.CommunicationFoo
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
