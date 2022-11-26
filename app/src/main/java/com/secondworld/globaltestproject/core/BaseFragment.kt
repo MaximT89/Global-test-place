@@ -22,6 +22,8 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.databinding.CustomAlertDialogBinding
+import com.secondworld.globaltestproject.ui.MainActivity
+import com.secondworld.globaltestproject.ui.models.MusicStore
 import java.lang.IllegalArgumentException
 import kotlin.reflect.full.isSubclassOf
 
@@ -40,6 +42,7 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
     protected var toolbar: Toolbar? = null
 
     open val showBtnAddUser = false
+    abstract val musicBg : Int
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +51,12 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
     ): View? {
         _viewBinding = inflate.invoke(inflater, container, false)
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        (activity as MainActivity).changeSong(musicBg)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

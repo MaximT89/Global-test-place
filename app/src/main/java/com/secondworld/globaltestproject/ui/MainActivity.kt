@@ -1,10 +1,8 @@
 package com.secondworld.globaltestproject.ui
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.secondworld.globaltestproject.core.BaseActivity
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,12 +13,20 @@ class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel : MainViewModel by viewModels()
 
+    var mediaPlayer1 : MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+    }
 
+    fun changeSong(song : Int) {
+        mediaPlayer1?.release()
+        mediaPlayer1 = MediaPlayer.create(this,song)
+        mediaPlayer1?.isLooping = true
+        mediaPlayer1?.start()
     }
 }
 

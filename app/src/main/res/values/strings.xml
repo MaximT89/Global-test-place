@@ -11,4 +11,12 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="yes">Да</string>
     <string name="no">No</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="go_arena">go arena</string>
+    <string name="go_shop">go shop</string>
+    <string name="go_main">go main</string>
+    <string name="arena">ARENA</string>
+    <string name="main_menu">MAIN MENU</string>
+    <string name="shop">SHOP</string>
 </resources>
