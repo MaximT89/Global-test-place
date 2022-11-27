@@ -1,13 +1,16 @@
-package com.secondworld.globaltestproject.ui.screen
+package com.secondworld.globaltestproject.ui.screen.first_screen
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
+import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.BaseFragment
+import com.secondworld.globaltestproject.core.click
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
+import com.secondworld.globaltestproject.ui.screen.second_screen.MyView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
@@ -20,6 +23,8 @@ class FirstFragment :
     @SuppressLint("Recycle")
     override fun initView() = with(binding) {
 
+        goSecondBtn.click { navigateTo(R.id.secondFragment) }
+
         val listColor = listOf(
             resources.getColor(R.color.red),
             resources.getColor(R.color.orange),
@@ -30,20 +35,27 @@ class FirstFragment :
             resources.getColor(R.color.purple),
         )
 
-        colorBgRainbow(textTest1, listColor, 0, 0L)
-        colorBgRainbow(textTest2, listColor, 0, 50L)
-        colorBgRainbow(textTest3, listColor, 0, 100L)
-        colorBgRainbow(textTest4, listColor, 0, 150L)
-        colorBgRainbow(textTest5, listColor, 0, 200L)
-        colorBgRainbow(textTest6, listColor, 0, 250L)
-        colorBgRainbow(textTest7, listColor, 0, 300L)
-        colorBgRainbow(textTest8, listColor, 0, 350L)
-        colorBgRainbow(textTest9, listColor, 0, 400L)
-        colorBgRainbow(textTest10, listColor, 0, 450L)
+        colorBgRainbow(romb1, listColor, 1, 50L)
+        colorBgRainbow(romb2, listColor, 1, 100L)
+        colorBgRainbow(romb3, listColor, 1, 150L)
+        colorBgRainbow(romb4, listColor, 1, 200L)
+        colorBgRainbow(romb5, listColor, 1, 250L)
+        colorBgRainbow(romb6, listColor, 1, 300L)
+        colorBgRainbow(romb7, listColor, 1, 350L)
+        colorBgRainbow(romb8, listColor, 1, 400L)
+        colorBgRainbow(romb9, listColor, 1, 450L)
+        colorBgRainbow(romb10, listColor, 1, 500L)
+        colorBgRainbow(romb11, listColor, 1, 550L)
+        colorBgRainbow(romb12, listColor, 1, 600L)
+        colorBgRainbow(romb13, listColor, 1, 650L)
+        colorBgRainbow(romb14, listColor, 1, 750L)
+        colorBgRainbow(romb15, listColor, 1, 800L)
+        colorBgRainbow(romb16, listColor, 1, 850L)
+        colorBgRainbow(romb17, listColor, 1, 900L)
 
     }
 
-    private fun colorBgRainbow(textTest: TextView, listColor: List<Int>, startColor : Int, startDelay: Long) {
+    private fun colorBgRainbow(myView: MyView, listColor: List<Int>, startColor : Int, startDelay: Long) {
 
         val durationAnimate = 600L
 
@@ -63,7 +75,7 @@ class FirstFragment :
                 animator.duration = durationAnimate
 
                 animator.addUpdateListener {
-                    textTest.setBackgroundColor(it.animatedValue as Int)
+                    myView.setColorPath(it.animatedValue as Int)
                 }
 
                 colorFromIndex++

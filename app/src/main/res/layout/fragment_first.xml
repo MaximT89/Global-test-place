@@ -4,145 +4,218 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screen.FirstFragment">
+    tools:context=".ui.screen.first_screen.FirstFragment">
 
-    <TextView
-        android:id="@+id/textTest1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
+
+    <Button
+        android:id="@+id/goSecondBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="252dp"
+        android:text="go second"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026"
-        tools:background="@color/Black" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textTest2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest1"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/alice_blue" />
+        app:layout_constraintTop_toBottomOf="@+id/romb1"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textTest3"
-        android:layout_width="50dp"
-        android:layout_margin="5dp"
-
-        android:layout_height="50dp"
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/green" />
+        app:layout_constraintTop_toBottomOf="@+id/romb2"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textTest4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest3"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/red" />
-
-    <TextView
-        android:id="@+id/textTest5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-
+        app:layout_constraintTop_toBottomOf="@+id/romb3"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest4"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/red" />
+        app:layout_constraintTop_toBottomOf="@+id/romb4"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textTest6"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb6"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest5"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/red" />
+        app:layout_constraintTop_toBottomOf="@+id/romb5"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textTest7"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb7"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest6"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/red" />
-
-    <TextView
-        android:id="@+id/textTest8"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-
+        app:layout_constraintTop_toBottomOf="@+id/romb6"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb8"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest7"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/red" />
-
-    <TextView
-        android:id="@+id/textTest9"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-
+        app:layout_constraintTop_toBottomOf="@+id/romb7"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb9"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest8"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/red" />
+        app:layout_constraintTop_toBottomOf="@+id/romb8"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textTest10"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb10"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTest9"
-        app:layout_constraintVertical_bias="0.0"
-        tools:background="@color/red" />
+        app:layout_constraintTop_toBottomOf="@+id/romb9"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb11"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/romb10"
+        app:layout_constraintVertical_bias="0.0" />
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb12"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/romb11"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb13"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/romb12"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb14"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/romb13"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb15"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/romb14"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb16"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/romb15"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.secondworld.globaltestproject.ui.screen.second_screen.MyView
+        android:id="@+id/romb17"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/romb16"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
