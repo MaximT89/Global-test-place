@@ -19,18 +19,6 @@
             android:paddingStart="30dp"
             android:paddingEnd="30dp" />
 
-<!--        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator-->
-<!--            android:id="@+id/worm_dots_indicator"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:dotsColor="@color/material_blueA200"-->
-<!--            app:dotsStrokeColor="@color/material_yellow"-->
-<!--            app:dotsCornerRadius="8dp"-->
-<!--            app:dotsSize="16dp"-->
-<!--            app:dotsSpacing="4dp"-->
-<!--            app:dotsStrokeWidth="2dp"-->
-<!--            />-->
-
         <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
             android:id="@+id/dotsIndicator"
             android:layout_width="wrap_content"
@@ -42,13 +30,7 @@
             android:layout_margin="15dp"
             app:dotsSize="16dp"
             app:dotsSpacing="4dp"
-            app:dotsStrokeWidth="2dp"
-            />
+            app:dotsStrokeWidth="2dp" />
 
     </LinearLayout>
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,11 +32,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initObservable() {
-
         viewModel.listData.observe(this){ items ->
             adapterPizza?.items = items
         }
-
     }
 
     private fun initView() = with(binding){
@@ -62,7 +60,5 @@ class MainActivity : AppCompatActivity() {
 
         dotsIndicator.attachTo(viewPagerImageSlider)
     }
-
-
 }
 
