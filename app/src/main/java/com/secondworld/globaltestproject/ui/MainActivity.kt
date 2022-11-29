@@ -1,13 +1,14 @@
 package com.secondworld.globaltestproject.ui
 
-import android.R.attr
 import android.app.Activity
 import android.content.ActivityNotFoundException
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.MediaStore.Images
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -45,9 +46,7 @@ class MainActivity : BaseActivity() {
         }
 
         binding.btnGetImage.click {
-
-
-
+            getImage()
         }
 
 
@@ -61,7 +60,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    fun getImage(){
+    private fun getImage() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
@@ -77,31 +76,43 @@ class MainActivity : BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-//        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-//            // Фотка сделана, извлекаем миниатюру картинки
-//            val thumbnailBitmap = data?.extras?.get("data") as Bitmap
-//            binding.imageMain.setImageBitmap(thumbnailBitmap)
-//        }
-//        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK) { }
-
         // Другой вариант с применением when
-        when(requestCode){
-            REQUEST_TAKE_PHOTO ->{
-                if(resultCode == Activity.RESULT_OK && data !== null){
+        when (requestCode) {
+            REQUEST_TAKE_PHOTO -> {
+                if (resultCode == Activity.RESULT_OK && data !== null) {
                     binding.imageMain.setImageBitmap(data.extras?.get("data") as Bitmap)
+
+                    saveInGallery(data.extras?.get("data") as Bitmap)
                 }
             }
             SELECT_PICTURE -> {
                 val selectedImageUri: Uri? = data?.data
                 Glide.with(this).load(selectedImageUri).into(binding.imageMain)
             }
-            else ->{
+            else -> {
                 showSnackbar("Wrong request code")
             }
         }
     }
 
-    private fun showSnackbar(message : String) {
+    private fun saveInGallery(bitmap: Bitmap) {
+        Images.Media.insertImage(
+            this.contentResolver,
+            bitmap,
+            "new_photo",
+            "description"
+        )
+    }
+
+    fun addImageToGallery(filePath: String?) {
+        val values = ContentValues()
+        values.put(Images.Media.DATE_TAKEN, System.currentTimeMillis())
+        values.put(Images.Media.MIME_TYPE, "image/jpeg")
+        values.put(MediaStore.MediaColumns.DATA, filePath)
+        this.contentResolver.insert(Images.Media.EXTERNAL_CONTENT_URI, values)
+    }
+
+    private fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
