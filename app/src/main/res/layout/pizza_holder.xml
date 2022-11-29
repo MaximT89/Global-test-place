@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="15dp"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/pizza_1" />
+
+                <TextView
+                    android:id="@+id/pizzaWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageMain"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_weight_pizza"
+                    android:drawableLeft="@drawable/ic_baseline_info_24"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:textColor="@color/Black"
+                    tools:text="  450 гр." />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/pizzaName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/chocolate"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_margin="15dp"
+                tools:text="Маргарита"/>
+
+            <TextView
+                android:id="@+id/pizzaDescr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Gray"
+                android:layout_marginHorizontal="15dp"
+                android:textSize="16sp"
+                tools:text="Тесто дрожжевое, сыр Моцарелла, соус чеддер, сливки, вешенки, сыр пармезан, куриное филе, бекон, масло чесночное, сушеный базилик"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="заказать"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/chocolate"/>
+        </LinearLayout>
+
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

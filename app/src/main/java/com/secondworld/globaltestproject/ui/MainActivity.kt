@@ -2,112 +2,67 @@ package com.secondworld.globaltestproject.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.CountDownTimer
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayoutMediator
-import com.secondworld.globaltestproject.core.log
-import com.secondworld.globaltestproject.data.repository.RepositoryImpl
-import com.secondworld.globaltestproject.data.storages.StorageName
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
-import com.secondworld.globaltestproject.ui.adapters.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private var adapterPizza : RecyclerPizzaAdapter? = null
 
-    @Inject
-    lateinit var storageName: StorageName
+    private  val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
 
-    @Inject
-    lateinit var repository: RepositoryImpl
-    private var viewPagerAdapter: ViewPagerAdapter? = null
-    private val maxState = 3
-    private var myState = 0
-    private var currentPosition = 0
-
-    private val TIME_VALUE = 4000
+    private val viewModel by viewModels<MainViewModel>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initView()
-        timer()
+        initObservable()
     }
 
-    fun timer() {
-        object : CountDownTimer(TIME_VALUE.toLong(), 5) {
-            override fun onTick(value: Long) {
-                val i = TIME_VALUE - value
-                binding.progressBar.progress = i.toInt()
-            }
+    private fun initObservable() {
 
-            override fun onFinish() {
-                timer()
-                binding.viewPager.setCurrentItem(nextPage(currentPosition), true)
-                log(currentPosition)
-            }
-        }.start()
-    }
-
-    fun nextPage(position: Int): Int {
-        val page = position + 1
-        return if (page > maxState - 1) {
-            0
-        } else {
-            page
+        viewModel.listData.observe(this){ items ->
+            adapterPizza?.items = items
         }
+
     }
 
-    private fun initView() {
-        binding.progressBar.max = TIME_VALUE
+    private fun initView() = with(binding){
 
-        viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
-        binding.viewPager.adapter = viewPagerAdapter
+        adapterPizza = RecyclerPizzaAdapter(viewPagerImageSlider)
 
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            when (position) {
-                0 -> tab.text = "First"
-                1 -> tab.text = "Second"
-                2 -> tab.text = "Third"
-            }
-        }.attach()
+        viewPagerImageSlider.apply {
+            adapter = adapterPizza
+            clipToPadding = false
+            clipChildren = false
+            offscreenPageLimit = 3
+            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        }
 
-        onInfinitePageChangeCallback(maxState)
+        val transformer = CompositePageTransformer()
+        transformer.addTransformer(MarginPageTransformer(30))
+        transformer.addTransformer { page, position ->
+            val r : Float = 1 - Math.abs(position)
+            page.scaleY =  0.85f + r * 0.15f
+        }
+
+        viewPagerImageSlider.setPageTransformer(transformer)
+
+        dotsIndicator.attachTo(viewPagerImageSlider)
     }
 
-    private fun onInfinitePageChangeCallback(listSize: Int) {
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 
-            override fun onPageScrollStateChanged(state: Int) {
-                myState = state
-                super.onPageScrollStateChanged(state)
-            }
-
-            override fun onPageSelected(position: Int) {
-                currentPosition = position
-                super.onPageSelected(position)
-            }
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int,
-            ) {
-                if (myState == ViewPager2.SCROLL_STATE_DRAGGING && currentPosition == position && currentPosition == 0)
-                    binding.viewPager.setCurrentItem(listSize - 1, true)
-                else if (myState == ViewPager2.SCROLL_STATE_DRAGGING && currentPosition == position && currentPosition == 2)
-                    binding.viewPager.setCurrentItem(0, true)
-
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
-        })
-    }
 }
 

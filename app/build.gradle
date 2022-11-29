@@ -38,6 +38,8 @@ android {
 
 dependencies {
 
+    implementation 'com.tbuonomo:dotsindicator:4.3'
+
     // Swipe Refresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.swipeRefresh"
 
