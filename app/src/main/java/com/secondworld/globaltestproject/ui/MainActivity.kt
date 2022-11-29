@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() = with(binding){
 
-        adapterPizza = RecyclerPizzaAdapter(viewPagerImageSlider)
+        adapterPizza = RecyclerPizzaAdapter()
 
         viewPagerImageSlider.apply {
             adapter = adapterPizza

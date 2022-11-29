@@ -8,10 +8,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.secondworld.globaltestproject.databinding.PizzaHolderBinding
 
 @SuppressLint("NotifyDataSetChanged")
-class RecyclerPizzaAdapter(viewPager: ViewPager2) :
+class RecyclerPizzaAdapter :
     RecyclerView.Adapter<RecyclerPizzaAdapter.PizzaHolder>() {
-
-    val pager = viewPager
 
     var items = listOf<PizzaItem>()
         set(value) {
