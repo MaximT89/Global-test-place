@@ -1,4 +1,4 @@
-package com.secondworld.globaltestproject.core
+package com.secondworld.globaltestproject.core.common
 
 import android.os.Bundle
 import androidx.annotation.IdRes

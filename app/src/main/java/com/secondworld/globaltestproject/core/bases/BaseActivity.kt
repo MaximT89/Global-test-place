@@ -1,4 +1,4 @@
-package com.secondworld.globaltestproject.core
+package com.secondworld.globaltestproject.core.bases
 
 import android.os.Build
 import android.os.Bundle
@@ -9,17 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.secondworld.globaltestproject.R
+import com.secondworld.globaltestproject.core.common.Navigator
 
-abstract class BaseActivity : AppCompatActivity(), Navigator{
-
-    override fun navigateTo(resId: Int, args: Bundle?, navOptions: NavOptions?) =
-        findNavController(R.id.nav_host_fragment).navigate(resId, args, navOptions)
-
-    override fun navigateTo(resId: Int, args: Bundle?) = findNavController(R.id.nav_host_fragment).navigate(resId, args)
-
-    override fun navigateTo(resId: Int) = findNavController(R.id.nav_host_fragment).navigate(resId)
-
-    override fun navigateUp() { findNavController(R.id.nav_host_fragment).navigateUp() }
+abstract class BaseActivity : AppCompatActivity() {
     /**
      * Проверяем, если у нас отображается клавиатура, то при клике вне клавиатуры мы вызываем метод
      * [hideKeyboard] , которым скрываем клавиатуру
