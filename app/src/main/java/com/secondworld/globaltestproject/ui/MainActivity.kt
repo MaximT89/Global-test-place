@@ -7,8 +7,8 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.secondworld.globaltestproject.core.BaseActivity
 import com.secondworld.globaltestproject.core.log
-import com.secondworld.globaltestproject.core.snackbar
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
+import com.secondworld.globaltestproject.ui.model.PersonItem
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -29,14 +29,19 @@ class MainActivity : BaseActivity() {
         initObservers()
     }
 
+
     private fun initObservers() {
         viewModel.listPersons.observe(this) { list ->
             personAdapter.submitList(list)
         }
 
+        viewModel.filterChips.observe(this){ listProfessional ->
+            personAdapter.submitList(viewModel.filterData(listProfessional))
+        }
+
         viewModel.listChips.observe(this) { listChips ->
 
-            listChips.forEach {
+            listChips.forEach { profession ->
                 val chip = Chip(this)
                 val chipDrawable = ChipDrawable.createFromAttributes(
                     this,
@@ -45,23 +50,14 @@ class MainActivity : BaseActivity() {
                     com.google.android.material.R.style.Widget_MaterialComponents_Chip_Filter
                 )
                 chip.setChipDrawable(chipDrawable)
-                chip.text = it.ru
+                chip.text = profession.ru
                 chip.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) viewModel.filterProfessionItems(it, true)
-                    else viewModel.filterProfessionItems(it, false)
+                    if (isChecked) viewModel.updateCurrentChips(profession, true)
+                    else viewModel.updateCurrentChips(profession, false)
                 }
                 binding.chips.addView(chip as View)
             }
         }
-
-        viewModel.listChipsFilter.observe(this) { list ->
-
-            log(list.toString())
-
-            viewModel.getFilteredListPerson(list)
-
-        }
-
     }
 
     private fun initView() {

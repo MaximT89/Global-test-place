@@ -1,6 +1,6 @@
 package com.secondworld.globaltestproject.data
 
-import com.secondworld.globaltestproject.ui.PersonItem
+import com.secondworld.globaltestproject.ui.model.PersonItem
 import javax.inject.Inject
 
 class Repository @Inject constructor(){
@@ -36,8 +36,6 @@ class Repository @Inject constructor(){
         return list
     }
 
-
-
     private fun getRandomAge() = (15..65).random()
 
     private fun getRandomDescription() = listOf(
@@ -54,7 +52,7 @@ class Repository @Inject constructor(){
 
     private fun getRandomId() = (1..9999999).random()
 
-    private fun getRandomName() = listOf<String>(
+    private fun getRandomName() = listOf(
             "Max",
             "Ann",
             "Sara",
@@ -65,6 +63,4 @@ class Repository @Inject constructor(){
             "Tomas",
             "Luise",
         ).random()
-
-
 }

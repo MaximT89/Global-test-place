@@ -13,13 +13,11 @@ import android.graphics.Shader
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
-import com.secondworld.globaltestproject.ui.PersonItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -33,12 +31,6 @@ fun View.click(logic : () -> Unit) {
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
-}
-
-fun <T>MutableLiveData<List<T>>.newList(someLogic : (data : T) -> T) {
-    value?.map {
-        someLogic.invoke(it)
-    }
 }
 
 fun String.onlyDigits() : String {
@@ -91,11 +83,11 @@ fun Button.notActive(){
     isClickable = false
 }
 
-fun <T>MutableLiveData<List<T>?>.newListMain(someLogic : (data : T) -> T) {
+fun <T>MutableLiveData<MutableList<T>?>.newListMain(someLogic : (data : T) -> T) {
     value.let { items ->
         value = items?.map {
             someLogic.invoke(it)
-        }
+        } as MutableList<T>?
     }
 }
 

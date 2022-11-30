@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.secondworld.globaltestproject.core.click
 import com.secondworld.globaltestproject.databinding.HolderPersonItemBinding
+import com.secondworld.globaltestproject.ui.model.PersonItem
 import java.lang.StringBuilder
 
 @SuppressLint("SetTextI18n")
@@ -29,7 +31,7 @@ class PersonsAdapter : ListAdapter<PersonItem, PersonsAdapter.PersonViewHolder>(
 
             val sb = StringBuilder()
             sb.append("  ")
-            item.professions?.forEach { sb.append(it?.ru).append(", ") }
+            item.professions?.forEach { sb.append(it.ru).append(", ") }
             professions.text = sb.toString().dropLast(2)
         }
     }
