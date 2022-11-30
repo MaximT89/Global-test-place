@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.secondworld.globaltestproject">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -10,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GlobalTestProject">
+        <activity
+            android:name=".ui.AlertActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
