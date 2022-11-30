@@ -19,6 +19,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
+import com.secondworld.globaltestproject.ui.PersonItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -32,6 +33,12 @@ fun View.click(logic : () -> Unit) {
 
 fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
+}
+
+fun <T>MutableLiveData<List<T>>.newList(someLogic : (data : T) -> T) {
+    value?.map {
+        someLogic.invoke(it)
+    }
 }
 
 fun String.onlyDigits() : String {
