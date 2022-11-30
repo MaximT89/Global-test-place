@@ -36,7 +36,9 @@ class MainActivity : BaseActivity() {
         }
 
         viewModel.filterChips.observe(this){ listProfessional ->
-            personAdapter.submitList(viewModel.filterData(listProfessional))
+            if(viewModel.filterStart.value == true) {
+                personAdapter.submitList(viewModel.filterData(listProfessional))
+            }
         }
 
         viewModel.listChips.observe(this) { listChips ->
@@ -52,7 +54,10 @@ class MainActivity : BaseActivity() {
                 chip.setChipDrawable(chipDrawable)
                 chip.text = profession.ru
                 chip.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) viewModel.updateCurrentChips(profession, true)
+                    if (isChecked) {
+                        viewModel.filterStartUpdate(true)
+                        viewModel.updateCurrentChips(profession, true)
+                    }
                     else viewModel.updateCurrentChips(profession, false)
                 }
                 binding.chips.addView(chip as View)

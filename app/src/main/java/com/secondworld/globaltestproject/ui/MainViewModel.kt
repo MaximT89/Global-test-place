@@ -21,9 +21,16 @@ class MainViewModel @Inject constructor(
     private val _filterChips = MutableLiveData(mutableListOf<Profession>())
     val filterChips: LiveData<MutableList<Profession>> = _filterChips
 
+    private val _filterStart = MutableLiveData(false)
+    val filterStart: LiveData<Boolean> = _filterStart
+
     init {
         getPersonsFromStorage()
         getChips()
+    }
+
+    fun filterStartUpdate(status: Boolean) {
+        _filterStart.value = status
     }
 
     fun updateCurrentChips(profession: Profession, status: Boolean) {
