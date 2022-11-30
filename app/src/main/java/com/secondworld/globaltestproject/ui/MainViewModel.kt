@@ -21,19 +21,21 @@ class MainViewModel @Inject constructor(
     private val _filterChips = MutableLiveData(mutableListOf<Profession>())
     val filterChips: LiveData<MutableList<Profession>> = _filterChips
 
-    private val _filterStart = MutableLiveData(false)
-    val filterStart: LiveData<Boolean> = _filterStart
+    private val _filterStartWork = MutableLiveData(false)
 
     init {
         getPersonsFromStorage()
         getChips()
     }
 
+    fun getFilterStart(): Boolean = _filterStartWork.value!!
+
     fun filterStartUpdate(status: Boolean) {
-        _filterStart.value = status
+        _filterStartWork.value = status
     }
 
     fun updateCurrentChips(profession: Profession, status: Boolean) {
+
         val list = _filterChips.value
 
         if (status) list?.add(profession)
@@ -42,16 +44,10 @@ class MainViewModel @Inject constructor(
         _filterChips.value = list
     }
 
-    fun filterData(professionalsBack: MutableList<Profession>): MutableList<PersonItem>? {
-
-        val list: MutableList<PersonItem>? = _listPersons.value
-
-        val newList: List<PersonItem>? = list?.filter { personItem ->
+    fun filterData(professionalsBack: MutableList<Profession>) =
+        _listPersons.value?.filter { personItem ->
             personItem.professions!!.any { profession -> professionalsBack.contains(profession) }
         }
-
-        return newList as MutableList<PersonItem>
-    }
 
     private fun getChips() {
         _listChips.value = listOf(

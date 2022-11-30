@@ -5,6 +5,7 @@ import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -22,5 +23,9 @@ abstract class BaseActivity : AppCompatActivity() {
     private fun hideKeyboard() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
+    }
+
+    protected fun <T> LiveData<T>.observe(block: (T) -> Unit) {
+        observe(this@BaseActivity) { t -> block.invoke(t) }
     }
 }

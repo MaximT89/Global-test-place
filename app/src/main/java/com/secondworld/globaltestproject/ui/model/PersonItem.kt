@@ -8,5 +8,4 @@ data class PersonItem(
     val age : Int? = null,
     val professions : List<Profession>? = null,
     val descr : String? = null,
-    val active : Boolean = true
 )

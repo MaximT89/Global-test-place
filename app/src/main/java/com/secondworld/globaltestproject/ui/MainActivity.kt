@@ -6,11 +6,9 @@ import androidx.activity.viewModels
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.secondworld.globaltestproject.core.BaseActivity
-import com.secondworld.globaltestproject.core.log
+import com.secondworld.globaltestproject.data.Profession
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
-import com.secondworld.globaltestproject.ui.model.PersonItem
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
@@ -29,38 +27,33 @@ class MainActivity : BaseActivity() {
         initObservers()
     }
 
+    private fun initObservers() = with(viewModel) {
 
-    private fun initObservers() {
-        viewModel.listPersons.observe(this) { list ->
-            personAdapter.submitList(list)
-        }
+        listPersons.observe { personAdapter.submitList(it) }
 
-        viewModel.filterChips.observe(this){ listProfessional ->
-            if(viewModel.filterStart.value == true) {
-                personAdapter.submitList(viewModel.filterData(listProfessional))
-            }
-        }
+        filterChips.observe { if (getFilterStart()) personAdapter.submitList(filterData(it)) }
 
-        viewModel.listChips.observe(this) { listChips ->
+        listChips.observe { createChips(it) }
+    }
 
-            listChips.forEach { profession ->
-                val chip = Chip(this)
-                val chipDrawable = ChipDrawable.createFromAttributes(
-                    this,
-                    null,
-                    0,
-                    com.google.android.material.R.style.Widget_MaterialComponents_Chip_Filter
-                )
-                chip.setChipDrawable(chipDrawable)
-                chip.text = profession.ru
-                chip.setOnCheckedChangeListener { _, isChecked ->
+    private fun createChips(listChips: List<Profession>?) {
+        listChips?.forEach { profession ->
+            val chipDrawable = ChipDrawable.createFromAttributes(
+                this,
+                null,
+                0,
+                com.google.android.material.R.style.Widget_MaterialComponents_Chip_Filter
+            )
+            Chip(this).apply{
+                setChipDrawable(chipDrawable)
+                text = profession.ru
+                setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
                         viewModel.filterStartUpdate(true)
                         viewModel.updateCurrentChips(profession, true)
-                    }
-                    else viewModel.updateCurrentChips(profession, false)
+                    } else viewModel.updateCurrentChips(profession, false)
                 }
-                binding.chips.addView(chip as View)
+                binding.chips.addView(this as View)
             }
         }
     }
