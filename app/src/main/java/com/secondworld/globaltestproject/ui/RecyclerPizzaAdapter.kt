@@ -17,6 +17,8 @@ class RecyclerPizzaAdapter :
             notifyDataSetChanged()
         }
 
+    // test
+
     inner class PizzaHolder(private val binding: PizzaHolderBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
