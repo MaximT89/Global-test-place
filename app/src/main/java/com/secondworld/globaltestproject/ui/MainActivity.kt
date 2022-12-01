@@ -53,8 +53,9 @@ class MainActivity : BaseActivity() {
             .setSmallIcon(R.drawable.ic_baseline_hotel_24)
             .setContentTitle("Новое уведомление")
             .setContentText("Какой то текст этого уведомления")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT).also {
+                it.setContentIntent(pendingIntent)
+            }
             .setAutoCancel(true)
 
         return builder.build()
