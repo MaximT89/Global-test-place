@@ -16,7 +16,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -226,13 +225,4 @@ fun SharedPreferences.Editor.put(pair: Pair<String, Any>) {
         is Float -> putFloat(key, value)
         else -> error("Only primitive types can be stored in SharedPreferences")
     }
-}
-
-
-fun isRefreshingFalse(view: SwipeRefreshLayout){
-    view.isRefreshing = false
-}
-
-fun isRefreshingTrue(view: SwipeRefreshLayout){
-    view.isRefreshing = true
 }
