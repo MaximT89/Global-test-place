@@ -16,7 +16,7 @@ class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
 
-    private val personAdapter = PersonsAdapter()
+    private var personAdapter : PersonsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +29,9 @@ class MainActivity : BaseActivity() {
 
     private fun initObservers() = with(viewModel) {
 
-        listPersons.observe { personAdapter.submitList(it) }
+        listPersons.observe { personAdapter?.submitList(it) }
 
-        filterChips.observe { if (getFilterStart()) personAdapter.submitList(filterData(it)) }
+        filterChips.observe { if (getFilterStart()) personAdapter?.submitList(filterData(it)) }
 
         listChips.observe { createChips(it) }
     }
@@ -59,6 +59,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initView() {
+        personAdapter = PersonsAdapter()
         binding.recyclerView.adapter = personAdapter
     }
 }

@@ -1,11 +1,15 @@
 package com.secondworld.globaltestproject.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.click
 import com.secondworld.globaltestproject.databinding.HolderPersonItemBinding
 import com.secondworld.globaltestproject.ui.model.PersonItem
@@ -25,6 +29,7 @@ class PersonsAdapter : ListAdapter<PersonItem, PersonsAdapter.PersonViewHolder>(
     inner class PersonViewHolder(private val binding: HolderPersonItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PersonItem) = with(binding) {
+
             name.text = item.name
             description.text = item.descr
             age.text = "Age : ${item.age}"
