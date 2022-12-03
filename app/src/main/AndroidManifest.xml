@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GlobalTestProject">
         <activity
+            android:name=".ui.BarChartActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>

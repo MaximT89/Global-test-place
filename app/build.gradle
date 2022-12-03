@@ -38,11 +38,13 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+
 }
 
 dependencies {
 
-
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     implementation 'ru.tinkoff.decoro:decoro:1.5.1'
 
