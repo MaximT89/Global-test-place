@@ -20,6 +20,8 @@ class BarChartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // тест
+
         val list: MutableList<BarEntry> = mutableListOf()
         list.add(BarEntry(2014f, 420f))
         list.add(BarEntry(2015f, 475f))
