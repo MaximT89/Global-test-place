@@ -15,6 +15,7 @@ class MainActivity : BaseActivity() {
 
     // test
     // test2
+    // test3
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
