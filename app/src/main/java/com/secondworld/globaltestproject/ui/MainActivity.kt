@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     // test
+    // test2
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
