@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.ui
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -38,6 +39,7 @@ class MainActivity : BaseActivity() {
         createNotificationChannel() // создание канала нотификации
     }
 
+
     fun createNotification() : Notification{
 
         // Create an explicit intent for an Activity in your app
@@ -47,7 +49,7 @@ class MainActivity : BaseActivity() {
         }
 
         // FLAG_UPDATE_CURRENT - нужен для чтения из нотификации
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE )
 
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_baseline_hotel_24)
@@ -72,10 +74,7 @@ class MainActivity : BaseActivity() {
         }
 
         binding.btnShowNotification.click {
-            with(NotificationManagerCompat.from(this)) {
-                // notificationId is a unique int for each notification that you must define
-                notify(notificationId, createNotification())
-            }
+            with(NotificationManagerCompat.from(this)) { notify(notificationId, createNotification()) }
         }
     }
 
