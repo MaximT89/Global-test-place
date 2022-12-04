@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.secondworld.globaltestproject.R
+import com.secondworld.globaltestproject.core.click
 import com.secondworld.globaltestproject.databinding.ActivityBarChartBinding
 
 class BarChartActivity : AppCompatActivity() {
@@ -19,8 +21,6 @@ class BarChartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        // тест
 
         val list: MutableList<BarEntry> = mutableListOf()
         list.add(BarEntry(2014f, 420f))

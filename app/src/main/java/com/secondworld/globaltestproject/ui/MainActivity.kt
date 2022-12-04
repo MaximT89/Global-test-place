@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.secondworld.globaltestproject.core.BaseActivity
 import com.secondworld.globaltestproject.core.click
+import com.secondworld.globaltestproject.core.log
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,11 +20,12 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.btnBarChart.click {
             startActivity(Intent(this, BarChartActivity::class.java))
         }
 
     }
+
+
 }
 
