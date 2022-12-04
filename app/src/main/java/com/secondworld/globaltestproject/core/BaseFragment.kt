@@ -83,11 +83,8 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
             .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
 
                 override fun handleOnBackPressed() {
-
-                    if (needCustomNavigate) {
-                        if(resId != null) findNavController().navigate(resId)
-                        else log("косяк resId == null")
-                    } else {
+                    if (needCustomNavigate) if(resId != null) findNavController().navigate(resId)
+                    else {
                         if (isEnabled) isEnabled = false
                     }
                 }
