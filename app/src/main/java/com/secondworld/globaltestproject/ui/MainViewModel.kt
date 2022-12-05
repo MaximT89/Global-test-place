@@ -8,8 +8,11 @@ import com.secondworld.globaltestproject.core.removeItem
 import com.secondworld.globaltestproject.core.upItem
 import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.domain.useCases.PersonUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel(private val personUseCase: PersonUseCase) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val personUseCase: PersonUseCase) : ViewModel() {
 
     private var _listPerson = MutableLiveData<MutableList<Person>?>()
     val listPerson: LiveData<MutableList<Person>?> = _listPerson

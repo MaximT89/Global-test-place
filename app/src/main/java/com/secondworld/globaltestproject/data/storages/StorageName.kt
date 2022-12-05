@@ -1,6 +1,8 @@
 package com.secondworld.globaltestproject.data.storages
 
-class StorageName {
+import javax.inject.Inject
+
+class StorageName @Inject constructor() {
 
     fun listNames() : MutableList<String> = mutableListOf(
         "Max",
