@@ -5,24 +5,20 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.databinding.CustomAlertDialogBinding
-import java.lang.IllegalArgumentException
-
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
@@ -88,22 +84,24 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
         titleAlert: String,
         bodyText: String
     ) {
-        val dialogViewBinding = CustomAlertDialogBinding.inflate(LayoutInflater.from(requireActivity())).apply {
-            title.text = titleAlert
-            body.text = bodyText
-        }
+        val dialogViewBinding =
+            CustomAlertDialogBinding.inflate(LayoutInflater.from(requireActivity())).apply {
+                title.text = titleAlert
+                body.text = bodyText
+            }
 
-        val dialog = AlertDialog.Builder(requireActivity(), R.style.AlertDialog_Custom).create().apply {
-            setView(dialogViewBinding.root)
-            show()
-        }
+        val dialog =
+            AlertDialog.Builder(requireActivity(), R.style.AlertDialog_Custom).create().apply {
+                setView(dialogViewBinding.root)
+                show()
+            }
 
-        dialogViewBinding.btnPositive.click{
+        dialogViewBinding.btnPositive.click {
             positiveBtnLogic.invoke()
             dialog.dismiss()
         }
 
-        dialogViewBinding.btnNegative.click{
+        dialogViewBinding.btnNegative.click {
             negativeBtnLogic.invoke()
             dialog.dismiss()
         }
@@ -114,15 +112,61 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
      * @param view нужно вставить binding.root.
      * @param message сообщение которое вы хотите отобразить в snackbar.
      */
-    fun showSnackbar(message: String) {
-        Snackbar.make(requireActivity(), binding.root, message, Snackbar.LENGTH_LONG).show()
+    @SuppressLint("InflateParams")
+    fun showSnackbar(
+        message: String,
+        type: SnackbarType = SnackbarType.SIMPLE,
+        colorBg: Int? = null
+    ) {
+        val snackbar = Snackbar.make(requireActivity(), binding.root, message, Snackbar.LENGTH_LONG)
+
+        fun snackbarSetBg(snackbar: Snackbar, colorBg: Int?, defaultColor: Int) {
+            snackbar.setBackgroundTint(
+                ContextCompat.getColor(
+                    requireActivity(),
+                    if (colorBg == null) defaultColor
+                    else {
+                        try { colorBg }
+                        catch (e: Exception) { defaultColor }
+                    }
+                )
+            )
+        }
+
+        when (type) {
+            SnackbarType.SIMPLE -> {
+                if (colorBg != null) {
+                    try {
+                        snackbar.setBackgroundTint(
+                            ContextCompat.getColor(
+                                requireActivity(),
+                                colorBg
+                            )
+                        )
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+            SnackbarType.POSITIVE -> snackbarSetBg(snackbar, colorBg, R.color.green)
+            SnackbarType.NEGATIVE -> snackbarSetBg(snackbar, colorBg, R.color.indian_red)
+        }
+
+        snackbar.show()
+    }
+
+    enum class SnackbarType {
+        SIMPLE,
+        POSITIVE,
+        NEGATIVE
     }
 
     /**
      * Функция копирования в буфер обмена
      */
-    fun clipToBuffer(str : String) {
-        val clipboard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
+    fun clipToBuffer(str: String) {
+        val clipboard =
+            requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
         val clip = ClipData.newPlainText("Copied Text", str)
         clipboard!!.setPrimaryClip(clip)
 
