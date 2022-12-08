@@ -4,9 +4,10 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.*
+import androidx.recyclerview.widget.RecyclerView
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
-import com.secondworld.globaltestproject.domain.repository.Repository
-import com.secondworld.globaltestproject.domain.useCases.PersonUseCase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +28,27 @@ class MainActivity : AppCompatActivity() {
         initObservers()
     }
 
+    private val itemTouchHelper by lazy {
+        val itemTouchCallback =
+            object : ItemTouchHelper.SimpleCallback(UP or DOWN or START or END, 0) {
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    val recyclerviewAdapter = recyclerView.adapter as PersonAdapter
+                    val fromPosition = viewHolder.absoluteAdapterPosition
+                    val toPosition = target.absoluteAdapterPosition
+                    recyclerviewAdapter.moveItem(fromPosition, toPosition)
+                    recyclerviewAdapter.notifyItemMoved(fromPosition, toPosition)
+                    return true
+                }
+
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
+            }
+        ItemTouchHelper(itemTouchCallback)
+    }
+
     private fun initObservers() {
         viewModel.listPerson.observe(this) {
             if (it != null) {
@@ -38,21 +60,11 @@ class MainActivity : AppCompatActivity() {
     private fun initData() {
 
         viewModel.getPerson()
-
-        personAdapter.callBackPerson = { position, _ ->
-            viewModel.removePerson(position)
-        }
-
-        personAdapter.callBackArrowUp = {
-            viewModel.upElement(it)
-        }
-
-        personAdapter.callBackArrowDown = {
-            viewModel.downElement(it)
-        }
     }
 
     private fun initView() {
+
+        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
 
         binding.recyclerView.apply {
             setHasFixedSize(true)
