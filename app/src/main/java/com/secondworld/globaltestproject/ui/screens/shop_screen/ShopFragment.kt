@@ -1,13 +1,10 @@
 package com.secondworld.globaltestproject.ui.screens.shop_screen
 
-import android.graphics.Typeface
 import androidx.fragment.app.viewModels
-import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.BaseFragment
 import com.secondworld.globaltestproject.core.Destinations
 import com.secondworld.globaltestproject.core.click
 import com.secondworld.globaltestproject.databinding.FragmentShopBinding
-import com.secondworld.globaltestproject.ui.MainActivity
 import com.secondworld.globaltestproject.ui.models.MusicStore
 import dagger.hilt.android.AndroidEntryPoint
 
