@@ -4,11 +4,6 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.secondworld.globaltestproject.core.log
-import com.secondworld.globaltestproject.core.upItem
-import com.secondworld.globaltestproject.data.models.Person
-import com.secondworld.globaltestproject.data.repository.RepositoryImpl
-import com.secondworld.globaltestproject.data.storages.StorageName
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import com.secondworld.globaltestproject.domain.repository.Repository
 import com.secondworld.globaltestproject.domain.useCases.PersonUseCase

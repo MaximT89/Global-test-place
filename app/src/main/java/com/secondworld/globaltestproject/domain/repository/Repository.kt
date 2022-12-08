@@ -7,4 +7,6 @@ interface Repository {
     fun getRandomName() : String
     fun getRandomAge() : Int
     fun getListPersons() : MutableList<Person>
+    fun getRandomActive() : Boolean
+    fun getRandomProfession(): String
 }

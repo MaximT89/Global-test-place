@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -34,19 +35,14 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(Item
     inner class RecyclerViewHolder(private val binding: HolderPersonBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(person: Person) {
-            binding.textPersonName.text = person.name
-            binding.textPersonAge.text = person.age.toString()
-            binding.imageDelete.setOnClickListener {
+            binding.userName.text = "Имя : ${person.name}"
+            binding.userAge.text = "Возраст : ${person.age}"
+            binding.userActive.text = "Активность : ${person.isActive}"
+            binding.userProfession.text = "Профессия : ${person.profession}"
 
-                callBackPerson?.invoke(absoluteAdapterPosition, person.name)
-                callBackPersonSecond?.invoke(person.age) }
-
-            binding.imageArrowUp.setOnClickListener {
-                callBackArrowUp?.invoke(absoluteAdapterPosition) }
-
-            binding.imageArrowDown.setOnClickListener {
-                callBackArrowDown?.invoke(absoluteAdapterPosition) }
+            binding.userYearBorn.text = (2022 - person.age).toString()
         }
     }
 }
