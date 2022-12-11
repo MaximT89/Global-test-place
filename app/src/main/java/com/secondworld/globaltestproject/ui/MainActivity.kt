@@ -2,7 +2,8 @@ package com.secondworld.globaltestproject.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.secondworld.globaltestproject.core.BaseActivity
+import androidx.core.view.isVisible
+import com.secondworld.globaltestproject.core.bases.BaseActivity
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -10,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel : MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

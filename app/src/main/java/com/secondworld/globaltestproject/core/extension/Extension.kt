@@ -1,4 +1,4 @@
-package com.secondworld.globaltestproject.core
+package com.secondworld.globaltestproject.core.extension
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -7,15 +7,16 @@ import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.SharedPreferences
-import android.content.res.Resources
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
+import android.content.res.Resources
+import android.widget.Button
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -66,7 +67,7 @@ fun log(message: String) {
     Log.d("TAG", "log: $message")
 }
 
-fun log(tag: String, message: String) {
+fun log(tag: String = "TAG", message: String) {
     Log.d(tag, "log: $message")
 }
 
@@ -226,3 +227,13 @@ fun SharedPreferences.Editor.put(pair: Pair<String, Any>) {
         else -> error("Only primitive types can be stored in SharedPreferences")
     }
 }
+
+
+fun isRefreshingFalse(view: SwipeRefreshLayout){
+    view.isRefreshing = false
+}
+
+fun isRefreshingTrue(view: SwipeRefreshLayout){
+    view.isRefreshing = true
+}
+
