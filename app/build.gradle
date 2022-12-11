@@ -42,7 +42,8 @@ android {
 
 dependencies {
 
-
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
     implementation 'ru.tinkoff.decoro:decoro:1.5.1'
 
