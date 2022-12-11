@@ -5,7 +5,7 @@ object Constants {
     /**
      * Базовый URL для запросов на сервер ( используется в клиенте @MainRetrofitClient)
      */
-    const val BASE_URL = "https://dev.ah-info.ru:8443/"
+    const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
     /**
      * Урл сформированный каждым объектом в MainFragment ( используется в клиенте @ConnRetrofitClient)
