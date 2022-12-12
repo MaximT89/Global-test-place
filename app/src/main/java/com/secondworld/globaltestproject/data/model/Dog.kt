@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.data.model
 
 data class Dog(
-    val name : String
+    override val id: Int,
+    val name: String,
 ) : Animal

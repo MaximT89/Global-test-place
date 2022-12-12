@@ -83,7 +83,7 @@ fun Button.notActive(){
     isClickable = false
 }
 
-fun <T>MutableLiveData<List<T>?>.newListMain(someLogic : (data : T) -> T) {
+fun <T>MutableLiveData<List<T>>.newListMain(someLogic : (data : T) -> T) {
     value.let { items ->
         value = items?.map {
             someLogic.invoke(it)
