@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.viewModels
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
@@ -20,7 +21,7 @@ class ThirdFragment : BaseFragment<FragmentThirdBinding, ThirdViewModel>(Fragmen
     @SuppressLint("ResourceType")
     override fun initView() = with(binding){
         btnGoNext.click {
-            navigateTo(2131230913)
+            navigateTo(resId = R.id.firstFragment)
         }
     }
 

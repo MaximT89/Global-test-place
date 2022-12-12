@@ -12,47 +12,67 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        tools:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomPanel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_graph" />
+        app:navGraph="@navigation/nav_graph"
+        tools:visibility="visible" />
 
     <LinearLayout
+        android:id="@+id/bottomPanel"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:background="@color/Black"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:background="@color/Black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent">
-        
+
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="16dp"
             android:src="@drawable/ic_baseline_circle_24"
             app:tint="@color/white" />
-        
+
         <TextView
+            android:id="@+id/currentScreen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="Избранное"
             android:textColor="@color/white"
-            android:textSize="25dp"/>
-        
-        
-            
-        
-        
-        
+            android:textSize="25dp"
+            tools:text="Избранное" />
+
+        <ImageView
+            android:id="@+id/imgFavourite"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="8dp"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/imgPerson"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="8dp"
+            android:src="@drawable/ic_baseline_person_outline_24"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/imgWork"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="8dp"
+            android:src="@drawable/ic_baseline_work_outline_24"
+            app:tint="@color/white" />
+
+
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

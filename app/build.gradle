@@ -42,7 +42,8 @@ android {
 
 dependencies {
 
-
+    implementation 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.3.2'
+    implementation 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:4.3.2'
 
     implementation 'ru.tinkoff.decoro:decoro:1.5.1'
 

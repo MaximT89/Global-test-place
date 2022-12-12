@@ -2,6 +2,7 @@ package com.secondworld.globaltestproject.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -29,14 +30,38 @@ class MainActivity : BaseActivity() {
         val navController = navHostFragment!!.navController
 
 
-        navController.addOnDestinationChangedListener {
-                    _, destination, _ ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            updateBottomPanel(destination.label.toString())
+        }
+    }
 
-                log("destination label: ${destination.label}")
-                log("destination id: ${destination.id}")
+    private fun updateBottomPanel(label: String) {
+        when (label) {
+            "fragment_first" -> {
+                binding.currentScreen.text = "Избранное"
+                binding.imgFavourite.setColorFilter(ContextCompat.getColor(this, R.color.red))
+                binding.imgPerson.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                binding.imgWork.setColorFilter(ContextCompat.getColor(this, R.color.white))
+
+            }
+            "fragment_second" -> {
+
+                binding.currentScreen.text = "Профиль"
+                binding.imgFavourite.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                binding.imgPerson.setColorFilter(ContextCompat.getColor(this, R.color.red))
+                binding.imgWork.setColorFilter(ContextCompat.getColor(this, R.color.white))
+
+            }
+            "fragment_third" -> {
+
+                binding.currentScreen.text = "Работа"
+                binding.imgFavourite.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                binding.imgPerson.setColorFilter(ContextCompat.getColor(this, R.color.white))
+                binding.imgWork.setColorFilter(ContextCompat.getColor(this, R.color.red))
 
             }
 
+        }
     }
 }
 
