@@ -35,18 +35,31 @@ class FirstViewModel @Inject constructor() : BaseViewModel() {
 
     private fun createListData() {
         val list = mutableListOf(
-            Cat(1,"Mursik"),
-            Cat(2,"Kesha"),
-            Cat(3,"Tomas"),
-            Cat(4,"Leopold"),
-            Dog(5,"Sharik"),
-            Dog(6,"Mars"),
-            Dog(7,"Bobik"),
-            Dog(8,"Malish"),
-            Dog(9,"Johan")
+            Cat(1, "Mursik"),
+            Cat(2, "Kesha"),
+            Cat(3, "Tomas"),
+            Cat(4, "Leopold"),
+            Dog(5, "Sharik"),
+            Dog(6, "Mars"),
+            Dog(7, "Bobik"),
+            Dog(8, "Malish"),
+            Dog(9, "Johan")
         )
 
         _dataAnimals.value = list
+    }
+
+    fun updateFavourite(id: Int) {
+        _dataAnimals.newListMain { animal ->
+            when(animal){
+                is Cat -> {
+                    if (animal.id == id) animal.copy(isFavourite = !animal.isFavourite)
+                    else animal.copy()
+                }
+                is Dog -> animal.copy()
+                else -> throw Exception("unknown animal type")
+            }
+        }
     }
 
 
