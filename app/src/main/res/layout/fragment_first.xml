@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.screens.first.FirstFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/holder_word"
+        tools:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/addField"
+        android:padding="10dp"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:translationZ="10dp"
+        >
 
-</FrameLayout>
+        <EditText
+            android:id="@+id/editEnWord"
+            android:layout_width="match_parent"
+            android:background="@drawable/bg_edit_text"
+            android:padding="5dp"
+            android:hint="en word"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/editRuWord"
+            android:layout_width="match_parent"
+            android:background="@drawable/bg_edit_text"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:hint="ru word"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSaveWord"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnAddNewWord"
+        android:src="@drawable/ic_baseline_library_add_24"
+        android:layout_width="60dp"
+        android:layout_margin="10dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/Black"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
