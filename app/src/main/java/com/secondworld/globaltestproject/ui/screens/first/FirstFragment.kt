@@ -58,11 +58,7 @@ class FirstFragment :
         }
 
         listMainContentItems.observe {  list ->
-
-
-
             binding.recyclerViewMainContent.layoutManager = manager
-
             mainAdapter.items = list
         }
     }
