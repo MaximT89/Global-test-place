@@ -27,13 +27,11 @@ class FirstViewModel @Inject constructor(private val repository: Repository) : B
     }
 
     private fun getLeftMenuItems() {
-        val items = repository.generateLeftMenuItems()
-        _leftMenuItems.value = items
+        _leftMenuItems.value = repository.generateLeftMenuItems()
     }
 
     private fun getBigModel() {
-        val bigModel = repository.getBigModel()
-        _bigModel.value = bigModel
+        _bigModel.value = repository.getBigModel()
     }
 
     fun fetchMainContentItems(activeId: Int?) {
@@ -43,10 +41,10 @@ class FirstViewModel @Inject constructor(private val repository: Repository) : B
 
         val mutableListBaseModel = mutableListOf<BaseContentModel>()
 
-        bigData.apply {
-            this?.bannerImg?.let { mutableListBaseModel.add(BannerModelHolder(bannerImg)) }
-            this?.button?.let { mutableListBaseModel.add(ButtonModelHolder(button.titleButton)) }
-            this?.mainContentItems?.let { list ->
+        bigData?.apply {
+            bannerImg?.let { mutableListBaseModel.add(BannerModelHolder(bannerImg)) }
+            button?.let { mutableListBaseModel.add(ButtonModelHolder(button.titleButton)) }
+            mainContentItems?.let { list ->
                 list.forEach { mainContentItems ->
                     mutableListBaseModel.add(TitleModelHolder(mainContentItems.title))
                     mainContentItems.listSmallItems?.forEach { smallItem ->
