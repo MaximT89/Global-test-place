@@ -3,11 +3,14 @@ package com.secondworld.globaltestproject.ui.screens.first
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class FirstFragment :
@@ -33,6 +36,10 @@ class FirstFragment :
 
     override fun initObservers() = with(viewModel) {
 
+        leftMenuAdapter.callBackClick = { activeId ->
+            viewModel.changeActiveLeftItem(activeId)
+        }
+
         leftMenuItems.observe { listData ->
             leftMenuAdapter.items = listData
 
@@ -43,6 +50,17 @@ class FirstFragment :
         }
 
         listMainContentItems.observe {  list ->
+
+            val manager = GridLayoutManager(requireActivity(), 3)
+
+            manager.spanSizeLookup = object : SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return mainAdapter.spansForPosition(position)
+                }
+            }
+
+            binding.recyclerViewMainContent.layoutManager = manager
+
             mainAdapter.items = list
         }
     }

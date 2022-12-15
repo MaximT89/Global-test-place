@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.core.extension.hide
 import com.secondworld.globaltestproject.core.extension.show
 import com.secondworld.globaltestproject.databinding.HolderLeftMenuBinding
@@ -18,6 +19,8 @@ class LeftMenuAdapter : RecyclerView.Adapter<LeftMenuAdapter.LeftMenuHolder>() {
             notifyDataSetChanged()
         }
 
+    var callBackClick : ((id : Int) -> Unit)? = null
+
     inner class LeftMenuHolder(private val binding: HolderLeftMenuBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -27,6 +30,10 @@ class LeftMenuAdapter : RecyclerView.Adapter<LeftMenuAdapter.LeftMenuHolder>() {
 
             if (item.isActive) isActivePoint.show()
             else isActivePoint.hide()
+
+            content.click {
+                callBackClick?.invoke(item.id)
+            }
         }
     }
 

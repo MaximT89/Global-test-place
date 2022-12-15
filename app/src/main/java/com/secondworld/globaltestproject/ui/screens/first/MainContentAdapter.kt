@@ -21,6 +21,16 @@ class MainContentAdapter : RecyclerView.Adapter<MainContentAdapter.MainHolder>()
         notifyDataSetChanged()
     }
 
+    fun spansForPosition(pos: Int) : Int{
+        return when(items[pos]) {
+            is BannerModelHolder -> 3
+            is ButtonModelHolder -> 3
+            is TitleModelHolder -> 3
+            is ItemSmallModelHolder -> 1
+            else -> throw Exception("unknown type")
+        }
+    }
+
     sealed class MainHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         class TitleHolder(private val binding: HolderContentTitleBinding) : MainHolder(binding) {
