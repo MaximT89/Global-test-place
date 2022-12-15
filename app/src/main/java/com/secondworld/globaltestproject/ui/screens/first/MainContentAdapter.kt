@@ -22,13 +22,7 @@ class MainContentAdapter : RecyclerView.Adapter<MainContentAdapter.MainHolder>()
     }
 
     fun spansForPosition(pos: Int) : Int{
-        return when(items[pos]) {
-            is BannerModelHolder -> 3
-            is ButtonModelHolder -> 3
-            is TitleModelHolder -> 3
-            is ItemSmallModelHolder -> 1
-            else -> throw Exception("unknown type")
-        }
+        return if(items[pos] is ItemSmallModelHolder) 1 else 3
     }
 
     sealed class MainHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {

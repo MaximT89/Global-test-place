@@ -54,7 +54,7 @@
             android:id="@+id/recyclerViewMainContent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:paddingHorizontal="8dp"
+
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             android:layout_weight="9"/>
 

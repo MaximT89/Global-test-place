@@ -36,6 +36,14 @@ class FirstFragment :
 
     override fun initObservers() = with(viewModel) {
 
+        val manager = GridLayoutManager(requireActivity(), 3)
+
+        manager.spanSizeLookup = object : SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return mainAdapter.spansForPosition(position)
+            }
+        }
+
         leftMenuAdapter.callBackClick = { activeId ->
             viewModel.changeActiveLeftItem(activeId)
         }
@@ -51,13 +59,7 @@ class FirstFragment :
 
         listMainContentItems.observe {  list ->
 
-            val manager = GridLayoutManager(requireActivity(), 3)
 
-            manager.spanSizeLookup = object : SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return mainAdapter.spansForPosition(position)
-                }
-            }
 
             binding.recyclerViewMainContent.layoutManager = manager
 
