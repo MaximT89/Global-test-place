@@ -2,6 +2,7 @@
 <resources>
     <!-- Основные цвета -->
     <color name="Black">#000000</color>
+    <color name="black">#000000</color>
     <color name="Gray">#808080</color>
     <color name="Silver">#C0C0C0</color>
     <color name="White">#FFFFFF</color>
