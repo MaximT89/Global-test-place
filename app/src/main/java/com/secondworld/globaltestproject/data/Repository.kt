@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(
     private val leftMenuStorage: LeftMenuStorage,
-    private val bigModelStorage: BigModelStorage
-    ) {
+    private val bigModelStorage: BigModelStorage,
+) {
 
     fun generateLeftMenuItems() = leftMenuStorage.createSomeItemsForLeftMenu()
 

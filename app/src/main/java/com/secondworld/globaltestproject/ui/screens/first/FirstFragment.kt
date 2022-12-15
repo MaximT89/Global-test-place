@@ -11,7 +11,6 @@ import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class FirstFragment :
     BaseFragment<FragmentFirstBinding, FirstViewModel>(FragmentFirstBinding::inflate) {

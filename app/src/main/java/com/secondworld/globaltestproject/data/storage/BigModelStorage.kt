@@ -6,15 +6,9 @@ import javax.inject.Inject
 
 class BigModelStorage @Inject constructor() {
 
-    fun getBigModel(): BigModel {
+    fun getBigModel() = BigModel(getListCategory())
 
-        return BigModel(
-            getListCategory()
-        )
-    }
-
-    fun getListCategory(): List<Category> {
-
+    private fun getListCategory(): List<Category> {
         return listOf(
             Category(1, null, ButtonClass("Посмотреть все"), listOf(
                 MainContentItems("Популярные украшения", listOf(
@@ -485,6 +479,4 @@ class BigModelStorage @Inject constructor() {
             )),
         )
     }
-
-
 }
