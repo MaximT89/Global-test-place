@@ -26,7 +26,6 @@
                 android:id="@+id/imageBanner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:background="@color/white_smoke"
                 tools:src="@drawable/item_1" />
         </androidx.cardview.widget.CardView>

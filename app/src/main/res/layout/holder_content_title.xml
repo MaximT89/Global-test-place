@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="8dp"
-    android:layout_margin="8dp"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="8dp"
     xmlns:tools="http://schemas.android.com/tools">
+
 
     <TextView
         android:id="@+id/titleName"
