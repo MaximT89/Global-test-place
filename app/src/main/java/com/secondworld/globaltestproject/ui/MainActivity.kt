@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.ui
 
-import android.R.attr
 import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
