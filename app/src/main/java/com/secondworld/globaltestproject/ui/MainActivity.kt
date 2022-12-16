@@ -14,6 +14,7 @@ class MainActivity : BaseActivity() {
     private val viewModel: MainViewModel by viewModels()
 
     // еуые
+    // еуые
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
