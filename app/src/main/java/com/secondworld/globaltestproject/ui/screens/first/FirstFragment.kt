@@ -1,18 +1,10 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
 import android.annotation.SuppressLint
-import android.os.Build
-import android.text.Editable
-import android.text.TextUtils
-import android.text.TextWatcher
-import android.widget.EditText
 import android.widget.SeekBar
-import androidx.core.view.doOnAttach
 import androidx.fragment.app.viewModels
-import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
-import com.secondworld.globaltestproject.core.extension.log
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import com.secondworld.globaltestproject.ui.screens.first.Operation.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,14 +25,12 @@ class FirstFragment :
         editText.click { clipToBuffer(editText.text.toString()) }
         btnClipToBuffer.click { clipToBuffer(editText.text.toString()) }
 
-        btnSave.click {
-            mainValueText.text = "Main value : ${editText.text}"
-        }
+        btnSave.click { mainValueText.text = "Main value : ${editText.text}" }
 
-        seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 editText.setText(p1.toString())
-           }
+            }
 
             override fun onStartTrackingTouch(p0: SeekBar?) = Unit
             override fun onStopTrackingTouch(p0: SeekBar?) = Unit
@@ -48,7 +38,7 @@ class FirstFragment :
     }
 
     @SuppressLint("NewApi")
-    override fun initObservers() = with(viewModel){
+    override fun initObservers() = with(viewModel) {
 
         startValue.observe {
             binding.editText.hint = viewModel.updateHint()
@@ -62,8 +52,4 @@ class FirstFragment :
             binding.seekbar.max = it
         }
     }
-
-
-
-
 }

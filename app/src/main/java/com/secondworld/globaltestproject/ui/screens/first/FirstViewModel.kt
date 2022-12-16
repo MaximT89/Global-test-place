@@ -15,10 +15,6 @@ class FirstViewModel @Inject constructor() : BaseViewModel() {
     private val _endValue = MutableLiveData(20)
     val endValue : LiveData<Int> = _endValue
 
-    fun getStartValue() = _startValue.value
-
-    fun getEndValue() = _endValue.value
-
     fun updateStartValue(operation : Operation){
         when(operation){
             Operation.PLUS -> {
@@ -40,7 +36,6 @@ class FirstViewModel @Inject constructor() : BaseViewModel() {
     }
 
     fun updateHint() = "от ${_startValue.value} до ${_endValue.value}"
-
 }
 
 enum class Operation{
