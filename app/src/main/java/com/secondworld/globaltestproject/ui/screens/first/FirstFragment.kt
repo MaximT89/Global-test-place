@@ -1,10 +1,15 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.SeekBar
+import androidx.core.view.doOnAttach
 import androidx.fragment.app.viewModels
+import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.core.extension.log
@@ -17,73 +22,48 @@ class FirstFragment :
     BaseFragment<FragmentFirstBinding, FirstViewModel>(FragmentFirstBinding::inflate) {
     override val viewModel: FirstViewModel by viewModels()
 
+    @SuppressLint("SetTextI18n")
     override fun initView() = with(binding) {
-        editText.addTextChangedListener(MyTextWatcher(editText))
-
         startPlus.click { viewModel.updateStartValue(PLUS) }
         startMinus.click { viewModel.updateStartValue(MINUS) }
 
         endPlus.click { viewModel.updateEndValue(PLUS) }
         endMinus.click { viewModel.updateEndValue(MINUS) }
 
+        editText.click { clipToBuffer(editText.text.toString()) }
+        btnClipToBuffer.click { clipToBuffer(editText.text.toString()) }
+
+        btnSave.click {
+            mainValueText.text = "Main value : ${editText.text}"
+        }
+
+        seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                editText.setText(p1.toString())
+           }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) = Unit
+            override fun onStopTrackingTouch(p0: SeekBar?) = Unit
+        })
     }
 
+    @SuppressLint("NewApi")
     override fun initObservers() = with(viewModel){
 
         startValue.observe {
             binding.editText.hint = viewModel.updateHint()
             binding.startValueText.text = it.toString()
-            validateEditText()
+            binding.seekbar.min = it
         }
 
         endValue.observe {
             binding.editText.hint = viewModel.updateHint()
             binding.endValueText.text = it.toString()
-            validateEditText()
+            binding.seekbar.max = it
         }
     }
 
-    private fun validateEditText() {
-        if (!TextUtils.isEmpty(binding.editText.text) && (binding.editText.text.toString() != "") && (binding.editText.text.toString() != "-")) {
-            log("work1")
-            if (binding.editText.text.toString().toInt() > viewModel.getEndValue()!!) {
-                log("work2")
-                binding.editText.setText(viewModel.getEndValue()!!.toString())
-            }
-            if (binding.editText.text.toString().toInt() < viewModel.getStartValue()!!) {
-                log("work3")
-                binding.editText.setText(viewModel.getStartValue()!!.toString())
-            }
-        }
-    }
 
-    inner class MyTextWatcher(private val editText: EditText) : TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
-
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
-
-        override fun afterTextChanged(input: Editable?) {
-
-            try {
-                editText.removeTextChangedListener(this)
-
-                if (input?.length!! >= 2 && input.startsWith("0"))
-                    editText.setText("")
-
-                if (input.toString().toInt() > viewModel.getEndValue()!!)
-                    editText.setText(viewModel.getEndValue().toString())
-
-                if (input.toString().toInt() < viewModel.getStartValue()!!)
-                    editText.setText(viewModel.getStartValue().toString())
-
-            } catch (e: Exception) {
-                editText.setText("0")
-            } finally {
-                editText.setSelection(editText.length())
-                editText.addTextChangedListener(this)
-            }
-        }
-    }
 
 
 }

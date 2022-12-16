@@ -215,6 +215,10 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
         requireActivity().getString(id)
     }
 
+    fun string(@StringRes id: Int, vararg args: String?){
+        requireActivity().getString(id, args)
+    }
+
     /**
      * Выносим логику навигации в базовый фрагмент, во фрагментах используем метод [navigateTo]
      */
