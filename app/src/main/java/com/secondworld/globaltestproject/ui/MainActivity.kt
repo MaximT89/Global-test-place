@@ -27,16 +27,30 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun initObservers() = Unit
 
     override fun initView() {
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
         val navController = navHostFragment!!.navController
 
         binding.bottomNavView.setupWithNavController(navController)
 
+        binding.bottomNavView.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.mainScreenFragment -> navController.navigate(R.id.mainScreenFragment)
+                R.id.searchScreenFragment -> navController.navigate(R.id.searchScreenFragment)
+                R.id.favouriteScreenFragment -> navController.navigate(R.id.favouriteScreenFragment)
+            }
+
+            true
+
+        }
+
+
         binding.bottomNavView.menu.findItem(R.id.mainScreenFragment).icon = getLottieDrawable(
             context = this,
             rawRes = R.raw.instagram
         )
+
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
 
             when(destination.label) {
@@ -45,13 +59,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     lottie.playAnimation()
                 }
             }
-
         }
 
-        binding.bottomNavView.setOnItemSelectedListener { item ->
 
-            getIconDrawable(item.icon)
-        }
+//        binding.bottomNavView.setOnItemSelectedListener { item ->
+//
+//            getIconDrawable(item.icon)
+//        }
 
     }
 
@@ -65,12 +79,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    @SuppressLint("Recycle")
-    private fun getIconDrawable(icon: Drawable): Boolean{
-        val lottie = icon as? LottieDrawable
-        lottie?.playAnimation()
-        return true
-    }
+//    @SuppressLint("Recycle")
+//    private fun getIconDrawable(icon: Drawable): Boolean{
+//        val lottie = icon as? LottieDrawable
+//        lottie?.playAnimation()
+//        return true
+//    }
 
 }
 
