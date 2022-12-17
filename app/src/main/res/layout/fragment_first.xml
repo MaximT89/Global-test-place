@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.screens.first.FirstFragment">
 
     <ImageButton
         android:id="@+id/startPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_add_24"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/startMinus"
-        app:layout_constraintTop_toBottomOf="@+id/startPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_remove_24"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_remove_24"/>
+        app:layout_constraintTop_toBottomOf="@+id/startPlus" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="0dp"
-        android:layout_margin="25dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/endPlus"
+        android:layout_margin="25dp"
         android:gravity="center_horizontal"
-        tools:hint="-20 до 20"
+        app:layout_constraintEnd_toStartOf="@+id/endPlus"
         app:layout_constraintStart_toEndOf="@+id/startPlus"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:hint="-20 до 20" />
 
     <ImageButton
         android:id="@+id/endPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_baseline_add_24"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/endMinus"
-        app:layout_constraintTop_toBottomOf="@+id/endPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_remove_24"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_baseline_remove_24"/>
+        app:layout_constraintTop_toBottomOf="@+id/endPlus" />
 
     <TextView
         android:id="@+id/endValueText"
@@ -65,8 +65,8 @@
         android:id="@+id/startValueText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/gray"
         android:layout_marginTop="10dp"
+        android:textColor="@color/gray"
         app:layout_constraintEnd_toEndOf="@+id/startMinus"
         app:layout_constraintStart_toStartOf="@+id/startMinus"
         app:layout_constraintTop_toBottomOf="@+id/startMinus"
