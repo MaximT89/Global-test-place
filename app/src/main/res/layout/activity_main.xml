@@ -36,7 +36,6 @@
         android:background="@color/white"
         app:layout_constraintHorizontal_bias="0.5"
         app:menu="@menu/bottom_nav_menu"
-        app:itemPaddingBottom="23dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
