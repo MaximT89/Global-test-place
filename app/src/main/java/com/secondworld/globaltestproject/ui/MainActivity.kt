@@ -1,35 +1,30 @@
 package com.secondworld.globaltestproject.ui
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
 import androidx.activity.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.airbnb.lottie.LottieCompositionFactory
 import com.airbnb.lottie.LottieDrawable
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.BaseActivity
-import com.secondworld.globaltestproject.core.log
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private val viewModel by viewModels<MainViewModel>()
-
     override val bindingInflater: (LayoutInflater) -> ActivityMainBinding
         get() = ActivityMainBinding::inflate
 
-    override fun initObservers() {
-
-    }
+    override fun initObservers() = Unit
 
     override fun initView() {
         val navHostFragment =
@@ -38,14 +33,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.bottomNavView.setupWithNavController(navController)
 
-        binding.bottomNavView.menu.findItem(R.id.mainScreenFragment).icon =  getLottieDrawable(
+        binding.bottomNavView.menu.findItem(R.id.mainScreenFragment).icon = getLottieDrawable(
             context = this,
             rawRes = R.raw.instagram
         )
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+
+            when(destination.label) {
+                "fragment_main_screen" -> {
+                    val lottie = binding.bottomNavView.menu.findItem(R.id.mainScreenFragment).icon as LottieDrawable
+                    lottie.playAnimation()
+                }
+            }
+
+        }
 
         binding.bottomNavView.setOnItemSelectedListener { item ->
+
             getIconDrawable(item.icon)
         }
+
     }
 
     private fun getLottieDrawable(context: Context?, rawRes: Int): LottieDrawable {
