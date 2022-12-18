@@ -29,10 +29,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun initView() {
 
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-        val navController = navHostFragment!!.navController
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        binding.bottomNavView.setupWithNavController(navController)
+        navController.let { binding.bottomNavView.setupWithNavController(it) }
 
         binding.bottomNavView.setOnItemSelectedListener { item ->
             when(item.itemId) {
@@ -42,9 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
 
             true
-
         }
-
 
         binding.bottomNavView.menu.findItem(R.id.mainScreenFragment).icon = getLottieDrawable(
             context = this,
@@ -52,7 +50,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         )
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-
             when(destination.label) {
                 "fragment_main_screen" -> {
                     val lottie = binding.bottomNavView.menu.findItem(R.id.mainScreenFragment).icon as LottieDrawable
@@ -60,13 +57,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
             }
         }
-
-
-//        binding.bottomNavView.setOnItemSelectedListener { item ->
-//
-//            getIconDrawable(item.icon)
-//        }
-
     }
 
     private fun getLottieDrawable(context: Context?, rawRes: Int): LottieDrawable {
@@ -78,13 +68,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             composition = result.value
         }
     }
-
-//    @SuppressLint("Recycle")
-//    private fun getIconDrawable(icon: Drawable): Boolean{
-//        val lottie = icon as? LottieDrawable
-//        lottie?.playAnimation()
-//        return true
-//    }
-
 }
 

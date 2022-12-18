@@ -17,7 +17,7 @@ ext {
     loggingVersion = '4.9.1'
     retrofitVersion = '2.9.0'
     roomVersion = '2.4.3'
-    navigationVersion = '2.5.1'
+    navigationVersion = '2.5.3'
     coroutinesVersion = '1.6.1'
     lifecycleVersion = '2.5.1'
     fragmentKtxVersion = '1.5.1'
