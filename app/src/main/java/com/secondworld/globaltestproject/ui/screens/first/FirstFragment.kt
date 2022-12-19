@@ -1,5 +1,9 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
+import android.annotation.SuppressLint
+import android.text.Editable
+import android.text.TextWatcher
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
@@ -12,11 +16,17 @@ class FirstFragment :
     BaseFragment<FragmentFirstBinding, FirstViewModel>(FragmentFirstBinding::inflate) {
     override val viewModel: FirstViewModel by viewModels()
 
-    override fun initView() = with(binding) {
-        btnGoNext.click { navigateTo(R.id.secondFragment) }
+    override fun initView() {
+
+        binding.editText.doAfterTextChanged {
+            if (it.toString().contains(".")) binding.editText.apply {
+                setText(it.toString().replace(".", ""))
+                setSelection(it!!.length - 1)
+            }
+        }
+
+
     }
 
-    override fun initObservers() = with(viewModel){
-
-    }
+    override fun initObservers() = Unit
 }
