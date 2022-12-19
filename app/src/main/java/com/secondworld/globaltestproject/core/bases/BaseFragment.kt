@@ -120,7 +120,7 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
         successBack: () -> Unit = {},
         cancelBack: () -> Unit = {},
         titleAlert: String = "Предупреждение",
-        bodyText: String = "Вы точно хотите закончить тестирование?"
+        bodyText: String = "Хотите закончить тестирование?"
     ) {
         requireActivity()
             .onBackPressedDispatcher

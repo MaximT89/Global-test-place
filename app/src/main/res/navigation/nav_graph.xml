@@ -11,4 +11,9 @@
         android:name="com.secondworld.globaltestproject.ui.screens.first.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" />
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.secondworld.globaltestproject.ui.screens.second_screen.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" />
 </navigation>
