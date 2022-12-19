@@ -1,13 +1,7 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
-import android.annotation.SuppressLint
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
-import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
-import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,18 +9,24 @@ import dagger.hilt.android.AndroidEntryPoint
 class FirstFragment :
     BaseFragment<FragmentFirstBinding, FirstViewModel>(FragmentFirstBinding::inflate) {
     override val viewModel: FirstViewModel by viewModels()
+    private val mainAdapter = MainAdapter()
 
-    override fun initView() {
-
-        binding.editText.doAfterTextChanged {
-            if (it.toString().contains(".")) binding.editText.apply {
-                setText(it.toString().replace(".", ""))
-                setSelection(it!!.length - 1)
-            }
-        }
-
+    override fun initView() = with(binding){
+        rv.adapter = mainAdapter
 
     }
 
-    override fun initObservers() = Unit
+    override fun initObservers() = with(viewModel) {
+        mainData.observe { list ->
+            mainAdapter.submitList(list)
+        }
+
+    }
+
+    override fun initCallbacks() {
+
+        mainAdapter.callbackDel = {
+            viewModel.deleteItem(it)
+        }
+    }
 }

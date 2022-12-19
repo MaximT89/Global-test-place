@@ -12,7 +12,7 @@ class SecondFragment @Inject constructor(): BaseFragment<FragmentSecondBinding, 
     override val viewModel: SecondViewModel by viewModels()
 
     override fun initView() = with(binding){
-        btnGoBack.click { navigateUp() }
+
     }
 
     override fun initObservers() {
