@@ -35,7 +35,6 @@ class FirstViewModel @Inject constructor(private val storage: StorageData) : Bas
         return newList.toList()
     }
 
-
     @SuppressLint("NewApi")
     fun deleteItem(id: Int) {
         val list = _mainData.value?.toMutableList()!!
