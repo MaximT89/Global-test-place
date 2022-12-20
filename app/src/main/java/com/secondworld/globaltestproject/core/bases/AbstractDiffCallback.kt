@@ -1,5 +1,9 @@
+@file:Suppress("FunctionName") // fuck off FactoryFunctions()
 package com.secondworld.globaltestproject.core.bases
 
+import android.view.LayoutInflater
+import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -27,11 +31,14 @@ interface MatchId<T> {
     fun matchesId(model: T): Boolean
 }
 
-abstract class BaseListAdapter<D : Match<D>, VH : BaseViewHolder<D>>(
+abstract class BaseListAdapter<D : Match<D>, VH : BaseViewHolder<D>, VB>(
     diff: AbstractDiffCallback<D>,
+    private val vh: (VB) -> VH,
+    private val binding: (LayoutInflater, ViewGroup, Boolean) -> VB,
 ) : ListAdapter<D, VH>(diff) {
 
-    abstract override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
+        vh(binding(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.bind(getItem(position))
@@ -42,4 +49,36 @@ abstract class BaseViewHolder<T>(binding: ViewBinding) : RecyclerView.ViewHolder
     abstract fun bind(item : T)
 }
 
+@PublishedApi internal abstract class RVItemClickListener : OnClickListener {
+    override fun onClick(v: View) {
+        var itemView = v
+        var parent = v.parent ?: return
+        while (parent !is RecyclerView) {
+            itemView = parent as View
+            parent = itemView.parent ?: return
+        }
 
+        val vh = parent.getChildViewHolder(itemView)
+        val pos = vh.bindingAdapterPosition
+        if (pos >= 0) onItemClick(vh.bindingAdapter!!, pos)
+    }
+    protected abstract fun onItemClick(adapter: RecyclerView.Adapter<*>, bindingPosition: Int)
+}
+
+@Suppress("UnusedReceiverParameter") // used for type inference
+inline fun <A : RecyclerView.Adapter<*>> A.RVItemClickListener(crossinline block: A.(Int) -> Unit): OnClickListener =
+    object : RVItemClickListener() {
+        override fun onItemClick(adapter: RecyclerView.Adapter<*>, bindingPosition: Int) {
+            @Suppress("UNCHECKED_CAST") // a crash is possible under very astounding circumstances
+            (adapter as A).block(bindingPosition)
+        }
+    }
+
+@Suppress("UnusedReceiverParameter") // used for type inference
+inline fun <T, A : ListAdapter<T, *>> A.RVItemClickListener(crossinline block: A.(Int, T) -> Unit): OnClickListener =
+    object : RVItemClickListener() {
+        override fun onItemClick(adapter: RecyclerView.Adapter<*>, bindingPosition: Int) {
+            @Suppress("UNCHECKED_CAST") // a crash is possible under very astounding circumstances
+            (adapter as A).block(bindingPosition, adapter.currentList[bindingPosition])
+        }
+    }
