@@ -9,7 +9,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class FirstFragment :
     BaseFragment<FragmentFirstBinding, FirstViewModel>(FragmentFirstBinding::inflate) {
     override val viewModel: FirstViewModel by viewModels()
-    private val mainAdapter = MainAdapter()
+    private val mainAdapter = MainAdapter { itemId ->
+
+    }
 
     override fun initView() = with(binding){
         rv.adapter = mainAdapter

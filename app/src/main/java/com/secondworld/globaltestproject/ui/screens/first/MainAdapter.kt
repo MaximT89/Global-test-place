@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
-import android.view.ViewGroup
 import com.secondworld.globaltestproject.core.bases.AbstractDiffCallback
 import com.secondworld.globaltestproject.core.bases.BaseListAdapter
 import com.secondworld.globaltestproject.core.bases.BaseViewHolder
@@ -12,25 +11,24 @@ import com.secondworld.globaltestproject.databinding.MainHolderBinding
 
 class MainAdapterDiffUtilCallback : AbstractDiffCallback<OfferModel>()
 
-class MainAdapter : BaseListAdapter<OfferModel, MainAdapter.TestHolder, MainHolderBinding>(
+class MainAdapter(
+    callbackDel: (id: Int) -> Unit
+) : BaseListAdapter<OfferModel, MainAdapter.TestHolder, MainHolderBinding>(
     MainAdapterDiffUtilCallback(),
-    ::TestHolder,
+    { binding -> TestHolder(binding, callbackDel) },
     MainHolderBinding::inflate,
 ) {
 
-    var callbackDel: ((id: Int) -> Unit)? = null
+    class TestHolder(val binding: MainHolderBinding, callbackDel: (id: Int) -> Unit) :
+        BaseViewHolder<OfferModel>(binding) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestHolder =
-        super.onCreateViewHolder(parent, viewType).apply {
+        init {
             binding.btnDelete.setOnClickListener(
-                RVItemClickListener { _, item ->
-                    callbackDel?.invoke(item.id)
+                RVItemClickListener<MainAdapter> { index ->
+                    callbackDel(currentList[index].id)
                 }
             )
         }
-
-    class TestHolder(val binding: MainHolderBinding) :
-        BaseViewHolder<OfferModel>(binding) {
 
         override fun bind(item: OfferModel) = with(binding) {
 

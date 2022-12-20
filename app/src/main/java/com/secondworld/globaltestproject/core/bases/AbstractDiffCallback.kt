@@ -65,20 +65,11 @@ abstract class BaseViewHolder<T>(binding: ViewBinding) : RecyclerView.ViewHolder
     protected abstract fun onItemClick(adapter: RecyclerView.Adapter<*>, bindingPosition: Int)
 }
 
-@Suppress("UnusedReceiverParameter") // used for type inference
-inline fun <A : RecyclerView.Adapter<*>> A.RVItemClickListener(crossinline block: A.(Int) -> Unit): OnClickListener =
+inline fun <A : RecyclerView.Adapter<*>> RVItemClickListener(
+    crossinline block: A.(Int) -> Unit,
+): OnClickListener =
     object : RVItemClickListener() {
         override fun onItemClick(adapter: RecyclerView.Adapter<*>, bindingPosition: Int) {
-            @Suppress("UNCHECKED_CAST") // a crash is possible under very astounding circumstances
             (adapter as A).block(bindingPosition)
-        }
-    }
-
-@Suppress("UnusedReceiverParameter") // used for type inference
-inline fun <T, A : ListAdapter<T, *>> A.RVItemClickListener(crossinline block: A.(Int, T) -> Unit): OnClickListener =
-    object : RVItemClickListener() {
-        override fun onItemClick(adapter: RecyclerView.Adapter<*>, bindingPosition: Int) {
-            @Suppress("UNCHECKED_CAST") // a crash is possible under very astounding circumstances
-            (adapter as A).block(bindingPosition, adapter.currentList[bindingPosition])
         }
     }
