@@ -6,8 +6,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SecondFragment @Inject constructor():
-    BaseFragment<FragmentSecondBinding, SecondViewModel>(
+class SecondFragment @Inject constructor(): BaseFragment<FragmentSecondBinding, SecondViewModel>(
         FragmentSecondBinding::inflate, SecondViewModel::class.java) {
 
     override fun initView() = Unit
