@@ -25,8 +25,8 @@ class FirstFragment :
 
     override fun initCallbacks() {
 
-        mainAdapter.callbackDel = {
-            viewModel.deleteItem(it)
-        }
+//        mainAdapter.callbackDel = {
+//            viewModel.deleteItem(it)
+//        }
     }
 }
