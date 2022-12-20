@@ -5,7 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/firstFragment">
 
-
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.secondworld.globaltestproject.ui.screens.first.FirstFragment"
@@ -16,4 +15,5 @@
         android:name="com.secondworld.globaltestproject.ui.screens.second_screen.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
+
 </navigation>
