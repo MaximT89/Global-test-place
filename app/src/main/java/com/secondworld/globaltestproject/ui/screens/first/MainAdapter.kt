@@ -16,6 +16,8 @@ class MainAdapterDiffUtilCallback : AbstractDiffCallback<OfferModel>()
 class MainAdapter : BaseListAdapter<OfferModel,
         MainAdapter.TestHolder>(MainAdapterDiffUtilCallback()) {
 
+    var callbackDel: ((id: Int) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestHolder {
         return TestHolder(
             MainHolderBinding.inflate(
@@ -36,7 +38,7 @@ class MainAdapter : BaseListAdapter<OfferModel,
             nameItem.text = item.name
             price.text = item.price
 
-//            btnDelete.click { callbackDel?.invoke(item.id) }
+            btnDelete.click { callbackDel?.invoke(item.id) }
 
             if (item.firstInDay) title.show()
             else title.hide()
