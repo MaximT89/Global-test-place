@@ -19,7 +19,7 @@ class MainAdapter(
     MainHolderBinding::inflate,
 ) {
 
-    class TestHolder(val binding: MainHolderBinding, callbackDel: (id: Int) -> Unit) :
+    class TestHolder(private val binding: MainHolderBinding, callbackDel: (id: Int) -> Unit) :
         BaseViewHolder<OfferModel>(binding) {
 
         init {
