@@ -6,40 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.screens.first.FirstFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/userNameField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:boxBackgroundColor="@color/white"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:startIconDrawable="@drawable/ic_baseline_search_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:theme="@style/SearchTextInputLayoutStyle"
-        app:boxStrokeColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:endIconMode="clear_text"
-        app:layout_editor_absoluteY="8dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/serverUserSearch"
-            android:layout_width="match_parent"
-            android:hint="@string/search"
-            android:singleLine="true"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameField"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
