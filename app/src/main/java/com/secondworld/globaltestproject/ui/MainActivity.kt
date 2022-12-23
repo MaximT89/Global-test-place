@@ -1,6 +1,7 @@
 package com.secondworld.globaltestproject.ui
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
