@@ -18,13 +18,6 @@ class FirstFragment :
 
     override fun initView() {
 
-        binding.editText.doAfterTextChanged {
-            if (it.toString().contains(".")) binding.editText.apply {
-                setText(it.toString().replace(".", ""))
-                setSelection(it!!.length - 1)
-            }
-        }
-
 
     }
 
