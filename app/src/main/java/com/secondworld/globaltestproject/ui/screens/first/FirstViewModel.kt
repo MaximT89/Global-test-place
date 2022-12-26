@@ -14,6 +14,8 @@ class FirstViewModel @Inject constructor(
     private val webSocketManager: WebSocketManager
 ) : BaseViewModel(), MessageListener {
 
+    //test
+
     private val _messageFromSocket = MutableLiveData<String?>()
     val messageFromSocket : LiveData<String?> = _messageFromSocket
 
