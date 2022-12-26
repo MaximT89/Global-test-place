@@ -35,14 +35,9 @@ android {
     viewBinding{
         enabled true
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-
-
 
     implementation 'ru.tinkoff.decoro:decoro:1.5.1'
 
