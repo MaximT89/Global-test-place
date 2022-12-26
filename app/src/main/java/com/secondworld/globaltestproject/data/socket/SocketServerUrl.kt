@@ -1,4 +1,4 @@
-package com.secondworld.globaltestproject.data
+package com.secondworld.globaltestproject.data.socket
 
 object SocketServerUrl {
 

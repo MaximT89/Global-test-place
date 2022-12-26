@@ -2,68 +2,64 @@ package com.secondworld.globaltestproject.ui.screens.first
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.secondworld.globaltestproject.core.bases.BaseViewModel
 import com.secondworld.globaltestproject.core.extension.log
-import com.secondworld.globaltestproject.data.MainInteractor
-import com.secondworld.globaltestproject.data.MyWebSocketListener
-import com.secondworld.globaltestproject.data.SocketUpdate
+import com.secondworld.globaltestproject.data.socket.MessageListener
+import com.secondworld.globaltestproject.data.socket.WebSocketManager
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.channels.consumeEach
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
-class FirstViewModel @Inject constructor(private val interactor: MainInteractor) : BaseViewModel() {
+class FirstViewModel @Inject constructor(
+    private val webSocketManager: WebSocketManager
+) : BaseViewModel(), MessageListener {
 
-    private val _socketText = MutableLiveData("")
-    val socketText : LiveData<String> = _socketText
+    private val _messageFromSocket = MutableLiveData<String?>()
+    val messageFromSocket : LiveData<String?> = _messageFromSocket
+
+    private val _messageInfo = MutableLiveData<String?>()
+    val messageInfo : LiveData<String?> = _messageInfo
 
     init {
-        subscribeToSocketInEvents()
-        subscribeToSocketOutEvents()
+       initSocket()
     }
 
-    @ExperimentalCoroutinesApi
-    fun subscribeToSocketInEvents() {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                interactor.startSocketIn().consumeEach {
-                    if (it.exception == null) {
-                        _socketText.postValue(it.text)
-                    } else {
-                        onSocketError(it.exception)
-                    }
-                }
-            } catch (ex: java.lang.Exception) {
-                onSocketError(ex)
-            }
+    fun sendMessageToSocket(message: String) {
+        if (webSocketManager.sendMessage(message)) {
+            log(message = "message send success")
+        } else {
+            log(message = "message send fail")
         }
     }
 
-    @ExperimentalCoroutinesApi
-    fun subscribeToSocketOutEvents(text : String = "") {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                interactor.startSocketOut().consumeEach(SocketUpdate(text = text))
-            } catch (ex: java.lang.Exception) {
-                onSocketError(ex)
-            }
-        }
+
+    fun connectWebSocket() {
+        webSocketManager.connect()
     }
 
-    private fun onSocketError(ex: Throwable) {
-        log(tag = "WEB_SOCKET", "Throwable: ${ex.message}")
-        println("Error occurred : ${ex.message}")
+    private fun initSocket() {
+        webSocketManager.init(this)
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
+    override fun onConnectSuccess() {
+        _messageInfo.postValue("onConnectSuccess")
+    }
+
+    override fun onConnectFailed() {
+        _messageInfo.postValue("onConnectFailed")
+    }
+
+    override fun onClose() {
+        _messageInfo.postValue("onClose")
+        webSocketManager.close()
+    }
+
+    override fun onMessage(text: String?) {
+        _messageFromSocket.postValue(text)
+    }
+
     override fun onCleared() {
-        interactor.stopSocket()
         super.onCleared()
+        webSocketManager.close()
     }
-
 }

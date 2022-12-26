@@ -1,11 +1,13 @@
 package com.secondworld.globaltestproject.core.remote
 
 import com.secondworld.globaltestproject.core.constants.Constants
+import com.secondworld.globaltestproject.data.socket.SocketServerUrl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -31,10 +33,10 @@ object NetworkModuleProvides {
         OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .addNetworkInterceptor(networkInterceptor)
-            .callTimeout(60, TimeUnit.SECONDS)
-            .writeTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
+            .callTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .build()
 
@@ -45,4 +47,7 @@ object NetworkModuleProvides {
         .baseUrl(Constants.BASE_URL)
         .client(okHttpClient)
         .build()
+
+    @Provides
+    fun provideRequest() : Request = Request.Builder().url(SocketServerUrl.SOCKET_URL).build()
 }
