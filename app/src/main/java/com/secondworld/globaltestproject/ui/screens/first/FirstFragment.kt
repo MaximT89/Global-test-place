@@ -21,5 +21,9 @@ class FirstFragment :
 
     }
 
-    override fun initObservers() = Unit
+    override fun initObservers() {
+
+
+
+    }
 }
