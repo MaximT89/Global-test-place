@@ -36,8 +36,6 @@ class FirstViewModel @Inject constructor(private val repository: Repository) : B
 
     fun fetchMainContentItems(activeId: Int?) {
 
-        // TODO: СМОТРИМ ТУТ
-
         var bigData : Category? = null
         _bigModel.value?.listCategory?.forEach { data -> if (data.id == activeId) bigData = data }
 

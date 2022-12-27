@@ -1,8 +1,11 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
 import android.annotation.SuppressLint
+import android.graphics.Outline
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.secondworld.globaltestproject.R
@@ -12,41 +15,54 @@ import com.secondworld.globaltestproject.databinding.HolderContentTitleBinding
 import com.secondworld.globaltestproject.databinding.HolderItemSmallImgBinding
 import com.secondworld.globaltestproject.ui.screens.first.model.main_rv.*
 
+
 @SuppressLint("NotifyDataSetChanged")
 class MainContentAdapter : RecyclerView.Adapter<MainContentAdapter.MainHolder>() {
 
     var items = listOf<BaseContentModel>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
-    fun spansForPosition(pos: Int) : Int{
-        return if(items[pos] is ItemSmallModelHolder) 1 else 3
+    fun spansForPosition(pos: Int): Int {
+        return if (items[pos] is ItemSmallModelHolder) 1 else 3
     }
 
     sealed class MainHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         class TitleHolder(private val binding: HolderContentTitleBinding) : MainHolder(binding) {
-            fun bind(model : TitleModelHolder) {
+            fun bind(model: TitleModelHolder) {
                 binding.titleName.text = model.title
             }
         }
 
-        class BannerHolder(private val binding : HolderBannerBinding) : MainHolder(binding) {
-            fun bind(model : BannerModelHolder){
+        class BannerHolder(private val binding: HolderBannerBinding) : MainHolder(binding) {
+            fun bind(model: BannerModelHolder) {
                 binding.imageBanner.setImageResource(model.image)
             }
         }
 
-        class ButtonHolder(private val binding : HolderButtonBinding) : MainHolder(binding) {
-            fun bind(model : ButtonModelHolder){
+        class ButtonHolder(private val binding: HolderButtonBinding) : MainHolder(binding) {
+            fun bind(model: ButtonModelHolder) {
                 binding.btnTitleText.text = model.title
             }
         }
 
-        class SmallItemHolder(private val binding : HolderItemSmallImgBinding) : MainHolder(binding) {
-            fun bind(model : ItemSmallModelHolder) {
+        class SmallItemHolder(private val binding: HolderItemSmallImgBinding) :
+            MainHolder(binding) {
+
+            private val viewOutlineProvider: ViewOutlineProvider = object : ViewOutlineProvider() {
+                override fun getOutline(view: View, outline: Outline) {
+                    outline.setRoundRect(0, 0, view.width, view.height, 25f)
+                }
+            }
+
+            fun bind(model: ItemSmallModelHolder) {
+
+                binding.imageBanner.outlineProvider = viewOutlineProvider
+                binding.imageBanner.clipToOutline = true
+
                 binding.imageBanner.setImageResource(model.image)
                 binding.titleItem.text = model.title
             }
@@ -54,7 +70,7 @@ class MainContentAdapter : RecyclerView.Adapter<MainContentAdapter.MainHolder>()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return when(viewType) {
+        return when (viewType) {
             R.layout.holder_banner -> MainHolder.BannerHolder(
                 HolderBannerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
@@ -64,11 +80,19 @@ class MainContentAdapter : RecyclerView.Adapter<MainContentAdapter.MainHolder>()
             )
 
             R.layout.holder_content_title -> MainHolder.TitleHolder(
-                HolderContentTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                HolderContentTitleBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
             )
 
             R.layout.holder_item_small_img -> MainHolder.SmallItemHolder(
-                HolderItemSmallImgBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                HolderItemSmallImgBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
             )
 
             else -> throw Exception("can not layout holder")
@@ -76,7 +100,7 @@ class MainContentAdapter : RecyclerView.Adapter<MainContentAdapter.MainHolder>()
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        when(holder) {
+        when (holder) {
             is MainHolder.BannerHolder -> holder.bind(items[position] as BannerModelHolder)
             is MainHolder.ButtonHolder -> holder.bind(items[position] as ButtonModelHolder)
             is MainHolder.SmallItemHolder -> holder.bind(items[position] as ItemSmallModelHolder)
@@ -85,7 +109,7 @@ class MainContentAdapter : RecyclerView.Adapter<MainContentAdapter.MainHolder>()
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (items[position]){
+        return when (items[position]) {
             is BannerModelHolder -> R.layout.holder_banner
             is ButtonModelHolder -> R.layout.holder_button
             is TitleModelHolder -> R.layout.holder_content_title

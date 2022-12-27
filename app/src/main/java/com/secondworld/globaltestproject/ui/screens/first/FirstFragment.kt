@@ -12,8 +12,7 @@ import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FirstFragment :
-    BaseFragment<FragmentFirstBinding, FirstViewModel>(FragmentFirstBinding::inflate) {
+class FirstFragment : BaseFragment<FragmentFirstBinding, FirstViewModel>(FragmentFirstBinding::inflate) {
     override val viewModel: FirstViewModel by viewModels()
 
     private val leftMenuAdapter = LeftMenuAdapter()

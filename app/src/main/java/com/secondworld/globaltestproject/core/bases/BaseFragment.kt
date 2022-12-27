@@ -32,10 +32,6 @@ import kotlin.reflect.full.isSubclassOf
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
-/**
- * Базовый фрагмент, наследуемся от него у всех фрагментов, данная база уменьшает шаблонный код,
- * в данной базе мы сразу получаем биндинг и переопределяем метод на присваивание viewModel
- */
 abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate: Inflate<B>) :
     Fragment(), Navigator {
 
