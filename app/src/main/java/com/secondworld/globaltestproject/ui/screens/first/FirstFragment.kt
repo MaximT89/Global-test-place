@@ -7,8 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FirstFragment :
     BaseFragment<FragmentFirstBinding, FirstViewModel>(
-        FragmentFirstBinding::inflate,
-        FirstViewModel::class.java
+        FragmentFirstBinding::inflate, FirstViewModel::class.java
     ) {
 
     override fun initView() = Unit

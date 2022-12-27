@@ -16,6 +16,5 @@ class SecondFragment @Inject constructor() : BaseFragment<FragmentSecondBinding,
         btnGoBack.click { navigateUp() }
     }
 
-    override fun initObservers() {
-    }
+    override fun initObservers() = Unit
 }
