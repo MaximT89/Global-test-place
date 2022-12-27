@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
@@ -36,16 +37,22 @@ typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
  * Базовый фрагмент, наследуемся от него у всех фрагментов, данная база уменьшает шаблонный код,
  * в данной базе мы сразу получаем биндинг и переопределяем метод на присваивание viewModel
  */
-abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate: Inflate<B>) :
+abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate: Inflate<B>, private val clazz : Class<VM>) :
     Fragment(), Navigator {
 
     private var _viewBinding: B? = null
     protected val binding get() = checkNotNull(_viewBinding)
-    protected abstract val viewModel: VM
+    lateinit var viewModel: VM
     protected var toolbar: Toolbar? = null
 
     open val showBtnAddUser = false
     open val showBtnBack = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[clazz]
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
