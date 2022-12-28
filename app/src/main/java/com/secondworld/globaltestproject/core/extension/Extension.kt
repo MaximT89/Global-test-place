@@ -22,10 +22,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
-fun View.click(logic : () -> Unit) {
+fun View.click(logic: () -> Unit) {
     setOnClickListener { logic.invoke() }
 }
 
@@ -33,7 +35,7 @@ fun updateText(view: TextView, message: Any) {
     view.text = message.toString()
 }
 
-fun String.onlyDigits() : String {
+fun String.onlyDigits(): String {
     return filter { it.isDigit() }
 }
 
@@ -71,19 +73,19 @@ fun log(tag: String = "TAG", message: String) {
     Log.d(tag, "log: $message")
 }
 
-fun Button.active(){
+fun Button.active() {
     isVisible = true
     isEnabled = true
     isClickable = true
 }
 
-fun Button.notActive(){
+fun Button.notActive() {
     isVisible = true
     isEnabled = false
     isClickable = false
 }
 
-fun <T>MutableLiveData<List<T>?>.newListMain(someLogic : (data : T) -> T) {
+fun <T> MutableLiveData<List<T>?>.newListMain(someLogic: (data: T) -> T) {
     value.let { items ->
         value = items?.map {
             someLogic.invoke(it)
@@ -91,7 +93,7 @@ fun <T>MutableLiveData<List<T>?>.newListMain(someLogic : (data : T) -> T) {
     }
 }
 
-fun <T>MutableLiveData<List<T>?>.newListIo(someLogic : (data : T) -> T) {
+fun <T> MutableLiveData<List<T>?>.newListIo(someLogic: (data: T) -> T) {
     postValue(value?.map {
         someLogic.invoke(it)
     })
@@ -201,7 +203,7 @@ fun <T> downItem(position: Int, list: MutableLiveData<MutableList<T>?>) {
  * Метод для конверта UNIX_time в классическую строку времени
  */
 @SuppressLint("SimpleDateFormat")
-fun Long.convertToDate() : String{
+fun Long.convertToDate(): String {
     val date = Date(this * 1000L)
     val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     return sdf.format(date)
@@ -229,11 +231,31 @@ fun SharedPreferences.Editor.put(pair: Pair<String, Any>) {
 }
 
 
-fun isRefreshingFalse(view: SwipeRefreshLayout){
+fun isRefreshingFalse(view: SwipeRefreshLayout) {
     view.isRefreshing = false
 }
 
-fun isRefreshingTrue(view: SwipeRefreshLayout){
+fun isRefreshingTrue(view: SwipeRefreshLayout) {
     view.isRefreshing = true
+}
+
+/**
+ * Метод для конверта лонга в строку, для продолжительности музыки
+ */
+fun Long.getTimeString(): String {
+    val sb = StringBuilder()
+    val hours = TimeUnit.MILLISECONDS.toHours(this)
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(this)
+    val seconds = TimeUnit.MILLISECONDS.toSeconds(this)
+
+    return if (hours > 0)
+        sb.append(hours.toString()).append(":")
+            .append("${minutes - TimeUnit.HOURS.toMinutes(hours)}".padStart(2, '0'))
+            .append(":")
+            .append("${seconds - TimeUnit.MINUTES.toSeconds(minutes)}".padStart(2, '0'))
+            .toString()
+    else sb.append(minutes.toString()).append(":")
+        .append("${seconds - TimeUnit.MINUTES.toSeconds(minutes)}".padStart(2, '0'))
+        .toString()
 }
 
