@@ -14,13 +14,13 @@ import com.secondworld.globaltestproject.R
 abstract class BaseActivity : AppCompatActivity(), Navigator {
 
     override fun navigateTo(resId: Int, args: Bundle?, navOptions: NavOptions?) =
-        findNavController(R.id.nav_host_fragment).navigate(resId, args, navOptions)
+        findNavController(R.id.root_app_nav_host_fragment).navigate(resId, args, navOptions)
 
-    override fun navigateTo(resId: Int, args: Bundle?) = findNavController(R.id.nav_host_fragment).navigate(resId, args)
+    override fun navigateTo(resId: Int, args: Bundle?) = findNavController(R.id.root_app_nav_host_fragment).navigate(resId, args)
 
-    override fun navigateTo(resId: Int) = findNavController(R.id.nav_host_fragment).navigate(resId)
+    override fun navigateTo(resId: Int) = findNavController(R.id.root_app_nav_host_fragment).navigate(resId)
 
-    override fun navigateUp() { findNavController(R.id.nav_host_fragment).navigateUp() }
+    override fun navigateUp() { findNavController(R.id.root_app_nav_host_fragment).navigateUp() }
     /**
      * Проверяем, если у нас отображается клавиатура, то при клике вне клавиатуры мы вызываем метод
      * [hideKeyboard] , которым скрываем клавиатуру

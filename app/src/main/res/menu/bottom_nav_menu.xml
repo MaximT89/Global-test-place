@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/rootFOneFragment"
+        android:title="Feature One"/>
+    <item android:id="@+id/rootFSecondFragment"
+        android:title="Feature Two"/>
+    <item android:id="@+id/rootFThirdFragment"
+        android:title="Feature Three"/>
+
+</menu>

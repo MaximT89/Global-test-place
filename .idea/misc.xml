@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_one_screen_one.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_one_screen_three.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_one_screen_two.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_three_screen_one.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_three_screen_three.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_three_screen_two.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_two_screen_one.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_two_screen_three.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_two_screen_two.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_root_f_one.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_root_f_third.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_root_feature_one.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/holder_animal.xml" value="0.21217105263157895" />
         <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/holder_item_small_img.xml" value="0.21217105263157895" />
