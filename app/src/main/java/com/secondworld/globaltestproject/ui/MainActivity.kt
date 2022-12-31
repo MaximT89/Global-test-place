@@ -15,6 +15,8 @@ class MainActivity : Activity() {
         setContentView(gLView)
     }
 
+    // https://developer.android.com/develop/ui/views/graphics/opengl/projection
+    // продолжить отсюда
 
 }
 
