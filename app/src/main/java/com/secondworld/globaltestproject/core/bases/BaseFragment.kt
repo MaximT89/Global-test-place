@@ -37,8 +37,10 @@ typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
  * Базовый фрагмент, наследуемся от него у всех фрагментов, данная база уменьшает шаблонный код,
  * в данной базе мы сразу получаем биндинг и переопределяем метод на присваивание viewModel
  */
-abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate: Inflate<B>, private val clazz : Class<VM>) :
-    Fragment(), Navigator {
+abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(
+    private val inflate: Inflate<B>,
+    private val clazz: Class<VM>,
+) : Fragment(), Navigator {
 
     private var _viewBinding: B? = null
     protected val binding get() = checkNotNull(_viewBinding)
@@ -57,7 +59,7 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _viewBinding = inflate.invoke(inflater, container, false)
         return binding.root
@@ -127,7 +129,7 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
         successBack: () -> Unit = {},
         cancelBack: () -> Unit = {},
         titleAlert: String = "Предупреждение",
-        bodyText: String = "Хотите закончить тестирование?"
+        bodyText: String = "Хотите закончить тестирование?",
     ) {
         requireActivity()
             .onBackPressedDispatcher
@@ -165,28 +167,30 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
         negativeBtnLogic: () -> Unit = {},
         titleAlert: String = "Внимание",
         bodyText: String = "Предупреждение",
-        textPositiveBtn : String = "Да",
-        textNegativeBtn : String = "Нет"
+        textPositiveBtn: String = "Да",
+        textNegativeBtn: String = "Нет",
     ) {
-        val dialogViewBinding = CustomAlertDialogBinding.inflate(LayoutInflater.from(requireActivity())).apply {
-            title.text = titleAlert
-            body.text = bodyText
+        val dialogViewBinding =
+            CustomAlertDialogBinding.inflate(LayoutInflater.from(requireActivity())).apply {
+                title.text = titleAlert
+                body.text = bodyText
 
-            btnPositive.text = textPositiveBtn
-            btnNegative.text = textNegativeBtn
-        }
+                btnPositive.text = textPositiveBtn
+                btnNegative.text = textNegativeBtn
+            }
 
-        val dialog = AlertDialog.Builder(requireActivity(), R.style.AlertDialog_Custom).create().apply {
-            setView(dialogViewBinding.root)
-            show()
-        }
+        val dialog =
+            AlertDialog.Builder(requireActivity(), R.style.AlertDialog_Custom).create().apply {
+                setView(dialogViewBinding.root)
+                show()
+            }
 
-        dialogViewBinding.btnPositive.click{
+        dialogViewBinding.btnPositive.click {
             positiveBtnLogic.invoke()
             dialog.dismiss()
         }
 
-        dialogViewBinding.btnNegative.click{
+        dialogViewBinding.btnNegative.click {
             negativeBtnLogic.invoke()
             dialog.dismiss()
         }
@@ -204,8 +208,9 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
     /**
      * Функция копирования в буфер обмена
      */
-    fun clipToBuffer(str : String) {
-        val clipboard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
+    fun clipToBuffer(str: String) {
+        val clipboard =
+            requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
         val clip = ClipData.newPlainText("Copied Text", str)
         clipboard!!.setPrimaryClip(clip)
 
@@ -232,7 +237,9 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
 
     override fun navigateTo(resId: Int) = findNavController().navigate(resId)
 
-    override fun navigateUp() { findNavController().navigateUp() }
+    override fun navigateUp() {
+        findNavController().navigateUp()
+    }
 
     protected fun <T> LiveData<T>.observe(block: (T) -> Unit) {
         observe(this@BaseFragment.viewLifecycleOwner) { t -> block.invoke(t) }

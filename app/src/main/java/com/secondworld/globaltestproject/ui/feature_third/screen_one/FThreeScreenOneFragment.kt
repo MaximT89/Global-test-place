@@ -12,6 +12,7 @@ class FThreeScreenOneFragment :
     BaseFragment<FragmentFThreeScreenOneBinding, FThreeScreenOneViewModel>(
         FragmentFThreeScreenOneBinding::inflate,
         FThreeScreenOneViewModel::class.java) {
+
     override fun initView() {
         binding.btnGoNext.click {
             navigateTo(R.id.FThreeScreenTwoFragment, null,
