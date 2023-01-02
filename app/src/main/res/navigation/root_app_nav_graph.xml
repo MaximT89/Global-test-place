@@ -3,89 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/rootFOneFragment">
+    app:startDestination="@id/rootFOneFragment2">
+
 
     <fragment
-        android:id="@+id/rootFSecondFragment"
+        android:id="@+id/rootFOneFragment2"
+        android:name="com.secondworld.globaltestproject.ui.feature_one.RootFOneFragment"
+        android:label="fragment_root_f_one"
+        tools:layout="@layout/fragment_root_f_one" />
+    <fragment
+        android:id="@+id/rootFSecondFragment2"
         android:name="com.secondworld.globaltestproject.ui.feature_second.RootFSecondFragment"
         android:label="fragment_root_f_second"
-        tools:layout="@layout/fragment_root_f_second" >
-        <action
-            android:id="@+id/action_rootFSecondFragment_to_featureTwoNavigation"
-            app:destination="@id/featureTwoNavigation" />
-    </fragment>
+        tools:layout="@layout/fragment_root_f_second" />
     <fragment
-        android:id="@+id/rootFThirdFragment"
+        android:id="@+id/rootFThirdFragment2"
         android:name="com.secondworld.globaltestproject.ui.feature_third.RootFThirdFragment"
         android:label="fragment_root_f_third"
-        tools:layout="@layout/fragment_root_f_third" >
-        <action
-            android:id="@+id/action_rootFThirdFragment_to_featureThreeNavigation"
-            app:destination="@id/featureThreeNavigation" />
-    </fragment>
-    <fragment
-        android:id="@+id/rootFOneFragment"
-        android:name="com.secondworld.globaltestproject.ui.feature_one.RootFOneFragment"
-        android:label="fragment_root_feature_one"
-        tools:layout="@layout/fragment_root_f_one">
+        tools:layout="@layout/fragment_root_f_third" />
 
-        <action
-            android:id="@+id/action_rootFOneFragment_to_featureOneNavigation2"
-            app:destination="@id/featureOneNavigation" />
-    </fragment>
-    <navigation
-        android:id="@+id/featureOneNavigation"
-        app:startDestination="@id/FOneScreenOneFragment">
-        <fragment
-            android:id="@+id/FOneScreenThreeFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_one.screen_three.FOneScreenThreeFragment"
-            android:label="fragment_f_one_screen_three"
-            tools:layout="@layout/fragment_f_one_screen_three" />
-        <fragment
-            android:id="@+id/FOneScreenTwoFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_one.screen_two.FOneScreenTwoFragment"
-            android:label="fragment_f_one_screen_two"
-            tools:layout="@layout/fragment_f_one_screen_two" />
-        <fragment
-            android:id="@+id/FOneScreenOneFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_one.screen_one.FOneScreenOneFragment"
-            android:label="fragment_f_one_screen_one"
-            tools:layout="@layout/fragment_f_one_screen_one" />
-    </navigation>
-    <navigation android:id="@+id/featureTwoNavigation"
-        app:startDestination="@id/FTwoScreenOneFragment">
-        <fragment
-            android:id="@+id/FTwoScreenThreeFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_second.screen_three.FTwoScreenThreeFragment"
-            android:label="fragment_f_two_screen_three"
-            tools:layout="@layout/fragment_f_two_screen_three" />
-        <fragment
-            android:id="@+id/FTwoScreenOneFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_second.screen_one.FTwoScreenOneFragment"
-            android:label="fragment_f_two_screen_one"
-            tools:layout="@layout/fragment_f_two_screen_one" />
-        <fragment
-            android:id="@+id/FTwoScreenTwoFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_second.screen_two.FTwoScreenTwoFragment"
-            android:label="fragment_f_two_screen_two"
-            tools:layout="@layout/fragment_f_two_screen_two" />
-    </navigation>
-    <navigation android:id="@+id/featureThreeNavigation"
-        app:startDestination="@id/FThreeScreenThreeFragment">
-        <fragment
-            android:id="@+id/FThreeScreenThreeFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_third.screen_three.FThreeScreenThreeFragment"
-            android:label="fragment_f_three_screen_three"
-            tools:layout="@layout/fragment_f_three_screen_three" />
-        <fragment
-            android:id="@+id/FThreeScreenTwoFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_third.screen_two.FThreeScreenTwoFragment"
-            android:label="fragment_f_three_screen_two"
-            tools:layout="@layout/fragment_f_three_screen_two" />
-        <fragment
-            android:id="@+id/FThreeScreenOneFragment"
-            android:name="com.secondworld.globaltestproject.ui.feature_third.screen_one.FThreeScreenOneFragment"
-            android:label="fragment_f_three_screen_one"
-            tools:layout="@layout/fragment_f_three_screen_one" />
-    </navigation>
+
 </navigation>

@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.plusAssign
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.secondworld.globaltestproject.R
@@ -28,7 +29,8 @@ class MainActivity : BaseActivity() {
             supportFragmentManager.findFragmentById(R.id.root_app_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        navController.let { binding.bottomNavView.setSetupWithNavController(it) }
+//        binding.bottomNavView.setSetupWithNavController(navController)
+        binding.bottomNavView.setupWithNavController(navController)
     }
 }
 

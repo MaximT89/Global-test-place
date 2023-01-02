@@ -12,7 +12,7 @@ class RootFOneFragment : BaseFragment<FragmentRootFOneBinding, RootFOneViewModel
     RootFOneViewModel::class.java) {
 
     override fun initView() {
-        view?.findNavController()?.navigate(R.id.action_rootFOneFragment_to_featureOneNavigation2)
+//        view?.findNavController()?.navigate(R.id.action_rootFOneFragment_to_featureOneNavigation2)
     }
 
     override fun initObservers() = Unit

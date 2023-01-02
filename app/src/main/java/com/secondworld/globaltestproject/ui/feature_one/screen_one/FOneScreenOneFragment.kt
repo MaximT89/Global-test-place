@@ -14,9 +14,16 @@ class FOneScreenOneFragment : BaseFragment<FragmentFOneScreenOneBinding, FOneScr
     FragmentFOneScreenOneBinding::inflate,
     FOneScreenOneViewModel::class.java) {
 
-    override fun initView() {
-        binding.btnGoNext.click {
-            navigateTo(R.id.FOneScreenTwoFragment, null,
+    private val testAdapter = TestAdapter()
+
+    override fun initView() = with(binding) {
+
+        rv.adapter = testAdapter
+
+        testAdapter.submitList(createSomeModels())
+
+        btnGoNext.click {
+            navigateTo(R.id.FOneScreenTwoFragment2, null,
                 navOptions = NavOptions
                     .Builder()
                     .setEnterAnim(enterAnim = androidx.navigation.ui.R.anim.nav_default_enter_anim)
@@ -25,6 +32,14 @@ class FOneScreenOneFragment : BaseFragment<FragmentFOneScreenOneBinding, FOneScr
                     .setPopExitAnim(popExitAnim = androidx.navigation.ui.R.anim.nav_default_pop_exit_anim)
                     .build())
         }
+    }
+
+    private fun createSomeModels(): List<AdapterModel> {
+        val list = mutableListOf<AdapterModel>()
+        repeat(100) {
+            list.add(AdapterModel((1..99999).random(), (1..999999).random().toString()))
+        }
+        return list
     }
 
     override fun initObservers() = Unit

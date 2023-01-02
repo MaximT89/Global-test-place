@@ -20,7 +20,9 @@ ext {
     loggingVersion = '4.9.1'
     retrofitVersion = '2.9.0'
     roomVersion = '2.4.3'
+
     navigationVersion = '2.5.3'
+
     coroutinesVersion = '1.6.4'
     rvVersion = '1.2.1'
     hiltVersion = '2.42'

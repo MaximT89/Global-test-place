@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_f_two_graph"
+    app:startDestination="@id/FTwoScreenOneFragment">
+
+    <fragment
+        android:id="@+id/FTwoScreenOneFragment"
+        android:name="com.secondworld.globaltestproject.ui.feature_second.screen_one.FTwoScreenOneFragment"
+        android:label="fragment_f_two_screen_one"
+        tools:layout="@layout/fragment_f_two_screen_one" />
+    <fragment
+        android:id="@+id/FTwoScreenTwoFragment"
+        android:name="com.secondworld.globaltestproject.ui.feature_second.screen_two.FTwoScreenTwoFragment"
+        android:label="fragment_f_two_screen_two"
+        tools:layout="@layout/fragment_f_two_screen_two" />
+    <fragment
+        android:id="@+id/FTwoScreenThreeFragment"
+        android:name="com.secondworld.globaltestproject.ui.feature_second.screen_three.FTwoScreenThreeFragment"
+        android:label="fragment_f_two_screen_three"
+        tools:layout="@layout/fragment_f_two_screen_three" />
+</navigation>

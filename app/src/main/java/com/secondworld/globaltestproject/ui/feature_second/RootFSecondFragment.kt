@@ -12,7 +12,7 @@ class RootFSecondFragment : BaseFragment<FragmentRootFSecondBinding, RootFSecond
     FragmentRootFSecondBinding::inflate,
     RootFSecondViewModel::class.java) {
     override fun initView() {
-        findNavController().navigate(R.id.action_rootFSecondFragment_to_featureTwoNavigation)
+//        findNavController().navigate(R.id.action_rootFSecondFragment_to_featureTwoNavigation)
 
     }
 

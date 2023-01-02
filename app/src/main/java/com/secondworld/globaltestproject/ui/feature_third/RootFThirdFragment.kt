@@ -11,7 +11,7 @@ class RootFThirdFragment : BaseFragment<FragmentRootFThirdBinding, RootFThirdVie
     FragmentRootFThirdBinding::inflate,
     RootFThirdViewModel::class.java) {
     override fun initView() {
-        findNavController().navigate(R.id.action_rootFThirdFragment_to_featureThreeNavigation)
+//        findNavController().navigate(R.id.action_rootFThirdFragment_to_featureThreeNavigation)
 
     }
 

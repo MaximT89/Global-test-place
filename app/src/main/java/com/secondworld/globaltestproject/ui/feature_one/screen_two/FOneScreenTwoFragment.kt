@@ -14,7 +14,7 @@ class FOneScreenTwoFragment : BaseFragment<FragmentFOneScreenTwoBinding, FOneScr
     FOneScreenTwoViewModel::class.java) {
     override fun initView() {
         binding.btnGoNext.click {
-            navigateTo(R.id.FOneScreenThreeFragment,
+            navigateTo(R.id.FOneScreenThreeFragment2,
                 null,
                 navOptions = NavOptions
                     .Builder()

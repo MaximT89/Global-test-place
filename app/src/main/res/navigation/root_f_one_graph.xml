@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_f_one_graph"
+    app:startDestination="@id/FOneScreenOneFragment2">
+
+    <fragment
+        android:id="@+id/FOneScreenOneFragment2"
+        android:name="com.secondworld.globaltestproject.ui.feature_one.screen_one.FOneScreenOneFragment"
+        android:label="fragment_f_one_screen_one"
+        tools:layout="@layout/fragment_f_one_screen_one" />
+    <fragment
+        android:id="@+id/FOneScreenThreeFragment2"
+        android:name="com.secondworld.globaltestproject.ui.feature_one.screen_three.FOneScreenThreeFragment"
+        android:label="fragment_f_one_screen_three"
+        tools:layout="@layout/fragment_f_one_screen_three" />
+    <fragment
+        android:id="@+id/FOneScreenTwoFragment2"
+        android:name="com.secondworld.globaltestproject.ui.feature_one.screen_two.FOneScreenTwoFragment"
+        android:label="fragment_f_one_screen_two"
+        tools:layout="@layout/fragment_f_one_screen_two" />
+</navigation>
