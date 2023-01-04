@@ -14,14 +14,7 @@ class FTwoScreenThreeFragment :
         FTwoScreenThreeViewModel::class.java) {
     override fun initView() {
         binding.btnGoNext.click {
-            navigateTo(R.id.FTwoScreenOneFragment, null,
-                navOptions = NavOptions
-                    .Builder()
-                    .setEnterAnim(enterAnim = androidx.navigation.ui.R.anim.nav_default_enter_anim)
-                    .setExitAnim(exitAnim = androidx.navigation.ui.R.anim.nav_default_exit_anim)
-                    .setPopEnterAnim(popEnterAnim = androidx.navigation.ui.R.anim.nav_default_pop_enter_anim)
-                    .setPopExitAnim(popExitAnim = androidx.navigation.ui.R.anim.nav_default_pop_exit_anim)
-                    .build())
+            navigateTo(R.id.FTwoScreenOneFragment)
         }
 
     }

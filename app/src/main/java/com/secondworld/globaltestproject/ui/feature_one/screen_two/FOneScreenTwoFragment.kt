@@ -14,16 +14,11 @@ class FOneScreenTwoFragment : BaseFragment<FragmentFOneScreenTwoBinding, FOneScr
     FOneScreenTwoViewModel::class.java) {
     override fun initView() {
         binding.btnGoNext.click {
-            navigateTo(R.id.FOneScreenThreeFragment2,
-                null,
-                navOptions = NavOptions
-                    .Builder()
-                    .setEnterAnim(enterAnim = androidx.navigation.ui.R.anim.nav_default_enter_anim)
-                    .setExitAnim(exitAnim = androidx.navigation.ui.R.anim.nav_default_exit_anim)
-                    .setPopEnterAnim(popEnterAnim = androidx.navigation.ui.R.anim.nav_default_pop_enter_anim)
-                    .setPopExitAnim(popExitAnim = androidx.navigation.ui.R.anim.nav_default_pop_exit_anim)
-                    .build()
-            )
+            navigateTo(R.id.action_FOneScreenTwoFragment2_to_FOneScreenThreeFragment2)
+        }
+
+        binding.btnGoBack.click {
+            navigateTo(R.id.action_FOneScreenTwoFragment2_to_FOneScreenOneFragment2)
         }
 
     }

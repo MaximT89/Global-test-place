@@ -23,21 +23,14 @@ class FOneScreenOneFragment : BaseFragment<FragmentFOneScreenOneBinding, FOneScr
         testAdapter.submitList(createSomeModels())
 
         btnGoNext.click {
-            navigateTo(R.id.FOneScreenTwoFragment2, null,
-                navOptions = NavOptions
-                    .Builder()
-                    .setEnterAnim(enterAnim = androidx.navigation.ui.R.anim.nav_default_enter_anim)
-                    .setExitAnim(exitAnim = androidx.navigation.ui.R.anim.nav_default_exit_anim)
-                    .setPopEnterAnim(popEnterAnim = androidx.navigation.ui.R.anim.nav_default_pop_enter_anim)
-                    .setPopExitAnim(popExitAnim = androidx.navigation.ui.R.anim.nav_default_pop_exit_anim)
-                    .build())
+            navigateTo(R.id.action_FOneScreenOneFragment2_to_FOneScreenTwoFragment2)
         }
     }
 
     private fun createSomeModels(): List<AdapterModel> {
         val list = mutableListOf<AdapterModel>()
-        repeat(100) {
-            list.add(AdapterModel((1..99999).random(), (1..999999).random().toString()))
+        for (i in 0..100){
+            list.add(AdapterModel(i, i.toString()))
         }
         return list
     }

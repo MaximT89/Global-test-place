@@ -9,15 +9,41 @@
         android:id="@+id/FOneScreenOneFragment2"
         android:name="com.secondworld.globaltestproject.ui.feature_one.screen_one.FOneScreenOneFragment"
         android:label="fragment_f_one_screen_one"
-        tools:layout="@layout/fragment_f_one_screen_one" />
-    <fragment
-        android:id="@+id/FOneScreenThreeFragment2"
-        android:name="com.secondworld.globaltestproject.ui.feature_one.screen_three.FOneScreenThreeFragment"
-        android:label="fragment_f_one_screen_three"
-        tools:layout="@layout/fragment_f_one_screen_three" />
+        tools:layout="@layout/fragment_f_one_screen_one">
+        <action
+            android:id="@+id/action_FOneScreenOneFragment2_to_FOneScreenTwoFragment2"
+            app:destination="@id/FOneScreenTwoFragment2"
+            app:popUpTo="@+id/FOneScreenTwoFragment2"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"
+            app:popUpToSaveState="true" />
+    </fragment>
+
     <fragment
         android:id="@+id/FOneScreenTwoFragment2"
         android:name="com.secondworld.globaltestproject.ui.feature_one.screen_two.FOneScreenTwoFragment"
         android:label="fragment_f_one_screen_two"
-        tools:layout="@layout/fragment_f_one_screen_two" />
+        tools:layout="@layout/fragment_f_one_screen_two">
+        <action
+            android:id="@+id/action_FOneScreenTwoFragment2_to_FOneScreenThreeFragment2"
+            app:destination="@id/FOneScreenThreeFragment2" />
+        <action
+            android:id="@+id/action_FOneScreenTwoFragment2_to_FOneScreenOneFragment2"
+            app:destination="@id/FOneScreenOneFragment2"
+            app:restoreState="true"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/FOneScreenThreeFragment2"
+        android:name="com.secondworld.globaltestproject.ui.feature_one.screen_three.FOneScreenThreeFragment"
+        android:label="fragment_f_one_screen_three"
+        tools:layout="@layout/fragment_f_one_screen_three">
+        <action
+
+            android:id="@+id/action_FOneScreenThreeFragment2_to_FOneScreenOneFragment2"
+            app:destination="@id/FOneScreenOneFragment2"
+ />
+    </fragment>
+
 </navigation>

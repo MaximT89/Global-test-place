@@ -10,6 +10,7 @@
         <item name="colorSecondaryVariant">@color/green_yellow</item>
         <item name="colorOnSecondary">@color/Black</item>
         <!-- Status bar color. -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/rootFOneFragment2"
-        android:title="Feature One"/>
-    <item android:id="@+id/rootFSecondFragment2"
-        android:title="Feature Two"/>
-    <item android:id="@+id/rootFThirdFragment2"
-        android:title="Feature Three"/>
+    <item
+        android:id="@+id/rootFOneFragment2"
+        android:menuCategory="alternative"
+        android:title="Feature One" />
+    <item
+        android:id="@+id/rootFSecondFragment2"
+        android:menuCategory="alternative"
+        android:title="Feature Two" />
+    <item
+        android:id="@+id/rootFThirdFragment2"
+        android:menuCategory="alternative"
+        android:title="Feature Three" />
 
 </menu>

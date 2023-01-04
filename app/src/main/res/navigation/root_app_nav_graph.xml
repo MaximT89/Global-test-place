@@ -9,17 +9,14 @@
     <fragment
         android:id="@+id/rootFOneFragment2"
         android:name="com.secondworld.globaltestproject.ui.feature_one.RootFOneFragment"
-        android:label="fragment_root_f_one"
         tools:layout="@layout/fragment_root_f_one" />
     <fragment
         android:id="@+id/rootFSecondFragment2"
         android:name="com.secondworld.globaltestproject.ui.feature_second.RootFSecondFragment"
-        android:label="fragment_root_f_second"
         tools:layout="@layout/fragment_root_f_second" />
     <fragment
         android:id="@+id/rootFThirdFragment2"
         android:name="com.secondworld.globaltestproject.ui.feature_third.RootFThirdFragment"
-        android:label="fragment_root_f_third"
         tools:layout="@layout/fragment_root_f_third" />
 
 

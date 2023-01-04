@@ -1,10 +1,12 @@
 package com.secondworld.globaltestproject.ui.feature_second
 
+import android.content.Intent
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.databinding.FragmentRootFSecondBinding
+import com.secondworld.globaltestproject.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
