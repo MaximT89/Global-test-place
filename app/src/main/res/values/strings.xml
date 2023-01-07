@@ -7,6 +7,13 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string name="test">Sed ut perspiciatis, <annotation font="bold"><annotation arg="0">%1$s</annotation></annotation> omnis iste natus
+        error <annotation font="bold"><annotation arg="1">%1$s</annotation></annotation> sit voluptatem accusantium doloremque laudantium,
+        totam rem aperiam eaque ipsa, quae ab illo inventore veritatis
+        et quasi architecto beatae vitae dicta sunt, explicabo.
+        Nemo enim</string>
+
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="yes">Да</string>
