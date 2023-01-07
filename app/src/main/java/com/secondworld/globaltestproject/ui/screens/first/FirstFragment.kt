@@ -1,23 +1,17 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
+
 import android.graphics.Typeface
 import android.text.*
-import android.text.Annotation
-import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.text.style.MetricAffectingSpan
-import android.text.style.StyleSpan
-import android.view.View
-import androidx.activity.result.launch
+import android.widget.Toast
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
+import com.secondworld.globaltestproject.core.extension.getColor
+import com.secondworld.globaltestproject.core.extension.toast
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.reflect.jvm.internal.impl.types.CustomTypeParameter
 
 @AndroidEntryPoint
 class FirstFragment :
@@ -26,14 +20,18 @@ class FirstFragment :
     ) {
 
     override fun initView() {
-
-
+        binding.btnTest.click {
+            "hello".toast(Toast.LENGTH_LONG)
+        }
 
     }
 
     override fun initObservers() = Unit
 
 }
+
+
+
 
 open class CustomTypefaceSpan(private val font: Typeface?) : MetricAffectingSpan() {
 

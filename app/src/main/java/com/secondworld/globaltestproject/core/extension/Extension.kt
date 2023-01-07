@@ -6,6 +6,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Application
 import android.content.SharedPreferences
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -14,10 +15,16 @@ import android.view.View
 import android.widget.TextView
 import android.content.res.Resources
 import android.widget.Button
-import androidx.core.view.isVisible
+import android.widget.Toast
+import androidx.annotation.MainThread
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
+import com.secondworld.globaltestproject.core.bases.ContextScope
+import com.secondworld.globaltestproject.ui.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -26,6 +33,21 @@ import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+
+context(MainActivity)
+fun getColor(resId: Int) : Int {
+    return ContextCompat.getColor(this@MainActivity, resId)
+}
+
+context(ContextScope)
+fun String.toast(duration: Int = Toast.LENGTH_LONG) {
+    Toast.makeText(this@ContextScope.getContext(), this, duration).show()
+}
+
+context(ContextScope)
+fun contextToast(message: String) {
+    Toast.makeText(this@ContextScope.getContext(), message, Toast.LENGTH_LONG).show()
+}
 
 fun View.click(logic: () -> Unit) {
     setOnClickListener { logic.invoke() }
@@ -74,13 +96,11 @@ fun log(tag: String = "TAG", message: String) {
 }
 
 fun Button.active() {
-    isVisible = true
     isEnabled = true
     isClickable = true
 }
 
 fun Button.notActive() {
-    isVisible = true
     isEnabled = false
     isClickable = false
 }

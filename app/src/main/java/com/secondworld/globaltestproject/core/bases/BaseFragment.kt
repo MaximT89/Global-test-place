@@ -38,7 +38,7 @@ typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
  * в данной базе мы сразу получаем биндинг и переопределяем метод на присваивание viewModel
  */
 abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate: Inflate<B>, private val clazz : Class<VM>) :
-    Fragment(), Navigator {
+    Fragment(), Navigator, ContextScope {
 
     private var _viewBinding: B? = null
     protected val binding get() = checkNotNull(_viewBinding)
@@ -53,6 +53,8 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
         viewModel = ViewModelProvider(this)[clazz]
 
     }
+
+    override fun getContext(): Context { return requireActivity() }
 
     override fun onCreateView(
         inflater: LayoutInflater,

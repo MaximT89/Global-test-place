@@ -3,8 +3,10 @@ package com.secondworld.globaltestproject.ui
 import android.R
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.secondworld.globaltestproject.core.bases.BaseActivity
+import com.secondworld.globaltestproject.core.extension.toast
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,6 +23,8 @@ class MainActivity : BaseActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        "hello".toast(Toast.LENGTH_LONG)
     }
 
     @Override
@@ -30,5 +34,9 @@ class MainActivity : BaseActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
+
+
 
