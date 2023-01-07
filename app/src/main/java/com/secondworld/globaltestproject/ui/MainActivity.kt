@@ -1,6 +1,9 @@
 package com.secondworld.globaltestproject.ui
 
 import android.content.Context
+import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.Menu
 import androidx.navigation.NavController
@@ -25,7 +28,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun initObservers() = Unit
 
     override fun initView() {
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
@@ -38,9 +40,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         )
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            when(destination.label) {
+            when (destination.label) {
                 "fragment_main_screen" -> {
-                    val lottie = binding.bottomNavView.menu.findItem(R.id.mainScreenFragment).icon as LottieDrawable
+                    val lottie =
+                        binding.bottomNavView.menu.findItem(R.id.mainScreenFragment).icon as LottieDrawable
                     lottie.playAnimation()
                 }
             }
@@ -80,5 +83,3 @@ fun BottomNavigationView.setSetupWithNavController(navController: NavController?
         return@setOnItemSelectedListener true
     }
 }
-
-
