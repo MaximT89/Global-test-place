@@ -23,13 +23,10 @@ abstract class BaseActivity : AppCompatActivity(), Navigator, ContextScope {
 
     override fun navigateUp() { findNavController(R.id.nav_host_fragment).navigateUp() }
 
-    override fun getContext(): Context {
+    override fun getContext() : Context {
         return this
     }
-    /**
-     * Проверяем, если у нас отображается клавиатура, то при клике вне клавиатуры мы вызываем метод
-     * [hideKeyboard] , которым скрываем клавиатуру
-     */
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (ev.action == MotionEvent.ACTION_DOWN) hideKeyboard()

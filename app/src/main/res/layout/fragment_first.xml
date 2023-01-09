@@ -7,7 +7,6 @@
     android:padding="15dp"
     tools:context=".ui.screens.first.FirstFragment">
 
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/testText"
         android:layout_width="wrap_content"

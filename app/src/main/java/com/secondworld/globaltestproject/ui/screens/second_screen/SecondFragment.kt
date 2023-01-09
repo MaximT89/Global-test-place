@@ -1,7 +1,5 @@
 package com.secondworld.globaltestproject.ui.screens.second_screen
 
-import android.app.Activity
-import android.content.Intent
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.databinding.FragmentSecondBinding

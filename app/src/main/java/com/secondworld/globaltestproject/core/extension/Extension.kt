@@ -6,7 +6,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -16,13 +16,11 @@ import android.widget.TextView
 import android.content.res.Resources
 import android.widget.Button
 import android.widget.Toast
-import androidx.annotation.MainThread
-import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
+import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.ContextScope
 import com.secondworld.globaltestproject.ui.MainActivity
 import kotlinx.coroutines.CoroutineScope
@@ -34,15 +32,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-context(MainActivity)
-fun getColor(resId: Int) : Int {
-    return ContextCompat.getColor(this@MainActivity, resId)
+context(ContextScope)
+fun getColor(resId: Int): Int {
+    return ContextCompat.getColor(this@ContextScope.getContext(), resId)
 }
 
 context(ContextScope)
 fun String.toast(duration: Int = Toast.LENGTH_LONG) {
     Toast.makeText(this@ContextScope.getContext(), this, duration).show()
 }
+
 
 context(ContextScope)
 fun contextToast(message: String) {
@@ -130,8 +129,13 @@ fun createGradient(textView: TextView, colors: IntArray) {
 fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toInt()
 fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
-fun Activity.snackbar(message: String) {
-    Snackbar.make(this, findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
+
+context(ContextScope)
+fun showSnackbar(message: String) {
+    Snackbar.make(this@ContextScope.getContext(),
+        (this@ContextScope.getContext() as Activity).findViewById(android.R.id.content),
+        message,
+        Snackbar.LENGTH_LONG).show()
 }
 
 fun View.animateLikeButton() {

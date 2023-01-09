@@ -4,29 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/custom_alert_dialog.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_one_screen_one.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_one_screen_three.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_one_screen_two.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_f_three_screen_three.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_first.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_root_f_one.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_root_f_second.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_root_f_third.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_second.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/holder_animal.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/holder_test.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/holder_test_adapter.xml" value="0.253125" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/radio_group_test.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/Global-test-place/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_first.xml" value="0.25" />
-        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/holder_animal.xml" value="0.21217105263157895" />
-        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/holder_item_small_img.xml" value="0.21217105263157895" />
-        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2525" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/drawable/gradient.xml" value="0.3475" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_main.xml" value="0.5213541666666667" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/person_holder.xml" value="0.5" />
-        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/student_holder.xml" value="0.5213541666666667" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/drawable/divider_drawable.xml" value="0.2385" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/activity_main.xml" value="0.3359375" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_first.xml" value="0.3359375" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_second.xml" value="0.21217105263157895" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/holder_left_menu.xml" value="0.21217105263157895" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/main_holder.xml" value="0.1" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/drawable/border_bg.xml" value="0.4465" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/drawable/doted.xml" value="0.4455" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/activity_second.xml" value="0.5213541666666667" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/custom_layout.xml" value="0.5213541666666667" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_first.xml" value="0.5" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_second.xml" value="0.5213541666666667" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/fragment_third.xml" value="0.5213541666666667" />
+        <entry key="..\:/Users/Max/AndroidStudioProjects/Globaltestproject/app/src/main/res/layout/holder_person.xml" value="0.5213541666666667" />
       </map>
     </option>
   </component>
