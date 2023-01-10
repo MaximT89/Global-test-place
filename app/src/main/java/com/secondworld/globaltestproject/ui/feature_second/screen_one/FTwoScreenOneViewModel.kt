@@ -5,5 +5,4 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class FTwoScreenOneViewModel @Inject constructor() : ViewModel() {
-}
+class FTwoScreenOneViewModel @Inject constructor() : ViewModel()

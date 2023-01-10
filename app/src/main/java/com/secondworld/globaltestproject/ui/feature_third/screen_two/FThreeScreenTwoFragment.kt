@@ -25,6 +25,5 @@ class FThreeScreenTwoFragment :
         }
     }
 
-    override fun initObservers() {
-    }
+    override fun initObservers() = Unit
 }

@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.ui.feature_second.screen_two
 
-import androidx.navigation.NavOptions
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
@@ -18,6 +17,5 @@ class FTwoScreenTwoFragment : BaseFragment<FragmentFTwoScreenTwoBinding, FTwoScr
         }
     }
 
-    override fun initObservers() {
-    }
+    override fun initObservers() = Unit
 }

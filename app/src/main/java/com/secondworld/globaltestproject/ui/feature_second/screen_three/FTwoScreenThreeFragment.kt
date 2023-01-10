@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.ui.feature_second.screen_three
 
-import androidx.navigation.NavOptions
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
@@ -16,9 +15,7 @@ class FTwoScreenThreeFragment :
         binding.btnGoNext.click {
             navigateTo(R.id.FTwoScreenOneFragment)
         }
-
     }
 
-    override fun initObservers() {
-    }
+    override fun initObservers() = Unit
 }

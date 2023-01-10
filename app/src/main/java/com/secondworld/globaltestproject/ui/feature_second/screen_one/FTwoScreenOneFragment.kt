@@ -16,6 +16,5 @@ class FTwoScreenOneFragment : BaseFragment<FragmentFTwoScreenOneBinding, FTwoScr
         }
     }
 
-    override fun initObservers() {
-    }
+    override fun initObservers() = Unit
 }
