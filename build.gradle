@@ -10,7 +10,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-
 ext {
     kotlinVersion = '1.7.10'
     pagingThree = '3.2.0-alpha02'
