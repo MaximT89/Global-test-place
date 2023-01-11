@@ -3,11 +3,9 @@ package com.secondworld.globaltestproject.ui
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.data.models.Person
 import com.secondworld.globaltestproject.databinding.HolderPersonBinding
 
