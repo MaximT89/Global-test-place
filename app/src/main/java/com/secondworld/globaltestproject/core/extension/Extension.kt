@@ -48,6 +48,14 @@ fun contextToast(message: String) {
     Toast.makeText(this@ContextScope.getContext(), message, Toast.LENGTH_LONG).show()
 }
 
+context(ContextScope)
+fun showSnackbar(message: String) {
+    Snackbar.make(this@ContextScope.getContext(),
+        (this@ContextScope.getContext() as Activity).findViewById(android.R.id.content),
+        message,
+        Snackbar.LENGTH_LONG).show()
+}
+
 fun View.click(logic: () -> Unit) {
     setOnClickListener { logic.invoke() }
 }
@@ -130,13 +138,7 @@ fun Int.toDp(): Int = (this / Resources.getSystem().displayMetrics.density).toIn
 fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 
-context(ContextScope)
-fun showSnackbar(message: String) {
-    Snackbar.make(this@ContextScope.getContext(),
-        (this@ContextScope.getContext() as Activity).findViewById(android.R.id.content),
-        message,
-        Snackbar.LENGTH_LONG).show()
-}
+
 
 fun View.animateLikeButton() {
     setOnClickListener {
