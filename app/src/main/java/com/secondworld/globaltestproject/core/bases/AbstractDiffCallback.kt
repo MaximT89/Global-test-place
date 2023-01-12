@@ -9,10 +9,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.secondworld.globaltestproject.core.extension.hide
-import com.secondworld.globaltestproject.core.extension.show
-import com.secondworld.globaltestproject.data.OfferModel
-import com.secondworld.globaltestproject.databinding.MainHolderBinding
 
 abstract class AbstractDiffCallback<T : Match<T>> : DiffUtil.ItemCallback<T>() {
 
