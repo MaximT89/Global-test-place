@@ -13,6 +13,7 @@ interface ResourceProvider {
     fun string(@StringRes id: Int, vararg args: String?): String
 
     // руддщ
+    // руддщ
 
     class Impl @Inject constructor(@ApplicationContext private val context: Context) :
         ResourceProvider {
