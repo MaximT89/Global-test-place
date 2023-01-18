@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity<VB : ViewBinding>() : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
-    private var _binding: ViewBinding? = null
+    private var _binding: VB? = null
 
-    @Suppress("UNCHECKED_CAST")
-    protected val binding get() = _binding as VB
+    protected val binding get() = _binding!!
 
     protected abstract val bindingInflater : (LayoutInflater) -> VB
 
@@ -24,9 +23,4 @@ abstract class BaseActivity<VB : ViewBinding>() : AppCompatActivity() {
 
     abstract fun initObservers()
     abstract fun initView()
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
 }

@@ -7,6 +7,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FavouriteScreenFragment : BaseFragment<FragmentFavouriteScreenBinding>(FragmentFavouriteScreenBinding::inflate) {
     override fun initView() {
+
+
+
     }
 
     override fun initObservers() {
