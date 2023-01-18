@@ -185,6 +185,7 @@ class MainActivity : BaseActivity() {
         if (progress) binding.progressBar.show()
         else binding.progressBar.hide()
 
+        // test
         if (content) binding.imageMain.show()
         else binding.imageMain.hide()
 
