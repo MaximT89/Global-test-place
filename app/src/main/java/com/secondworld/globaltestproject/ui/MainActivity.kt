@@ -28,6 +28,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.lang.Exception
+import kotlin.system.exitProcess
 
 
 @AndroidEntryPoint
@@ -52,7 +53,14 @@ class MainActivity : BaseActivity() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        log("workwork")
+    }
+
     private fun initView() {
+
         binding.btnReload.click {
             viewModel.getImageFromServer()
         }
