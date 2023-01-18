@@ -130,10 +130,6 @@ class MainActivity : BaseActivity() {
 
                     binding.imageMain.setImageURI(outputFileUri)
 
-//                    Glide.with(this).load(data.extras?.get("data") as Bitmap).into(binding.imageMain)
-//                    binding.imageMain.setImageBitmap(data.extras?.get("data") as Bitmap)
-//                    savePhoto(data.extras?.get("data") as Bitmap)
-
                 } else showSnackbar("Wrong request code")
             }
             SELECT_PICTURE -> Glide.with(this).load(data?.data).into(binding.imageMain)
@@ -145,10 +141,6 @@ class MainActivity : BaseActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) saveInGalleryQ(bitmap)
         else saveTheImageLegacyStyle(bitmap)
     }
-
-//    private fun savePhoto(bitmap: Bitmap) {
-//        Images.Media.insertImage(contentResolver, bitmap, "IMG_${System.currentTimeMillis()}.jpg", "sdasdasd")
-//    }
 
     private fun saveTheImageLegacyStyle(bitmap: Bitmap) {
 
