@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
 import com.secondworld.globaltestproject.core.bases.BaseActivity
 import com.secondworld.globaltestproject.core.common.*
@@ -132,7 +133,12 @@ class MainActivity : BaseActivity() {
 
                 } else showSnackbar("Wrong request code")
             }
-            SELECT_PICTURE -> Glide.with(this).load(data?.data).into(binding.imageMain)
+            SELECT_PICTURE ->{
+                Glide.with(this)
+                    .load(data?.data)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(binding.imageMain)
+            }
             else -> showSnackbar("Wrong request code")
         }
     }
