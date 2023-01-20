@@ -17,18 +17,20 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.snackbar.Snackbar
 import com.secondworld.globaltestproject.core.bases.BaseActivity
-import com.secondworld.globaltestproject.core.common.*
+import com.secondworld.globaltestproject.core.common.click
+import com.secondworld.globaltestproject.core.common.hide
+import com.secondworld.globaltestproject.core.common.log
+import com.secondworld.globaltestproject.core.common.show
 import com.secondworld.globaltestproject.data.remote.ResponseImageLoad
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.chromium.base.LocaleUtils
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
-import java.lang.Exception
-import kotlin.system.exitProcess
 
 
 @AndroidEntryPoint
@@ -51,12 +53,10 @@ class MainActivity : BaseActivity() {
         initView()
         initObservers()
 
-    }
+        val current = resources.configuration.locale
+        log("current.country == ${current.country}")
 
-    override fun onDestroy() {
-        super.onDestroy()
 
-        log("workwork")
     }
 
     private fun initView() {
