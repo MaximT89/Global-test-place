@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.core.bases
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
@@ -19,6 +20,7 @@ abstract class BaseDialogFragment<B : ViewBinding>(
     abstract fun initView()
     open fun positiveBtnClick() = Unit
 
+    @SuppressLint("UseGetLayoutInflater")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _viewBinding = inflate.invoke(LayoutInflater.from(context))
 

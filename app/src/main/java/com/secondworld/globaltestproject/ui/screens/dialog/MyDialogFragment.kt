@@ -1,13 +1,15 @@
 package com.secondworld.globaltestproject.ui.screens.dialog
 
 import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseDialogFragment
 import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.databinding.DialogFragmentMyBinding
 
-class MyDialogFragment : BaseDialogFragment<DialogFragmentMyBinding>(DialogFragmentMyBinding::inflate) {
+class MyDialogFragment :
+    BaseDialogFragment<DialogFragmentMyBinding>(DialogFragmentMyBinding::inflate) {
 
     override fun initView() {
         val textFromFirst = arguments?.get("key")
@@ -15,10 +17,10 @@ class MyDialogFragment : BaseDialogFragment<DialogFragmentMyBinding>(DialogFragm
         binding.textFromFirstFragment.text = textFromFirst.toString()
 
         binding.btnGoSecond.click {
-            findNavController().navigate(
-                R.id.action_myDialogFragment_to_secondFragment,
-                bundleOf("key1" to binding.editTextDialog.text.toString())
-            )
+
+            val navController = findNavController()
+            navController.previousBackStackEntry?.savedStateHandle?.set("key", "value that needs to be passed")
+            navController.popBackStack()
         }
     }
 
