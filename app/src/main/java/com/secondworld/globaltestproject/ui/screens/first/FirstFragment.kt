@@ -1,16 +1,12 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
-import android.widget.TextView
 import androidx.core.os.bundleOf
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FirstFragment :
@@ -24,7 +20,6 @@ class FirstFragment :
             ?.observe(viewLifecycleOwner) {
                 binding.testText.text = it
             }
-
 
         binding.btnGoDialog.click {
             navigateTo(
