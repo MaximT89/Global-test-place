@@ -23,11 +23,4 @@ class MyDialogFragment :
             navController.popBackStack()
         }
     }
-
-    override fun positiveBtnClick() {
-        findNavController().navigate(
-            R.id.action_myDialogFragment_to_secondFragment,
-            bundleOf("key1" to binding.editTextDialog.text.toString())
-        )
-    }
 }
