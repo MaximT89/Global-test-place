@@ -20,8 +20,6 @@ class FirstFragment :
                 bundleOf("key" to "Hello my dialog")
             )
         }
-
-
     }
 
     override fun initObservers() = Unit

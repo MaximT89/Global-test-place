@@ -12,12 +12,4 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class FirstViewModel @Inject constructor(private val provider: ResourceProvider) : BaseViewModel() {
-
-
-}
-
-
-
-
-
+class FirstViewModel @Inject constructor(private val provider: ResourceProvider) : BaseViewModel()

@@ -16,11 +16,9 @@ class SecondFragment @Inject constructor() : BaseFragment<FragmentSecondBinding,
     override fun initView() = with(binding) {
 
         val dataFromDialog = arguments?.get("key1")
-
         textFromDialog.text = dataFromDialog.toString()
 
         btnGoFirstFragment.click { navigateTo(R.id.firstFragment) }
-
     }
 
     override fun initObservers() = Unit

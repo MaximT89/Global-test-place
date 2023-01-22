@@ -26,7 +26,6 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         showSnackbar("Some text")
-
     }
 
     @Override
@@ -36,8 +35,6 @@ class MainActivity : BaseActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 }
 
 
