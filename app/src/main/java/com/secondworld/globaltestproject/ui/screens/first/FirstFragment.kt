@@ -1,10 +1,9 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
-import androidx.core.content.ContextCompat
-import com.google.android.material.snackbar.Snackbar
+import androidx.core.os.bundleOf
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
-import com.secondworld.globaltestproject.core.extension.getColor
+import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,10 +14,13 @@ class FirstFragment :
     ) {
 
     override fun initView() {
+        binding.btnGoDialog.click {
+            navigateTo(
+                R.id.action_firstFragment_to_myDialogFragment,
+                bundleOf("key" to "Hello my dialog")
+            )
+        }
 
-        binding.btnTest.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.red))
-
-        binding.btnTest.setBackgroundColor(getColor(R.color.red))
 
     }
 
