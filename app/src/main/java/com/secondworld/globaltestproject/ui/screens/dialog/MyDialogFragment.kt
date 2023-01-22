@@ -19,7 +19,7 @@ class MyDialogFragment :
         binding.btnGoSecond.click {
 
             val navController = findNavController()
-            navController.previousBackStackEntry?.savedStateHandle?.set("key", "value that needs to be passed")
+            navController.previousBackStackEntry?.savedStateHandle?.set("key", binding.editTextDialog.text.toString())
             navController.popBackStack()
         }
     }
