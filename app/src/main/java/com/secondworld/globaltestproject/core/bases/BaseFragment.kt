@@ -21,7 +21,6 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.secondworld.globaltestproject.core.navigation.Navigator
-import com.google.android.material.snackbar.Snackbar
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.core.extension.showSnackbar

@@ -31,6 +31,7 @@ import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.reflect.KFunction1
 
 context(ContextScope)
 fun getColor(resId: Int): Int {
@@ -56,7 +57,7 @@ fun showSnackbar(message: String) {
         Snackbar.LENGTH_LONG).show()
 }
 
-fun View.click(logic: () -> Unit) {
+fun View.click(logic : () -> Unit) {
     setOnClickListener { logic.invoke() }
 }
 
