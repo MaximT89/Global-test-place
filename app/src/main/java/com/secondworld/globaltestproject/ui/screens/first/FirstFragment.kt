@@ -2,6 +2,7 @@ package com.secondworld.globaltestproject.ui.screens.first
 
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.secondworld.globaltestproject.BuildConfig
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
