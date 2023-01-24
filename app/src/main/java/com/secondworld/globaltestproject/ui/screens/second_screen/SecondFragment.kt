@@ -12,11 +12,7 @@ class SecondFragment @Inject constructor() : BaseFragment<FragmentSecondBinding,
     SecondViewModel::class.java
 ) {
 
-    override fun initView() = with(binding) {
-        btnGoBack.click { navigateUp() }
-
-        btnSendMessage.click {}
-    }
+    override fun initView() = Unit
 
     override fun initObservers() = Unit
 }

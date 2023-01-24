@@ -31,7 +31,6 @@ class FirstFragment :
     @SuppressLint("Recycle")
     override fun initView() {
 
-        getEnemy("orc.png", binding.mainEnemy1)
         getEnemy("orc.png", binding.mainEnemy2)
         getEnemy("orc.png", binding.mainEnemy3)
 
@@ -51,7 +50,7 @@ class FirstFragment :
     private fun createOutline(view : View) {
         val viewOutlineProvider: ViewOutlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View, outline: Outline) {
-                outline.setRoundRect(0, 0, view.width, view.height, 25f)
+                outline.setRoundRect(0, 0, view.height, (view.height+40f).toInt(), 40f)
             }
         }
 

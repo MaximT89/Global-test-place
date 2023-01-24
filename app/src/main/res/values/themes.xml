@@ -15,6 +15,12 @@
         <!-- Customize your theme here. -->
 
     </style>
+
+    <style name="gameImage" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">25%</item>
+    </style>
+
     <style name="Theme.GlobalTestProject.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
