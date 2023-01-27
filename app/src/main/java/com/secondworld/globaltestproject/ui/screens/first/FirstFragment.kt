@@ -13,8 +13,10 @@ import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
+import com.secondworld.globaltestproject.core.bases.BaseResult
 import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.core.extension.log
+import com.secondworld.globaltestproject.core.remote.Failure
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
@@ -94,7 +96,7 @@ class FirstFragment :
         set.start()
     }
 
-    private fun getEnemy(name: String, view: ImageView) {
+    private fun getAssetsImg(name: String, view: ImageView) {
         try {
             requireActivity().assets.open(name).use { inputStream ->
                 val drawable = Drawable.createFromStream(inputStream, null)
@@ -102,6 +104,16 @@ class FirstFragment :
             }
         } catch (e: IOException) {
             e.printStackTrace()
+        }
+    }
+
+    private fun getAssetsImg(name: String) : BaseResult<Drawable, Failure> {
+        return try {
+            context.assets.open(name).use { inputStream ->
+                BaseResult.Success(Drawable.createFromStream(inputStream, null))
+            }
+        } catch (e: IOException) {
+            BaseResult.Error(Failure(code = -1, e.message.toString()))
         }
     }
 

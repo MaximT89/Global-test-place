@@ -6,7 +6,7 @@
     <gradient android:startColor="@color/White"
         android:endColor="@color/Purple"
         android:type="radial"
-        android:gradientRadius="600"/>
+        android:gradientRadius="100dp"/>
     <stroke android:width="3dp"
         android:color="@color/Purple"/>
 
