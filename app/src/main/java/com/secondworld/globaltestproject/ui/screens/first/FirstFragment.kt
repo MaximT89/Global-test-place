@@ -16,7 +16,7 @@ class FirstFragment :
         FragmentFirstBinding::inflate, FirstViewModel::class.java
     ) {
 
-    // test 2
+    // test 222
     override fun initView() {
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("key")
