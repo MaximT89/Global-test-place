@@ -15,7 +15,9 @@ import android.view.View
 import android.widget.TextView
 import android.content.res.Resources
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -38,10 +40,16 @@ fun getColor(resId: Int): Int {
 }
 
 context(ContextScope)
+fun ImageView.updateColor(resId: Int) {
+    apply {
+        setBackgroundColor(getColor(resId))
+    }
+}
+
+context(ContextScope)
 fun String.toast(duration: Int = Toast.LENGTH_LONG) {
     Toast.makeText(this@ContextScope.getContext(), this, duration).show()
 }
-
 
 context(ContextScope)
 fun contextToast(message: String) {
