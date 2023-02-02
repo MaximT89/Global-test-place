@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
-import androidx.navigation.fragment.findNavController
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,13 +10,8 @@ class FirstFragment :
         FragmentFirstBinding::inflate, FirstViewModel::class.java
     ) {
 
-    override fun initView() {
-
-    }
-
-
+    override fun initView() = Unit
 
     override fun initObservers() = Unit
-
 }
 
