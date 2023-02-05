@@ -10,7 +10,10 @@ class FirstFragment :
         FragmentFirstBinding::inflate, FirstViewModel::class.java
     ) {
 
-    override fun initView() = Unit
+    override fun initView() {
+        val animalAbstract = AnimalAbstract()
+        animalAbstract.getSound<Dog>()
+    }
 
     override fun initObservers() = Unit
 }
