@@ -18,8 +18,12 @@ object NetworkModuleProvides {
 
     @Provides
     @Singleton
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+        val level: HttpLoggingInterceptor.Level = HttpLoggingInterceptor.Level.BODY
+        val inter = HttpLoggingInterceptor()
+        inter.level = level
+
+        return inter
     }
 
     @Provides
