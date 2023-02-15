@@ -1,5 +1,6 @@
 package com.secondworld.globaltestproject.ui.screens.second_screen
 
+import com.secondworld.globaltestproject.R
 import com.secondworld.globaltestproject.core.bases.BaseFragment
 import com.secondworld.globaltestproject.core.extension.click
 import com.secondworld.globaltestproject.databinding.FragmentSecondBinding
@@ -13,9 +14,14 @@ class SecondFragment @Inject constructor() : BaseFragment<FragmentSecondBinding,
 ) {
 
     override fun initView() = with(binding) {
-        btnGoBack.click { navigateUp() }
 
-        btnSendMessage.click {}
+        btnGoBack.click {
+            requireActivity().onBackPressed()
+        }
+
+        btnSendMessage.click {
+            navigateTo(R.id.action_secondFragment_to_thirdFragment)
+        }
     }
 
     override fun initObservers() = Unit

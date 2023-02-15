@@ -10,10 +10,31 @@
         android:id="@+id/firstFragment"
         android:name="com.secondworld.globaltestproject.ui.screens.first.FirstFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" />
+        tools:layout="@layout/fragment_first">
+
+
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:popUpTo="@id/nav_graph"
+            app:destination="@id/secondFragment"/>
+
+
+    </fragment>
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.secondworld.globaltestproject.ui.screens.second_screen.SecondFragment"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/fragment_second">
+        <action
+            android:id="@+id/action_secondFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment"
+            app:popUpTo="@id/secondFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.secondworld.globaltestproject.ui.screens.third_screen.ThirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third">
+    </fragment>
 </navigation>
