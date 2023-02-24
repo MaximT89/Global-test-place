@@ -17,20 +17,7 @@ class FirstFragment :
 
     override fun initView() {
 
-        object : CountDownTimer(5000, 50) {
-            override fun onTick(p0: Long) {
-                currentProgress++
-                binding.progressB.setProgress(currentProgress)
-            }
 
-            override fun onFinish() {
-                navigateTo(R.id.action_firstFragment_to_secondFragment)
-            }
-        }.start()
-
-        binding.btnTest.click {
-            navigateTo(R.id.action_firstFragment_to_secondFragment)
-        }
     }
 
     override fun initObservers() = Unit
