@@ -11,11 +11,6 @@ import com.secondworld.globaltestproject.databinding.HolderPersonBinding
 
 class PersonAdapter : ListAdapter<Person, PersonAdapter.RecyclerViewHolder>(ItemComparator()) {
 
-    var callBackPerson: ((position: Int, name: String) -> Unit)? = null
-    var callBackPersonSecond: ((age: Int) -> Unit)? = null
-    var callBackArrowUp : ((position : Int) -> Unit)? = null
-    var callBackArrowDown : ((position : Int) -> Unit)? = null
-
     class ItemComparator : DiffUtil.ItemCallback<Person>(){
         override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
             return  oldItem.name == newItem.name }
