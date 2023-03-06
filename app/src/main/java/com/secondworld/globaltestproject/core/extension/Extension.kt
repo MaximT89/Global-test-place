@@ -42,7 +42,6 @@ fun String.toast(duration: Int = Toast.LENGTH_LONG) {
     Toast.makeText(this@ContextScope.getContext(), this, duration).show()
 }
 
-
 context(ContextScope)
 fun contextToast(message: String) {
     Toast.makeText(this@ContextScope.getContext(), message, Toast.LENGTH_LONG).show()

@@ -27,6 +27,7 @@ class MainActivity : BaseActivity() {
 
         showSnackbar("Some text")
 
+
     }
 
     @Override

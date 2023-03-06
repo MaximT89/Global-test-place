@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/drawable/ic_baseline_access_time_filled_24.xml" value="0.4665" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.4665" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/drawable/spin_animation.xml" value="0.4665" />
+        <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/drawable/transition.xml" value="0.4665" />
         <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/activity_main.xml" value="0.33092105263157895" />
         <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="..\:/Users/Maksik/AndroidStudioProjects/Global-test-place/app/src/main/res/layout/fragment_second.xml" value="0.33092105263157895" />
