@@ -1,6 +1,5 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
-import android.app.ProgressDialog.show
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.secondworld.globaltestproject.core.extension.hide
