@@ -6,15 +6,21 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+
+
 android {
     compileSdk 31
+
+    def versionMajor = 15
+    def versionMinor = 2
+    def versionPatch = 2
 
     defaultConfig {
         applicationId "com.secondworld.globaltestproject"
         minSdk 21
         targetSdk 31
         versionCode 1
-        versionName "1.0"
+        versionName "${versionMajor}.${versionMinor}-b${versionPatch}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
