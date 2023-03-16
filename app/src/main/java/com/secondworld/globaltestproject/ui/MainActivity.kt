@@ -27,7 +27,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.chromium.base.LocaleUtils
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
