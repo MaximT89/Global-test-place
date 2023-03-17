@@ -1,13 +1,13 @@
 package com.secondworld.globaltestproject.ui
 
 import android.R
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.secondworld.globaltestproject.core.bases.BaseActivity
 import com.secondworld.globaltestproject.core.extension.showSnackbar
-import com.secondworld.globaltestproject.core.extension.toast
 import com.secondworld.globaltestproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,6 +17,7 @@ class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
 
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -27,7 +28,9 @@ class MainActivity : BaseActivity() {
 
         showSnackbar("Some text")
 
-
+        internetCallback = {
+            Log.d("TAG_I", "onCreate: $it")
+        }
     }
 
     @Override
@@ -37,8 +40,6 @@ class MainActivity : BaseActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 }
 
 
