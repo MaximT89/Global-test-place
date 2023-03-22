@@ -6,21 +6,15 @@ plugins {
     id 'kotlin-parcelize'
 }
 
-
-
 android {
     compileSdk 31
-
-    def versionMajor = 15
-    def versionMinor = 2
-    def versionPatch = 2
 
     defaultConfig {
         applicationId "com.secondworld.globaltestproject"
         minSdk 21
         targetSdk 31
         versionCode 1
-        versionName "${versionMajor}.${versionMinor}-b${versionPatch}"
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,8 +42,6 @@ android {
 }
 
 dependencies {
-
-
 
     implementation 'ru.tinkoff.decoro:decoro:1.5.1'
 
@@ -102,7 +94,7 @@ dependencies {
     // Data store
     implementation "androidx.datastore:datastore-preferences:$rootProject.dataStoreVersion"
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'

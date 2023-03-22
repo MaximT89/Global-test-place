@@ -38,8 +38,7 @@ abstract class BaseActivity : AppCompatActivity(), Navigator, ContextScope {
     private val activeNetworkStateObserver: Observer<Boolean?> =
         Observer<Boolean?> { isConnected -> resultLogic(isConnected) }
 
-    private fun resultLogic(connected: Boolean?) : Unit?{
-
+    private fun resultLogic(connected: Boolean?) : Unit? {
         return internetCallback?.invoke(connected)
     }
 

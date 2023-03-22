@@ -27,10 +27,6 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         showSnackbar("Some text")
-
-        internetCallback = {
-            Log.d("TAG_I", "onCreate: $it")
-        }
     }
 
     @Override
