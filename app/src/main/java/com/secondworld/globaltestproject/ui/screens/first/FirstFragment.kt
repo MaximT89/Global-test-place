@@ -1,8 +1,6 @@
 package com.secondworld.globaltestproject.ui.screens.first
 
-import com.secondworld.globaltestproject.BuildConfig
 import com.secondworld.globaltestproject.core.bases.BaseFragment
-import com.secondworld.globaltestproject.core.extension.log
 import com.secondworld.globaltestproject.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,6 +12,7 @@ class FirstFragment :
 
     override fun initView() {
     }
+
 
     override fun initObservers() = Unit
 }

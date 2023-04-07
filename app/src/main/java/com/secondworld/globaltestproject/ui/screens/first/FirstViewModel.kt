@@ -18,7 +18,7 @@ class FirstViewModel @Inject constructor(private val provider: ResourceProvider)
         foo()
     }
 
-    private fun foo() {
+    fun foo() {
         viewModelScope.launch(Dispatchers.IO) {
             test1()
             test2()
